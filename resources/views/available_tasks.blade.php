@@ -10,19 +10,20 @@
           <div class="overview-wrap">
             <ul class="user-stats">
               <li>
-                Last logged in: 9:15 2/23/2019
+                Last logged in: <span>9:15 2/23/2019</span>
               </li>
 
               <li>
-                Last logged out: 4:05 1/23/2019
+                Last logged out: <span>4:05 1/23/2019</span>
               </li>
 
               <li>
-                Weekly works 20 hours.
+                Weekly works <span>20</span> hours.
               </li>
             </ul>
 
-            <button class="au-btn au-btn-icon au-btn--blue">well done!</button>
+            <h2 class="user-status">Well done!</h2>
+            {{--<button class="au-btn au-btn-icon au-btn--blue">well done!</button>--}}
           </div>
         </div>
 
@@ -33,11 +34,11 @@
             <div class="overview__inner">
               <div class="overview-box clearfix">
                 <div class="icon">
-                  <i class="zmdi zmdi-account-o"></i>
+                  <i class="far fa-clock"></i>
                 </div>
                 <div class="text">
-                  <h2>10368</h2>
-                  <span>members online</span>
+                  <h2>10</h2>
+                  <span>tasks are currently in the making</span>
                 </div>
               </div>
               <div class="overview-chart">
@@ -51,11 +52,11 @@
             <div class="overview__inner">
               <div class="overview-box clearfix">
                 <div class="icon">
-                  <i class="zmdi zmdi-shopping-cart"></i>
+                  <i class="far fa-check-square"></i>
                 </div>
                 <div class="text">
-                  <h2>388,688</h2>
-                  <span>items solid</span>
+                  <h2>5</h2>
+                  <span>tasks are done</span>
                 </div>
               </div>
               <div class="overview-chart">
@@ -69,11 +70,11 @@
             <div class="overview__inner">
               <div class="overview-box clearfix">
                 <div class="icon">
-                  <i class="zmdi zmdi-calendar-note"></i>
+                  <i class="fas fa-pause"></i>
                 </div>
                 <div class="text">
-                  <h2>1,086</h2>
-                  <span>this week</span>
+                  <h2>7</h2>
+                  <span>tasks are on hold</span>
                 </div>
               </div>
               <div class="overview-chart">
@@ -87,11 +88,11 @@
             <div class="overview__inner">
               <div class="overview-box clearfix">
                 <div class="icon">
-                  <i class="zmdi zmdi-money"></i>
+                  <i class="fas fa-user-times"></i>
                 </div>
                 <div class="text">
-                  <h2>$1,060,386</h2>
-                  <span>total earnings</span>
+                  <h2>3</h2>
+                  <span>tasks are refused</span>
                 </div>
               </div>
               <div class="overview-chart">

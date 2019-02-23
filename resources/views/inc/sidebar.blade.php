@@ -9,7 +9,7 @@
             <ul class="list-unstyled navbar__list">
                 <li class="active has-sub">
                     <a class="js-arrow" href="#">
-                        <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                        <i class="fas fa-home"></i>Dashboard</a>
                 </li>
                 <li>
                     <a href="chart.html">
