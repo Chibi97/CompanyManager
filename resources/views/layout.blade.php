@@ -11,8 +11,8 @@
 
     <!-- Title Page-->
     <title>Company Manager</title>
-
     <link rel="stylesheet" href="{{ asset('css/bundle.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 
 <body class="animsition">
@@ -21,14 +21,11 @@
 
         @include('inc.sidebar')
 
-
-        <!-- PAGE CONTAINER-->
         <div class="page-container">
 
             @include('inc.header')
 
             @yield('content')
-            <!-- END PAGE CONTAINER-->
         </div>
 
     </div>

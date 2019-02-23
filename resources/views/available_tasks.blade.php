@@ -8,7 +8,20 @@
       <div class="row">
         <div class="col-md-12">
           <div class="overview-wrap">
-            <h2 class="title-1">overview</h2>
+            <ul class="user-stats">
+              <li>
+                Last logged in: 9:15 2/23/2019
+              </li>
+
+              <li>
+                Last logged out: 4:05 1/23/2019
+              </li>
+
+              <li>
+                Weekly works 20 hours.
+              </li>
+            </ul>
+
             <button class="au-btn au-btn-icon au-btn--blue">well done!</button>
           </div>
         </div>
