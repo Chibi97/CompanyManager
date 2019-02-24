@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="au-card au-card--no-shadow au-card--no-pad m-b-40 au-card--border">
-                    <div class="au-card-title" style="background-image:url('images/bg-title-01.jpg');">
+                    <div class="au-card-title" style="background-image:url('{{ asset('images/bg-title-01.jpg') }}');">
                         <div class="bg-overlay bg-overlay--blue"></div>
                         <h3>
                             <i class="zmdi zmdi-account-calendar"></i>22 May, 2018</h3>
@@ -71,7 +71,7 @@
                             <button class="au-btn au-btn-load js-load-btn">load more</button>
                         </div>
                     </div>
-                </div>e
+                </div>
                {{-- <div class="au-card">
                     <div class="au-card-inner">
                         <h3 class="title-2">Make coffee</h3>
