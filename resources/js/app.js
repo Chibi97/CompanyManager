@@ -6,3 +6,7 @@
  */
 
 require('./bootstrap');
+
+$('document').ready( () => {
+
+});

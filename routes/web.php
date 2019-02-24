@@ -12,5 +12,15 @@
 */
 
 Route::get('/', function () {
-    return view('available_tasks');
-});
+    return view('dashboard');
+})->name('home');
+
+
+Route::get('/my-tasks', function () {
+    return view('employee.my_tasks');
+})->name('my-tasks');
+
+
+Route::get('/all-tasks', function () {
+    return view('employee.all_tasks');
+})->name('all-tasks');

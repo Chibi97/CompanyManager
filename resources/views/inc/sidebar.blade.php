@@ -7,17 +7,20 @@
     <div class="menu-sidebar__content js-scrollbar1">
         <nav class="navbar-sidebar">
             <ul class="list-unstyled navbar__list">
-                <li class="active has-sub">
-                    <a class="js-arrow" href="#">
-                        <i class="fas fa-home"></i>Dashboard</a>
+                <li class="{{ Request::route()->named('home') ? 'active' : '' }} has-sub">
+                    <a href="{{ route('home') }}">
+                        <i class="fas fa-home"></i>Dashboard
+                    </a>
                 </li>
-                <li>
-                    <a href="chart.html">
-                        <i class="fas fa-thumbtack"></i>My Tasks</a>
+                <li class="{{ Request::route()->named('my-tasks') ? 'active' : '' }}">
+                    <a href="{{ route('my-tasks') }}">
+                        <i class="fas fa-thumbtack"></i>My Tasks
+                    </a>
                 </li>
-                <li>
-                    <a href="table.html">
-                        <i class="fas fa-tasks"></i>Available Tasks</a>
+                <li class="{{ Request::route()->named('all-tasks') ? 'active' : '' }}">
+                    <a href="{{ route('all-tasks') }}">
+                        <i class="fas fa-tasks"></i>Available Tasks
+                    </a>
                 </li>
 
              {{-- <li class="has-sub">

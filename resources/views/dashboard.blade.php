@@ -1,5 +1,5 @@
 
-@extends('layout')
+@extends('layouts.platform')
 
 @section('content')
 <div class="main-content">
@@ -23,7 +23,6 @@
             </ul>
 
             <h2 class="user-status">Well done!</h2>
-            {{--<button class="au-btn au-btn-icon au-btn--blue">well done!</button>--}}
           </div>
         </div>
 
@@ -105,4 +104,6 @@
     </div>
   </div>
 </div>
+
+
 @endsection

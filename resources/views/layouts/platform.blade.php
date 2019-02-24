@@ -15,9 +15,10 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 
-<body class="animsition">
+<body>
+   {{-- class="animsition" --}}
     <div class="page-wrapper">
-        @include('inc.mobile-nav')
+        @include('inc.mobile_nav')
 
         @include('inc.sidebar')
 

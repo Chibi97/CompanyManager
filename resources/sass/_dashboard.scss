@@ -1,10 +1,10 @@
 .overview-wrap {
   .user-status {
     padding: 15px 35px;
-    border: 2px solid #4272d7;
+    border: 2px solid $primary;
     font-size: 1.2rem;
     font-weight: normal;
-    color: #4272d7;
+    color: $primary;
     border-radius: 3px;
   }
 }
@@ -12,11 +12,13 @@
   list-style-type: none !important;
 
   span {
-    color: #00a2e3;
+    color: $azure;
   }
 }
 
 .overview-box  {
     display: flex;
-
+  .icon i {
+    font-size: 50px !important;
+  }
 }

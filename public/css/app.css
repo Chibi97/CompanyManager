@@ -19,3 +19,17 @@
   display: flex;
 }
 
+.overview-box .icon i {
+  font-size: 50px !important;
+}
+
+.tasks {
+  min-height: 100vh;
+  padding: 6em 1em;
+}
+
+.tasks .au-card {
+  margin-bottom: 6em;
+  margin-left: 2em;
+}
+
