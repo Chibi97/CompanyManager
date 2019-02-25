@@ -13,11 +13,11 @@ class CreateTaskDifficultiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('taskDifficulties', function (Blueprint $table) {
+        Schema::create('task_difficulties', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('level');
+            $table->string('name');
             $table->timestamps();
-    });
+        });
     }
 
     /**
@@ -27,6 +27,6 @@ class CreateTaskDifficultiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('taskDifficulties');
+        Schema::dropIfExists('task_difficulties');
     }
 }

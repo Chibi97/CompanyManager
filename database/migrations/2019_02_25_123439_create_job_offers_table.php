@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAnnouncementsTable extends Migration
+class CreateJobOffersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateAnnouncementsTable extends Migration
      */
     public function up()
     {
-        Schema::create('announcements', function (Blueprint $table) {
+        Schema::create('job_offers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('start_date');
-            $table->date('due_date');
+            $table->text('description');
+            $table->date('start_date');
+            $table->date('end_date');
             $table->unsignedInteger('profession_id');
             $table->foreign('profession_id')->references('id')->on('professions');
             $table->unsignedInteger('users_id');
@@ -34,6 +35,6 @@ class CreateAnnouncementsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('announcements');
+        Schema::dropIfExists('job_offers');
     }
 }

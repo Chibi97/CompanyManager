@@ -15,16 +15,16 @@ class CreateCandidatesTable extends Migration
     {
         Schema::create('candidates', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('firstName');
-            $table->string('lastName');
+            $table->string('first_name');
+            $table->string('last_name');
             $table->string('email');
-            $table->integer('mark');
-            $table->date('registrationDate');
-            $table->string('cvFile');
-            $table->double('avgRating');
+            $table->integer('rating');
+            $table->date('application_date');
+            $table->string('cv_file');
+            $table->double('avg_rating');
             $table->string('status');
-            $table->unsignedInteger('announcement_id');
-            $table->foreign('announcement_id')->references('id')->on('announcements');
+            $table->unsignedInteger('job_offer_id');
+            $table->foreign('job_offer_id')->references('id')->on('job_offers');
             $table->string('comment');
             $table->timestamps();
         });

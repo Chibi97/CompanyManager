@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFormsFieldsTable extends Migration
+class CreateFormFieldTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateFormsFieldsTable extends Migration
      */
     public function up()
     {
-        Schema::create('formsFields', function (Blueprint $table) {
+        Schema::create('form_field', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('form_id');
             $table->foreign('form_id')->references('id')->on('forms');
@@ -30,6 +30,6 @@ class CreateFormsFieldsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('formsFields');
+        Schema::dropIfExists('form_field');
     }
 }

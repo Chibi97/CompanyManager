@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCandidatesConditionsTable extends Migration
+class CreateJobOfferCondition extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateCandidatesConditionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('candidatesConditions', function (Blueprint $table) {
+        Schema::create('job_offer_condition', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('condition_id');
             $table->foreign('condition_id')->references('id')->on('conditions');
-            $table->unsignedInteger('candidate_id');
-            $table->foreign('candidate_id')->references('id')->on('candidates');
+            $table->unsignedInteger('job_offer_id');
+            $table->foreign('job_offer_id')->references('id')->on('job_offers');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateCandidatesConditionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('candidatesConditions');
+        Schema::dropIfExists('job_offer_condition');
     }
 }

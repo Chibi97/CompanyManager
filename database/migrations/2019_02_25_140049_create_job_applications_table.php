@@ -13,10 +13,10 @@ class CreateJobApplicationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('jobApplications', function (Blueprint $table) {
+        Schema::create('job_applications', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('form_field_id');
-            $table->foreign('form_field_id')->references('id')->on('formsFields');
+            $table->foreign('form_field_id')->references('id')->on('form_field');
             $table->unsignedInteger('candidate_id');
             $table->foreign('candidate_id')->references('id')->on('candidates');
             $table->string('value');
@@ -32,6 +32,6 @@ class CreateJobApplicationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jobApplications');
+        Schema::dropIfExists('job_applications');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateConditionsProfessionsTable extends Migration
+class CreateConditionProfessionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateConditionsProfessionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('conditionsProfessions', function (Blueprint $table) {
+        Schema::create('condition_profession', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('condition_id');
             $table->foreign('condition_id')->references('id')->on('conditions');
@@ -30,6 +30,6 @@ class CreateConditionsProfessionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('conditionsProfessions');
+        Schema::dropIfExists('condition_profession');
     }
 }

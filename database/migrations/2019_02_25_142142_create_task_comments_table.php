@@ -13,10 +13,10 @@ class CreateTaskCommentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('taskComments', function (Blueprint $table) {
+        Schema::create('task_comments', function (Blueprint $table) {
             $table->increments('id');
             $table->string('comment');
-            $table->date('date');
+            $table->dateTime('date');
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedInteger('task_id');
@@ -32,6 +32,6 @@ class CreateTaskCommentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('taskComments');
+        Schema::dropIfExists('task_comments');
     }
 }

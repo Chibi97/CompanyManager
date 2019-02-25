@@ -1,7 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d2eb6209-fb57-416d-9ffa-979f097874ae" name="Default Changelist" comment="" />
+    <list default="true" id="d2eb6209-fb57-416d-9ffa-979f097874ae" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeds/UserTableSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/UserFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/UserFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_02_24_164935_create_user_statuses_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_02_24_164935_create_user_statuses_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_02_24_165324_create_companies_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_02_24_165324_create_companies_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_02_25_123439_create_announcements_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_02_25_123439_create_job_offers_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_02_25_125202_create_fk_for_users.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_02_25_125202_create_fk_for_users.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_02_25_125739_create_conditions_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_02_25_125739_create_conditions_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_02_25_133338_create_conditions_professions_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_02_25_133338_create_condition_profession_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_02_25_133713_create_announcements_conditions.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_02_25_133713_create_job_offer_condition.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_02_25_134532_create_forms_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_02_25_134532_create_forms_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_02_25_134640_create_forms_fields_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_02_25_134640_create_form_field_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_02_25_135113_create_candidates_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_02_25_135113_create_candidates_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_02_25_135830_create_candidates_conditions_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_02_25_135830_create_candidate_condition_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_02_25_140049_create_job_applications_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_02_25_140049_create_job_applications_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_02_25_140508_create_task_statuses_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_02_25_140508_create_task_statuses_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_02_25_140653_create_task_difficulties_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_02_25_140653_create_task_difficulties_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_02_25_140816_create_tasks_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_02_25_140816_create_tasks_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_02_25_141644_create_tasks_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_02_25_141644_create_task_user_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_02_25_141732_create_user_logs_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_02_25_141732_create_user_logs_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_02_25_142142_create_task_comments_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_02_25_142142_create_task_comments_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,31 +37,37 @@
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="company_manager@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="company_manager@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_134640_create_forms_fields_table.php">
+        <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_135830_create_candidate_condition_table.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="20" column="69" selection-start-line="20" selection-start-column="69" selection-end-line="20" selection-end-column="69" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_135113_create_candidates_table.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="19" column="36" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_135830_create_candidates_conditions_table.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+            <state relative-caret-position="475">
+              <caret line="27" column="6" selection-start-line="27" selection-start-column="6" selection-end-line="27" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -44,8 +75,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_140049_create_job_applications_table.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="21" column="31" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
+            <state relative-caret-position="162">
+              <caret line="21" column="36" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -53,35 +84,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_140508_create_task_statuses_table.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="17" column="37" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
+            <state relative-caret-position="133">
+              <caret line="15" column="37" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="37" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_140653_create_task_difficulties_table.php">
+        <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_141644_create_task_user_table.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_140816_create_tasks_table.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="19" column="17" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_141644_create_tasks_users_table.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="24" selection-start-line="24" selection-end-line="24" />
+            <state relative-caret-position="274">
+              <caret line="21" column="33" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -89,17 +102,236 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_141732_create_user_logs_table.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
+            <state relative-caret-position="483">
+              <caret line="32" column="36" selection-start-line="32" selection-start-column="36" selection-end-line="32" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_142142_create_task_comments_table.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="627">
+              <caret line="35" column="5" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_140653_create_task_difficulties_table.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="551">
+              <caret line="31" column="1" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_142142_create_task_comments_table.php">
+        <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_140816_create_tasks_table.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="17" column="38" lean-forward="true" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="38" />
+            <state relative-caret-position="323">
+              <caret line="19" column="10" lean-forward="true" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/64baeef7-5b65-4383-94cc-5b0d000f2543/console.sql">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="uml://DATABASE/64baeef7-5b65-4383-94cc-5b0d000f2543">
+          <provider selected="true" editor-type-id="UmlEditorProvider">
+            <state>
+              <ID>DATABASE</ID>
+              <OriginalElement>64baeef7-5b65-4383-94cc-5b0d000f2543</OriginalElement>
+              <nodes>
+                <node x="194.0" y="23.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.task_statuses</node>
+                <node x="298.8255208333335" y="620.5">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.task_user</node>
+                <node x="697.7760416666667" y="1162.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.form_field</node>
+                <node x="0.0" y="1687.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.migrations</node>
+                <node x="0.0" y="23.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.task_difficulties</node>
+                <node x="602.7760416666667" y="23.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.user_statuses</node>
+                <node x="732.7760416666667" y="897.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.forms</node>
+                <node x="221.0" y="1687.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.password_resets</node>
+                <node x="713.9427083333335" y="609.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.user_logs</node>
+                <node x="408.77604166666674" y="23.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.roles</node>
+                <node x="1249.7760416666667" y="1473.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.job_offer_condition</node>
+                <node x="450.0755208333335" y="1162.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.options</node>
+                <node x="1280.7760416666667" y="0.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.companies</node>
+                <node x="520.7760416666667" y="219.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.users</node>
+                <node x="1478.7760416666667" y="1473.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.condition_profession</node>
+                <node x="917.7760416666667" y="1070.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.candidates</node>
+                <node x="1509.5260416666667" y="299.5">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.professions</node>
+                <node x="913.9427083333335" y="563.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.job_offers</node>
+                <node x="81.0" y="230.5">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.tasks</node>
+                <node x="1307.7760416666667" y="1162.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.conditions</node>
+                <node x="498.8255208333335" y="632.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.types</node>
+                <node x="39.0" y="597.5">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.task_comments</node>
+                <node x="736.5260416666667" y="1450.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.job_applications</node>
+                <node x="1019.7760416666667" y="1473.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.candidate_condition</node>
+                <node x="495.3255208333335" y="874.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.fields</node>
+              </nodes>
+              <notes />
+              <edges>
+                <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.condition_profession" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.conditions">
+                  <point x="-53.75" y="-73.0" />
+                  <point x="1532.5260416666667" y="1430.0" />
+                  <point x="1480.2760416666667" y="1430.0" />
+                  <point x="69.0" y="73.0" />
+                </edge>
+                <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.job_offers" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.professions">
+                  <point x="53.75" y="-130.5" />
+                  <point x="1075.1927083333335" y="543.0" />
+                  <point x="1553.0260416666667" y="543.0" />
+                  <point x="-43.5" y="61.5" />
+                </edge>
+                <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.tasks" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.task_difficulties">
+                  <point x="-51.5" y="-130.5" />
+                  <point x="132.5" y="194.0" />
+                  <point x="87.0" y="194.0" />
+                  <point x="0.0" y="61.5" />
+                </edge>
+                <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.forms" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.job_offers">
+                  <point x="0.0" y="-50.0" />
+                  <point x="835.7760416666667" y="849.0" />
+                  <point x="949.7760416666669" y="849.0" />
+                  <point x="-71.66666666666663" y="130.5" />
+                </edge>
+                <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.candidate_condition" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.candidates">
+                  <point x="-52.5" y="-73.0" />
+                  <point x="51.5" y="165.0" />
+                </edge>
+                <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.users" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.companies">
+                  <point x="72.0" y="-142.0" />
+                  <point x="700.7760416666667" y="194.0" />
+                  <point x="1324.2760416666667" y="194.0" />
+                  <point x="-43.5" y="84.5" />
+                </edge>
+                <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.job_offers" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.users">
+                  <point x="-53.75" y="-130.5" />
+                  <point x="967.6927083333335" y="533.0" />
+                  <point x="709.7760416666667" y="533.0" />
+                  <point x="81.0" y="142.0" />
+                </edge>
+                <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.job_applications" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.form_field">
+                  <point x="-53.25" y="-96.0" />
+                  <point x="0.0" y="73.0" />
+                </edge>
+                <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.tasks" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.task_statuses">
+                  <point x="51.5" y="-130.5" />
+                  <point x="235.5" y="194.0" />
+                  <point x="281.0" y="194.0" />
+                  <point x="0.0" y="61.5" />
+                </edge>
+                <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.conditions" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.companies">
+                  <point x="0.0" y="-73.0" />
+                  <point x="43.5" y="84.5" />
+                </edge>
+                <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.options" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.fields">
+                  <point x="0.0" y="-73.0" />
+                  <point x="-45.25" y="73.0" />
+                </edge>
+                <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.user_logs" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.users">
+                  <point x="0.0" y="-84.5" />
+                  <point x="803.9427083333335" y="543.0" />
+                  <point x="655.7760416666667" y="543.0" />
+                  <point x="27.0" y="142.0" />
+                </edge>
+                <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.users" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.roles">
+                  <point x="-72.0" y="-142.0" />
+                  <point x="556.7760416666667" y="194.0" />
+                  <point x="495.77604166666674" y="194.0" />
+                  <point x="0.0" y="61.5" />
+                </edge>
+                <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.task_user" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.tasks">
+                  <point x="-45.0" y="-73.0" />
+                  <point x="343.8255208333335" y="523.0" />
+                  <point x="235.5" y="523.0" />
+                  <point x="51.5" y="130.5" />
+                </edge>
+                <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.candidates" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.job_offers">
+                  <point x="0.0" y="-165.0" />
+                  <point x="0.0" y="130.5" />
+                </edge>
+                <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.task_user" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.users">
+                  <point x="45.0" y="-73.0" />
+                  <point x="433.8255208333335" y="543.0" />
+                  <point x="601.7760416666667" y="543.0" />
+                  <point x="-27.0" y="142.0" />
+                </edge>
+                <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.task_comments" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.tasks">
+                  <point x="-45.0" y="-96.0" />
+                  <point x="84.0" y="543.0" />
+                  <point x="132.5" y="543.0" />
+                  <point x="-51.5" y="130.5" />
+                </edge>
+                <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.job_offer_condition" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.conditions">
+                  <point x="52.25" y="-73.0" />
+                  <point x="1406.5260416666667" y="1430.0" />
+                  <point x="1411.2760416666667" y="1430.0" />
+                  <point x="0.0" y="73.0" />
+                </edge>
+                <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.form_field" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.forms">
+                  <point x="46.0" y="-73.0" />
+                  <point x="0.0" y="50.0" />
+                </edge>
+                <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.form_field" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.fields">
+                  <point x="-46.0" y="-73.0" />
+                  <point x="743.7760416666667" y="1045.0" />
+                  <point x="631.0755208333335" y="1045.0" />
+                  <point x="45.25" y="73.0" />
+                </edge>
+                <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.job_offer_condition" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.job_offers">
+                  <point x="-52.25" y="-73.0" />
+                  <point x="1302.0260416666667" y="1420.0" />
+                  <point x="1297.2760416666667" y="1420.0" />
+                  <point x="1297.2760416666667" y="849.0" />
+                  <point x="1093.1093750000002" y="849.0" />
+                  <point x="71.66666666666674" y="130.5" />
+                </edge>
+                <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.fields" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.types">
+                  <point x="0.0" y="-73.0" />
+                  <point x="0.0" y="61.5" />
+                </edge>
+                <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.task_comments" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.users">
+                  <point x="45.0" y="-96.0" />
+                  <point x="174.0" y="533.0" />
+                  <point x="547.7760416666667" y="533.0" />
+                  <point x="-81.0" y="142.0" />
+                </edge>
+                <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.job_applications" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.candidates">
+                  <point x="53.25" y="-96.0" />
+                  <point x="896.2760416666667" y="1430.0" />
+                  <point x="969.2760416666667" y="1430.0" />
+                  <point x="-51.5" y="165.0" />
+                </edge>
+                <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.users" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.user_statuses">
+                  <point x="0.0" y="-142.0" />
+                  <point x="628.7760416666667" y="194.0" />
+                  <point x="689.7760416666667" y="194.0" />
+                  <point x="0.0" y="61.5" />
+                </edge>
+                <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.condition_profession" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.professions">
+                  <point x="53.75" y="-73.0" />
+                  <point x="43.5" y="61.5" />
+                </edge>
+                <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.candidate_condition" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.conditions">
+                  <point x="52.5" y="-73.0" />
+                  <point x="1177.2760416666667" y="1430.0" />
+                  <point x="1342.2760416666667" y="1430.0" />
+                  <point x="-69.0" y="73.0" />
+                </edge>
+              </edges>
+              <settings layout="Hierarchic Group" zoom="0.9608190370780297" x="529.547576992891" y="758.4118541067584" />
+              <SelectedNodes>
+                <node>64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.fields</node>
+              </SelectedNodes>
+              <Categories>
+                <Category>Key columns</Category>
+                <Category>Columns</Category>
+              </Categories>
             </state>
           </provider>
         </entry>
@@ -121,18 +353,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/sass/_employee-dashboard.scss" />
-        <option value="$PROJECT_DIR$/resources/sass/_variables.scss" />
-        <option value="$PROJECT_DIR$/resources/views/dashboard.blade.php" />
-        <option value="$PROJECT_DIR$/resources/sass/app.scss" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
-        <option value="$PROJECT_DIR$/resources/views/layouts/platform.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/inc/mobile_nav.blade.php" />
-        <option value="$PROJECT_DIR$/resources/js/app.js" />
-        <option value="$PROJECT_DIR$/resources/views/inc/sidebar.blade.php" />
-        <option value="$PROJECT_DIR$/app/User.php" />
-        <option value="$PROJECT_DIR$/resources/sass/_task_list.scss" />
-        <option value="$PROJECT_DIR$/resources/views/employee/all_tasks.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/employee/my_tasks.blade.php" />
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/database/migrations/2019_02_24_154055_roles.php" />
@@ -141,7 +361,6 @@
         <option value="$PROJECT_DIR$/database/migrations/2019_02_24_154219_make_roles_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_02_25_122551_make_professions_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_02_25_123439_make_annoucements_table.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_02_25_125739_make_conditions_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_02_25_125202_make_fk_for_users.php" />
         <option value="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" />
@@ -150,28 +369,41 @@
         <option value="$PROJECT_DIR$/database/migrations/2019_02_25_133338_make_conditions_professions_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_02_25_133713_make_announcements_conditions.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_02_24_154219_create_roles_table.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_02_24_164935_create_user_statuses_table.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_02_24_165324_create_companies_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_02_25_122551_create_professions_table.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_02_25_123439_create_announcements_table.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_02_25_125202_create_fk_for_users.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_02_25_125739_create_conditions_table.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_02_25_133338_create_conditions_professions_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_02_25_133713_create_announcements_conditions.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_02_25_133929_create_types_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_02_25_134452_create_fields_table.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_02_25_134532_create_forms_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_02_25_134640_create_forms_fields_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_02_25_135020_create_options_table.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_02_25_135113_create_candidates_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_02_25_135830_create_candidates_conditions_table.php" />
+        <option value="$PROJECT_DIR$/database/factories/UserFactory.php" />
+        <option value="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" />
+        <option value="$PROJECT_DIR$/database/factories/RolesFactory.php" />
+        <option value="$PROJECT_DIR$/database/seeds/RolesTableSeeder.php" />
+        <option value="$PROJECT_DIR$/database/seeds/UserTableSeeder.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_02_24_165324_create_companies_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_02_24_164935_create_user_statuses_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_02_25_125739_create_conditions_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_02_25_133338_create_conditions_professions_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_02_25_133338_create_condition_profession_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_02_25_133713_create_announcement_condition.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_02_25_123439_create_announcements_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_02_25_133713_create_job_offer_condition.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_02_25_123439_create_job_offers_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_02_25_125202_create_fk_for_users.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_02_25_134532_create_forms_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_02_25_134640_create_form_field_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_02_25_135113_create_candidates_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_02_25_135830_create_candidate_condition_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_02_25_141644_create_tasks_users_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_02_25_141644_create_task_user_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_02_25_141732_create_user_logs_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_02_25_140049_create_job_applications_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_02_25_140508_create_task_statuses_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_02_25_142142_create_task_comments_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_02_25_140653_create_task_difficulties_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_02_25_140816_create_tasks_table.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_02_25_141644_create_tasks_users_table.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_02_25_141732_create_user_logs_table.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_02_25_142142_create_task_comments_table.php" />
       </list>
     </option>
   </component>
@@ -268,7 +500,7 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
-    <option name="width" value="977" />
+    <option name="width" value="915" />
     <option name="height" value="1038" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -295,39 +527,25 @@
             <path>
               <item name="CompanyManager" type="b2602c69:ProjectViewProjectNode" />
               <item name="CompanyManager" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CompanyManager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CompanyManager" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CompanyManager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CompanyManager" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Middleware" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CompanyManager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CompanyManager" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Providers" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CompanyManager" type="b2602c69:ProjectViewProjectNode" />
               <item name="CompanyManager" type="462c0819:PsiDirectoryNode" />
               <item name="database" type="462c0819:PsiDirectoryNode" />
+              <item name="factories" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CompanyManager" type="b2602c69:ProjectViewProjectNode" />
               <item name="CompanyManager" type="462c0819:PsiDirectoryNode" />
               <item name="database" type="462c0819:PsiDirectoryNode" />
               <item name="migrations" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CompanyManager" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CompanyManager" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+              <item name="seeds" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CompanyManager" type="b2602c69:ProjectViewProjectNode" />
@@ -349,12 +567,6 @@
             <path>
               <item name="CompanyManager" type="b2602c69:ProjectViewProjectNode" />
               <item name="CompanyManager" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CompanyManager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CompanyManager" type="462c0819:PsiDirectoryNode" />
               <item name="routes" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -364,6 +576,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="cassandra&#10;mysql" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
     <property name="node.js.detected.package.stylelint" value="true" />
@@ -372,7 +585,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="settings.editor.selected.configurable" value="watcher.settings" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -434,18 +647,18 @@
       <workItem from="1550948795001" duration="2787000" />
       <workItem from="1550999903032" duration="10278000" />
       <workItem from="1551020842339" duration="4262000" />
-      <workItem from="1551096752372" duration="7509000" />
+      <workItem from="1551096752372" duration="15150000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36476000" />
+    <option name="totallyTimeSpent" value="44117000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.30107528" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.25537634" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -458,13 +671,13 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.3877841" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.57954544" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Database" order="3" />
+      <window_info active="true" anchor="right" id="Database" order="3" visible="true" weight="0.15120968" />
     </layout>
     <layout-to-restore>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.38508064" />
@@ -493,44 +706,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/ForgotPasswordController.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="9" column="39" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/app.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/vendor/theme.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="1427" column="21" selection-start-line="1427" selection-start-column="21" selection-end-line="1427" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/bundle.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="5385" column="43" selection-start-line="5385" selection-start-column="43" selection-end-line="5385" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/sass/_variables.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/sass/app.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="228">
@@ -560,13 +735,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="665">
-          <caret line="39" column="6" selection-start-line="39" selection-start-column="6" selection-end-line="39" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Support/Facades/Request.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="453">
@@ -578,13 +746,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
           <caret line="10" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/factories/UserFactory.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
         </state>
       </provider>
     </entry>
@@ -603,13 +764,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_24_154055_roles.php" />
-    <entry file="file://$PROJECT_DIR$/database/migrations/2014_10_12_100000_create_password_resets_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="27" column="26" lean-forward="true" selection-start-line="27" selection-start-column="26" selection-end-line="27" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/employee/my_tasks.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="266">
@@ -656,31 +810,72 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Providers/AppServiceProvider.php">
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_140407_create_tasks_users_table.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        <state relative-caret-position="665">
+          <caret line="39" column="6" selection-start-line="39" selection-start-column="6" selection-end-line="39" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_24_154219_create_roles_table.php">
+    <entry file="file://$PROJECT_DIR$/app/Providers/AppServiceProvider.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="10" column="6" lean-forward="true" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+        <state relative-caret-position="513">
+          <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+          <folding>
+            <element signature="e#33#72#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/factories/RolesFactory.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="56" selection-start-line="4" selection-start-column="56" selection-end-line="4" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/seeds/DatabaseSeeder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/factories/UserFactory.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="11" column="32" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2014_10_12_100000_create_password_resets_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="27" column="26" lean-forward="true" selection-start-line="27" selection-start-column="26" selection-end-line="27" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/seeds/UserTableSeeder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_24_164935_create_user_statuses_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="67">
-          <caret line="6" column="6" lean-forward="true" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="12" />
+        <state relative-caret-position="323">
+          <caret line="19" column="11" lean-forward="true" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_24_165324_create_companies_table.php">
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_24_154219_create_roles_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="10" column="6" lean-forward="true" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+        <state relative-caret-position="228">
+          <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -691,146 +886,354 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_125739_create_conditions_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="10" column="6" lean-forward="true" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_133338_create_condition_profession_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="13" column="24" lean-forward="true" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_133713_create_job_offer_condition.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="22" column="11" lean-forward="true" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_125202_create_fk_for_users.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="6" column="12" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
+        <state relative-caret-position="209">
+          <caret line="19" column="11" lean-forward="true" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_133929_create_types_table.php">
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_24_165324_create_companies_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="18" column="33" lean-forward="true" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
+        <state relative-caret-position="86">
+          <caret line="7" column="1" lean-forward="true" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_135020_create_options_table.php">
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_123439_create_job_offers_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
+        <state relative-caret-position="160">
+          <caret line="18" column="40" lean-forward="true" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="20" column="22" lean-forward="true" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
+        <state relative-caret-position="122">
+          <caret line="18" column="40" lean-forward="true" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_125739_create_conditions_table.php">
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_133929_create_types_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_134532_create_forms_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="16" column="37" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
+        <state relative-caret-position="415">
+          <caret line="27" column="26" lean-forward="true" selection-start-line="27" selection-start-column="26" selection-end-line="27" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_134452_create_fields_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="19" column="41" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="41" />
+        <state relative-caret-position="89">
+          <caret line="9" column="10" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_133713_create_announcements_conditions.php">
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_134532_create_forms_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="6" column="12" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
+        <state relative-caret-position="285">
+          <caret line="17" column="30" lean-forward="true" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_133338_create_conditions_professions_table.php">
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_134640_create_form_field_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="6" column="12" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
+        <state relative-caret-position="399">
+          <caret line="26" column="30" lean-forward="true" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_123439_create_announcements_table.php">
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_135020_create_options_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="6" column="12" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
+        <state relative-caret-position="298">
+          <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_135113_create_candidates_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="19" column="36" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
+        <state relative-caret-position="260">
+          <caret line="26" column="77" selection-start-line="26" selection-start-column="77" selection-end-line="26" selection-end-column="77" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_135830_create_candidates_conditions_table.php">
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_135830_create_candidate_condition_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+        <state relative-caret-position="475">
+          <caret line="27" column="6" selection-start-line="27" selection-start-column="6" selection-end-line="27" selection-end-column="6" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_134640_create_forms_fields_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="20" column="69" selection-start-line="20" selection-start-column="69" selection-end-line="20" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_140407_create_tasks_users_table.php">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_140049_create_job_applications_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="21" column="31" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
+        <state relative-caret-position="162">
+          <caret line="21" column="36" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_140508_create_task_statuses_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="17" column="37" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
+        <state relative-caret-position="133">
+          <caret line="15" column="37" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="37" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_140653_create_task_difficulties_table.php">
+    <entry file="file://$PROJECT_DIR$/database/seeds/RolesTableSeeder.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_140816_create_tasks_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="19" column="17" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_141644_create_tasks_users_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_141732_create_user_logs_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
+        <state relative-caret-position="418">
+          <caret line="22" column="1" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_142142_create_task_comments_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="17" column="38" lean-forward="true" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="38" />
+        <state relative-caret-position="627">
+          <caret line="35" column="5" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_141732_create_user_logs_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="32" column="36" selection-start-line="32" selection-start-column="36" selection-end-line="32" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_140653_create_task_difficulties_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="551">
+          <caret line="31" column="1" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_141644_create_task_user_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="21" column="33" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/64baeef7-5b65-4383-94cc-5b0d000f2543/console.sql">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="uml://DATABASE/64baeef7-5b65-4383-94cc-5b0d000f2543">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>DATABASE</ID>
+          <OriginalElement>64baeef7-5b65-4383-94cc-5b0d000f2543</OriginalElement>
+          <nodes>
+            <node x="194.0" y="23.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.task_statuses</node>
+            <node x="298.8255208333335" y="620.5">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.task_user</node>
+            <node x="697.7760416666667" y="1162.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.form_field</node>
+            <node x="0.0" y="1687.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.migrations</node>
+            <node x="0.0" y="23.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.task_difficulties</node>
+            <node x="602.7760416666667" y="23.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.user_statuses</node>
+            <node x="732.7760416666667" y="897.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.forms</node>
+            <node x="221.0" y="1687.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.password_resets</node>
+            <node x="713.9427083333335" y="609.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.user_logs</node>
+            <node x="408.77604166666674" y="23.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.roles</node>
+            <node x="1249.7760416666667" y="1473.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.job_offer_condition</node>
+            <node x="450.0755208333335" y="1162.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.options</node>
+            <node x="1280.7760416666667" y="0.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.companies</node>
+            <node x="520.7760416666667" y="219.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.users</node>
+            <node x="1478.7760416666667" y="1473.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.condition_profession</node>
+            <node x="917.7760416666667" y="1070.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.candidates</node>
+            <node x="1509.5260416666667" y="299.5">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.professions</node>
+            <node x="913.9427083333335" y="563.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.job_offers</node>
+            <node x="81.0" y="230.5">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.tasks</node>
+            <node x="1307.7760416666667" y="1162.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.conditions</node>
+            <node x="498.8255208333335" y="632.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.types</node>
+            <node x="39.0" y="597.5">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.task_comments</node>
+            <node x="736.5260416666667" y="1450.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.job_applications</node>
+            <node x="1019.7760416666667" y="1473.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.candidate_condition</node>
+            <node x="495.3255208333335" y="874.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.fields</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.condition_profession" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.conditions">
+              <point x="-53.75" y="-73.0" />
+              <point x="1532.5260416666667" y="1430.0" />
+              <point x="1480.2760416666667" y="1430.0" />
+              <point x="69.0" y="73.0" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.job_offers" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.professions">
+              <point x="53.75" y="-130.5" />
+              <point x="1075.1927083333335" y="543.0" />
+              <point x="1553.0260416666667" y="543.0" />
+              <point x="-43.5" y="61.5" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.tasks" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.task_difficulties">
+              <point x="-51.5" y="-130.5" />
+              <point x="132.5" y="194.0" />
+              <point x="87.0" y="194.0" />
+              <point x="0.0" y="61.5" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.forms" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.job_offers">
+              <point x="0.0" y="-50.0" />
+              <point x="835.7760416666667" y="849.0" />
+              <point x="949.7760416666669" y="849.0" />
+              <point x="-71.66666666666663" y="130.5" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.candidate_condition" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.candidates">
+              <point x="-52.5" y="-73.0" />
+              <point x="51.5" y="165.0" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.users" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.companies">
+              <point x="72.0" y="-142.0" />
+              <point x="700.7760416666667" y="194.0" />
+              <point x="1324.2760416666667" y="194.0" />
+              <point x="-43.5" y="84.5" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.job_offers" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.users">
+              <point x="-53.75" y="-130.5" />
+              <point x="967.6927083333335" y="533.0" />
+              <point x="709.7760416666667" y="533.0" />
+              <point x="81.0" y="142.0" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.job_applications" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.form_field">
+              <point x="-53.25" y="-96.0" />
+              <point x="0.0" y="73.0" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.tasks" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.task_statuses">
+              <point x="51.5" y="-130.5" />
+              <point x="235.5" y="194.0" />
+              <point x="281.0" y="194.0" />
+              <point x="0.0" y="61.5" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.conditions" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.companies">
+              <point x="0.0" y="-73.0" />
+              <point x="43.5" y="84.5" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.options" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.fields">
+              <point x="0.0" y="-73.0" />
+              <point x="-45.25" y="73.0" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.user_logs" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.users">
+              <point x="0.0" y="-84.5" />
+              <point x="803.9427083333335" y="543.0" />
+              <point x="655.7760416666667" y="543.0" />
+              <point x="27.0" y="142.0" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.users" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.roles">
+              <point x="-72.0" y="-142.0" />
+              <point x="556.7760416666667" y="194.0" />
+              <point x="495.77604166666674" y="194.0" />
+              <point x="0.0" y="61.5" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.task_user" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.tasks">
+              <point x="-45.0" y="-73.0" />
+              <point x="343.8255208333335" y="523.0" />
+              <point x="235.5" y="523.0" />
+              <point x="51.5" y="130.5" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.candidates" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.job_offers">
+              <point x="0.0" y="-165.0" />
+              <point x="0.0" y="130.5" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.task_user" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.users">
+              <point x="45.0" y="-73.0" />
+              <point x="433.8255208333335" y="543.0" />
+              <point x="601.7760416666667" y="543.0" />
+              <point x="-27.0" y="142.0" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.task_comments" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.tasks">
+              <point x="-45.0" y="-96.0" />
+              <point x="84.0" y="543.0" />
+              <point x="132.5" y="543.0" />
+              <point x="-51.5" y="130.5" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.job_offer_condition" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.conditions">
+              <point x="52.25" y="-73.0" />
+              <point x="1406.5260416666667" y="1430.0" />
+              <point x="1411.2760416666667" y="1430.0" />
+              <point x="0.0" y="73.0" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.form_field" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.forms">
+              <point x="46.0" y="-73.0" />
+              <point x="0.0" y="50.0" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.form_field" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.fields">
+              <point x="-46.0" y="-73.0" />
+              <point x="743.7760416666667" y="1045.0" />
+              <point x="631.0755208333335" y="1045.0" />
+              <point x="45.25" y="73.0" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.job_offer_condition" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.job_offers">
+              <point x="-52.25" y="-73.0" />
+              <point x="1302.0260416666667" y="1420.0" />
+              <point x="1297.2760416666667" y="1420.0" />
+              <point x="1297.2760416666667" y="849.0" />
+              <point x="1093.1093750000002" y="849.0" />
+              <point x="71.66666666666674" y="130.5" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.fields" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.types">
+              <point x="0.0" y="-73.0" />
+              <point x="0.0" y="61.5" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.task_comments" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.users">
+              <point x="45.0" y="-96.0" />
+              <point x="174.0" y="533.0" />
+              <point x="547.7760416666667" y="533.0" />
+              <point x="-81.0" y="142.0" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.job_applications" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.candidates">
+              <point x="53.25" y="-96.0" />
+              <point x="896.2760416666667" y="1430.0" />
+              <point x="969.2760416666667" y="1430.0" />
+              <point x="-51.5" y="165.0" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.users" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.user_statuses">
+              <point x="0.0" y="-142.0" />
+              <point x="628.7760416666667" y="194.0" />
+              <point x="689.7760416666667" y="194.0" />
+              <point x="0.0" y="61.5" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.condition_profession" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.professions">
+              <point x="53.75" y="-73.0" />
+              <point x="43.5" y="61.5" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.candidate_condition" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.conditions">
+              <point x="52.5" y="-73.0" />
+              <point x="1177.2760416666667" y="1430.0" />
+              <point x="1342.2760416666667" y="1430.0" />
+              <point x="-69.0" y="73.0" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="0.9608190370780297" x="529.547576992891" y="758.4118541067584" />
+          <SelectedNodes>
+            <node>64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.fields</node>
+          </SelectedNodes>
+          <Categories>
+            <Category>Key columns</Category>
+            <Category>Columns</Category>
+          </Categories>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_140816_create_tasks_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="10" lean-forward="true" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
         </state>
       </provider>
     </entry>

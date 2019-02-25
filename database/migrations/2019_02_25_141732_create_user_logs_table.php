@@ -13,7 +13,7 @@ class CreateUserLogsTable extends Migration
      */
     public function up()
     {
-        Schema::create('userLogs', function (Blueprint $table) {
+        Schema::create('user_logs', function (Blueprint $table) {
             $table->increments('id');
             $table->dateTime('login');
             $table->dateTime('logout');
@@ -30,6 +30,6 @@ class CreateUserLogsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('userLogs');
+        Schema::dropIfExists('user_logs');
     }
 }

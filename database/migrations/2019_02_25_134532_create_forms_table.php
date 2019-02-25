@@ -16,8 +16,8 @@ class CreateFormsTable extends Migration
         Schema::create('forms', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->unsignedInteger('announcement_id');
-            $table->foreign('announcement_id')->references('id')->on('announcements');
+            $table->unsignedInteger('job_offer_id');
+            $table->foreign('job_offer_id')->references('id')->on('job_offers');
         });
     }
 
