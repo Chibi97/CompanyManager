@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class MakeUserStatusesTable extends Migration
+class CreateFieldsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class MakeUserStatusesTable extends Migration
      */
     public function up()
     {
-        Schema::create('userStatuses', function (Blueprint $table) {
+        Schema::create('fields', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('labels');
+            $table->unsignedInteger('type_id');
+            $table->foreign('type_id')->references('id')->on('types');
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ class MakeUserStatusesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('userStatuses');
+        Schema::dropIfExists('fields');
     }
 }

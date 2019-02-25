@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class MakeCompaniesTable extends Migration
+class CreateOptionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class MakeCompaniesTable extends Migration
      */
     public function up()
     {
-        Schema::create('companies', function (Blueprint $table) {
+        Schema::create('options', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('address');
-            $table->string('phone');
+            $table->string('value');
+            $table->unsignedInteger('field_id');
+            $table->foreign('field_id')->references('id')->on('fields');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class MakeCompaniesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table');
+        Schema::dropIfExists('options');
     }
 }
