@@ -22,11 +22,8 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->unsignedInteger('role_id');
-            $table->foreign('role_id')->references('id')->on('roles');
             $table->unsignedInteger('company_id');
-            $table->foreign('company_id')->references('id')->on('companies');
             $table->unsignedInteger('status_id');
-            $table->foreign('status_id')->references('id')->on('userStatuses');
         });
     }
 
