@@ -20,6 +20,8 @@ class CreateFormFieldTable extends Migration
             $table->unsignedInteger('field_id');
             $table->foreign('field_id')->references('id')->on('fields');
             $table->timestamps();
+
+            $table->unique(['form_id', 'field_id']);
         });
     }
 

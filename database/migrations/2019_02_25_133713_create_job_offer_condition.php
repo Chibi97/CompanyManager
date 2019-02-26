@@ -20,6 +20,8 @@ class CreateJobOfferCondition extends Migration
             $table->unsignedInteger('job_offer_id');
             $table->foreign('job_offer_id')->references('id')->on('job_offers');
             $table->timestamps();
+
+            $table->unique(['condition_id', 'job_offer_id']);
         });
     }
 

@@ -20,6 +20,8 @@ class CreateCandidateConditionTable extends Migration
             $table->unsignedInteger('candidate_id');
             $table->foreign('candidate_id')->references('id')->on('candidates');
             $table->timestamps();
+
+            $table->unique(['condition_id', 'candidate_id']);
         });
     }
 

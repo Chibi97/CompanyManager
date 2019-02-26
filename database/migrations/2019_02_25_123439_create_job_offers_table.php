@@ -23,7 +23,7 @@ class CreateJobOffersTable extends Migration
             $table->foreign('profession_id')->references('id')->on('professions');
             $table->unsignedInteger('users_id');
             $table->foreign('users_id')->references('id')->on('users');
-            $table->binary('is_active');
+            $table->integer('is_active');
             $table->timestamps();
         });
     }

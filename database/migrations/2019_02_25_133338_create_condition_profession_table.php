@@ -20,6 +20,8 @@ class CreateConditionProfessionTable extends Migration
             $table->unsignedInteger('profession_id');
             $table->foreign('profession_id')->references('id')->on('professions');
             $table->timestamps();
+
+            $table->unique(['condition_id', 'profession_id']);
         });
     }
 

@@ -18,12 +18,12 @@ class CreateTasksTable extends Migration
             $table->string('name');
             $table->string('description');
             $table->date('start_date');
-            $table->date('due_date');
+            $table->date('end_date')->nullable();
             $table->integer('count');
-            $table->unsignedInteger('difficulty_id');
-            $table->foreign('difficulty_id')->references('id')->on('task_difficulties');
-            $table->unsignedInteger('status_id');
-            $table->foreign('status_id')->references('id')->on('task_statuses');
+            $table->unsignedInteger('task_difficulty_id');
+            $table->foreign('task_difficulty_id')->references('id')->on('task_difficulties');
+            $table->unsignedInteger('task_status_id');
+            $table->foreign('task_status_id')->references('id')->on('task_statuses');
             $table->timestamps();
         });
     }

@@ -18,14 +18,13 @@ class CreateCandidatesTable extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('email');
-            $table->integer('rating');
             $table->date('application_date');
-            $table->string('cv_file');
-            $table->double('avg_rating');
+            $table->string('cv_file')->nullable();
+            $table->double('avg_rating')->nullable();
             $table->string('status');
             $table->unsignedInteger('job_offer_id');
             $table->foreign('job_offer_id')->references('id')->on('job_offers');
-            $table->string('comment');
+            $table->string('comment')->nullable();
             $table->timestamps();
         });
     }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateJobApplicationsTable extends Migration
+class CreateCandidateFormFieldTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,17 @@ class CreateJobApplicationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('job_applications', function (Blueprint $table) {
+        Schema::create('candidate_form_field', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('form_field_id');
             $table->foreign('form_field_id')->references('id')->on('form_field');
             $table->unsignedInteger('candidate_id');
             $table->foreign('candidate_id')->references('id')->on('candidates');
             $table->string('value');
-            $table->integer('rating');
+            $table->integer('rating')->nullable();
             $table->timestamps();
+
+            $table->unique(['form_field_id', 'candidate_id']);
         });
     }
 
@@ -32,6 +34,6 @@ class CreateJobApplicationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('job_applications');
+        Schema::dropIfExists('candidate_form_field');
     }
 }
