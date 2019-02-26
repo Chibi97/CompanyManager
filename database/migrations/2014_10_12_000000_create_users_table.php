@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->timestamps();
             $table->unsignedInteger('role_id');
             $table->unsignedInteger('company_id');
-            $table->unsignedInteger('status_id');
+            $table->unsignedInteger('user_status_id');
         });
     }
 

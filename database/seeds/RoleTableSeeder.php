@@ -1,8 +1,9 @@
 <?php
 
+use Illuminate\Support\Carbon;
 use Illuminate\Database\Seeder;
 
-class RolesTableSeeder extends Seeder
+class RoleTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,7 +17,9 @@ class RolesTableSeeder extends Seeder
 
         foreach($roles as $role) {
             \DB::table('roles')->insert([
-                'name' => $role
+                'name' => $role,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ]);
         }
     }

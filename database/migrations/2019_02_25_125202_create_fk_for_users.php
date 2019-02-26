@@ -15,7 +15,7 @@ class CreateFkForUsers extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->foreign('company_id')->references('id')->on('companies');
-            $table->foreign('status_id')->references('id')->on('user_statuses');
+            $table->foreign('user_status_id')->references('id')->on('user_statuses');
             $table->foreign('role_id')->references('id')->on('roles');
         });
     }
