@@ -1588,7 +1588,7 @@ job_offer_id</ColNames>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="376" parent="256" name="users_id">
+    <column id="376" parent="256" name="user_id">
       <Position>7</Position>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
@@ -1614,8 +1614,8 @@ job_offer_id</ColNames>
       <ColNames>profession_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="381" parent="256" name="job_offers_users_id_foreign">
-      <ColNames>users_id</ColNames>
+    <index id="381" parent="256" name="job_offers_user_id_foreign">
+      <ColNames>user_id</ColNames>
       <Type>btree</Type>
     </index>
     <key id="382" parent="256" name="PRIMARY">
@@ -1629,8 +1629,8 @@ job_offer_id</ColNames>
       <RefTableName>professions</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="384" parent="256" name="job_offers_users_id_foreign">
-      <ColNames>users_id</ColNames>
+    <foreign-key id="384" parent="256" name="job_offers_user_id_foreign">
+      <ColNames>user_id</ColNames>
       <RefSchemaName>company_manager</RefSchemaName>
       <RefTableName>users</RefTableName>
       <RefColNames>id</RefColNames>
