@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
             UserTableSeeder::class,
             TaskDifficultyTableSeeder::class,
             TaskStatusTableSeeder::class,
-            TaskTableSeeder::class
+            TaskTableSeeder::class,
+            TaskCommentTableSeeder::class,
         ]);
     }
 }

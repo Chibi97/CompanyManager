@@ -17,4 +17,9 @@ class Task extends Model
     public function status() {
         return $this->belongsTo(TaskStatus::class);
     }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class)->using(TaskComment::class);
+    }
 }
