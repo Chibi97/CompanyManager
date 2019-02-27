@@ -18,7 +18,7 @@ class CreateTasksTable extends Migration
             $table->string('name');
             $table->string('description');
             $table->date('start_date');
-            $table->date('end_date')->nullable();
+            $table->date('end_date');
             $table->integer('count');
             $table->unsignedInteger('task_difficulty_id');
             $table->foreign('task_difficulty_id')->references('id')->on('task_difficulties');

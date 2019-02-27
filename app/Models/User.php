@@ -3,8 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Support\Facades\Request;
 use PharIo\Manifest\Application;
 
@@ -48,8 +48,12 @@ class User extends Authenticatable
         return $this->hasMany(UserLog::class);
     }
 
-    public function tasks()
+    public function comments()
     {
+        return $this->belongsToMany(Task::class, 'task_comments');
+    }
+
+    public function tasks() {
         return $this->belongsToMany(Task::class);
     }
 

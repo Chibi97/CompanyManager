@@ -1167,11 +1167,13 @@ candidate_id</ColNames>
     <column id="300" parent="248" name="cv_file">
       <Position>6</Position>
       <DataType>varchar(191)|0s</DataType>
+      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="301" parent="248" name="avg_rating">
       <Position>7</Position>
       <DataType>double|0s</DataType>
+      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="302" parent="248" name="status">
@@ -1995,6 +1997,7 @@ task_id</ColNames>
     <column id="449" parent="266" name="end_date">
       <Position>5</Position>
       <DataType>date|0s</DataType>
+      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="450" parent="266" name="count">

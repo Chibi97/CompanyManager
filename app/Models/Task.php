@@ -18,8 +18,12 @@ class Task extends Model
         return $this->belongsTo(TaskStatus::class);
     }
 
-    public function users()
+    public function comments()
     {
-        return $this->belongsToMany(User::class)->using(TaskComment::class);
+        return $this->belongsToMany(User::class, 'task_comments');
+    }
+
+    public function users() {
+        return $this->belongsToMany(User::class);
     }
 }
