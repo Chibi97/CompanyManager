@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Candidate;
 use App\Models\JobOffer;
 use App\Models\Profession;
 use App\Models\User;
@@ -23,9 +24,8 @@ class JobOfferTableSeeder extends Seeder
         factory(JobOffer::class, 15)->make()->each(function ($offer) use($faker, $professions, $users) {
             $offer->profession_id = $faker->randomElement($professions);
             $offer->user_id = $faker->randomElement($users);
-            //$offer->profession()->save(factory(Profession::class)->make());
-            //$offer->user()->save(factory(User::class)->make());
             $offer->save();
+            $offer->candidates()->save(factory(Candidate::class)->make());
         });
     }
 }

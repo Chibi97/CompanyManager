@@ -10,13 +10,13 @@ class Task extends Model
         'name', 'description', 'start_date', 'end_date', 'count'
     ];
 
-    public function difficulty() {
-        return $this->belongsTo(TaskDifficulty::class);
-    }
+//    public function difficulty() {
+//        return $this->belongsTo(TaskDifficulty::class);
+//    }
 
-    public function status() {
-        return $this->belongsTo(TaskStatus::class);
-    }
+//    public function status() {
+//        return $this->belongsTo(TaskStatus::class);
+//    }
 
     public function comments()
     {

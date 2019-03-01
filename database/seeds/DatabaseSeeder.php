@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
             TaskStatusTableSeeder::class,
             TaskTableSeeder::class,
             JobOfferTableSeeder::class,
-            CandidateTableSeeder::class
+            ConditionTableSeeder::class
         ]);
     }
 }

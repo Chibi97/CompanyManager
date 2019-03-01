@@ -24,3 +24,12 @@ Route::get('/my-tasks', function () {
 Route::get('/all-tasks', function () {
     return view('employee.all_tasks');
 })->name('all-tasks');
+
+
+
+
+
+
+
+
+

@@ -28,7 +28,7 @@ class UserTableSeeder extends Seeder
             $user->save();
             $user->logs()->save(factory(UserLog::class)->make());
 
-            // logs vraca kolekciju logova za tog usera
+            // logs vraca kolekciju logova za id upravo save-ovanog usera
             // sacuvacemo u bazu objekat koji vrati make() nad factory-em
             // a factory popuni polja za userlog objekat
         });

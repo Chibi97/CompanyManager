@@ -10,12 +10,16 @@ class JobOffer extends Model
         return $this->hasMany(Candidate::class);
     }
 
-    public function profession() {
-        return $this->belongsTo(Profession::class);
-    }
+//    public function profession() {
+//        return $this->belongsTo(Profession::class);
+//    }
+//
+//    public function user() {
+//        return $this->belongsTo(User::class);
+//    }
 
-    public function user() {
-        return $this->belongsTo(User::class);
+    public function conditions() {
+        return $this->belongsToMany(Condition::class, 'job_offer_condition');
     }
 }
 

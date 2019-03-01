@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class UserLog extends Model
 {
 
-    public function log() {
-        return $this->belongsTo(User::class);
-    }
+//    public function log() {
+//        return $this->belongsTo(User::class);
+//    }
 }

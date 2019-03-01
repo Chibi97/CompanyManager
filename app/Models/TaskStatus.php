@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class TaskStatus extends Model
 {
-    public function statuses() {
-        return $this->hasMany(Task::class);
-    }
+//    public function statuses() {
+//        return $this->hasMany(Task::class);
+//    }
 }
