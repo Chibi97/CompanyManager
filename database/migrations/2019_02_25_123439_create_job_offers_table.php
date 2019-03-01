@@ -17,13 +17,13 @@ class CreateJobOffersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->text('description');
-            $table->date('start_date');
-            $table->date('end_date');
+            $table->dateTime('start_date');
+            $table->dateTime('end_date');
             $table->unsignedInteger('profession_id');
             $table->foreign('profession_id')->references('id')->on('professions');
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->integer('is_active');
+            $table->boolean('is_active');
             $table->timestamps();
         });
     }

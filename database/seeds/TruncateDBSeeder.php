@@ -9,7 +9,7 @@ class TruncateDBSeeder extends Seeder
         DB::statement("SET foreign_key_checks=0");
         $tables = [
             "candidate_condition",
-            "candidate_form_field",
+            "ratings",
             "candidates",
             "companies",
             "condition_profession",
