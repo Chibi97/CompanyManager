@@ -19,7 +19,7 @@ class TaskTableSeeder extends Seeder
         $users = User::all()->pluck('id')->toArray();
 
         factory(Task::class, 10)->make()->each(function ($task)  use($users, $faker) {
-            $task->task_difficulty_id = rand(1,4);
+            $task->task_priority_id = rand(1,4);
             $task->task_status_id = rand(1,5);
             $task->save();
             $task->comments()->attach($faker->randomElement($users),

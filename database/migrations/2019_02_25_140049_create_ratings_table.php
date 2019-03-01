@@ -34,6 +34,6 @@ class CreateRatingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('candidate_form_field');
+        Schema::dropIfExists('ratings');
     }
 }

@@ -20,8 +20,8 @@ class CreateTasksTable extends Migration
             $table->dateTime('start_date');
             $table->dateTime('end_date');
             $table->integer('count');
-            $table->unsignedInteger('task_difficulty_id');
-            $table->foreign('task_difficulty_id')->references('id')->on('task_difficulties');
+            $table->unsignedInteger('task_priority_id');
+            $table->foreign('task_priority_id')->references('id')->on('task_priorities');
             $table->unsignedInteger('task_status_id');
             $table->foreign('task_status_id')->references('id')->on('task_statuses');
             $table->timestamps();

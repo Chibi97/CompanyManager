@@ -24,7 +24,7 @@ class TruncateDBSeeder extends Seeder
             "professions",
             "roles",
             "task_comments",
-            "task_difficulties",
+            "task_priorities",
             "task_statuses",
             "task_user",
             "tasks",

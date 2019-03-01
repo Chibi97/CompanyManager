@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Carbon;
 
-class TaskDifficultyTableSeeder extends Seeder
+class TaskPriorityTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,11 +12,11 @@ class TaskDifficultyTableSeeder extends Seeder
      */
     public function run()
     {
-        $difficulties = ['Really hard','Hard','Medium', 'Easy peasy'];
+        $priorities = ['Really high','High','Medium', 'Low'];
 
-        foreach($difficulties as $diff) {
-            \DB::table('task_difficulties')->insert([
-                'name' => $diff,
+        foreach($priorities as $pr) {
+            \DB::table('task_priorities')->insert([
+                'name' => $pr,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ]);

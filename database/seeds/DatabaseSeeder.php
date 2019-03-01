@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
             RoleTableSeeder::class,
             UserStatusTableSeeder::class,
             UserTableSeeder::class,
-            TaskDifficultyTableSeeder::class,
+            TaskPriorityTableSeeder::class,
             TaskStatusTableSeeder::class,
             TaskTableSeeder::class,
             JobOfferTableSeeder::class,
