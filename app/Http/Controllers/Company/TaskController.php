@@ -15,7 +15,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        return view('employee.all_tasks');
+        return view('company.index');
     }
 
     /**

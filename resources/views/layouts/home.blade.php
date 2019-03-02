@@ -33,7 +33,7 @@
                         </li>
 
                         <li>
-                            <a href="{{ route('company.tasks') }}">
+                            <a href="{{ route('tasks.index') }}">
                                 <i class="fas fa-tasks"></i>Tasks
                                 <span class="bot-line"></span>
                             </a>

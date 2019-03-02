@@ -17,26 +17,24 @@ Route::get('/register', 'Authentication\UserController@index')->name('register-f
 Route::get('/login', 'Authentication\LoginController@index')->name('login-form');
 
 // E M P L O Y E E
-Route::get('/employee', 'Employee\DashboardController@stats')->name('employee.dashboard');
-Route::get('/employee/tasks', 'Employee\TaskController@allTasks')->name('employee.tasks');
+Route::get('/employee/statistics', 'Employee\DashboardController@stats')->name('employee.dashboard');
+Route::get('/employee/tasks', 'Employee\TaskController@tasks')->name('employee.tasks');
 Route::get('/employee/my-tasks', 'Employee\TaskController@myTasks')->name('employee.my-tasks');
 
 // B O S S
-Route::get('/company', 'Company\DashboardController@stats')->name('company.dashboard');
-Route::get('/company/tasks', 'Company\TaskController@index')->name('company.tasks');
-Route::get('/company/tasks/create', 'Company\TaskController@create')->name('company.tasks.create');
+Route::get('/company/statistics', 'Company\DashboardController@stats')->name('company.dashboard');
+Route::resource('company/tasks', 'Company\TaskController');
 /*
- *   uri              |  method    | name for the route  |  verb
+ *   uri                     |  method    | name for the route  |  verb
  *
- *   /tasks           |  index()   | tasks.index         |  GET
- *   /tasks/create    |  create()  | tasks.create        |  GET
- *   /tasks/{id}      |  show()    | tasks.show          |  GET
- *   /tasks/{id}/edit |  edit()    | tasks.edit          |  GET
- *   /tasks           |  store()   | tasks.store         |  POST
- *   /tasks/{id}      |  update()  | tasks.update        |  PUT
- *   /tasks/{id}      |  destroy() | tasks.destroy       |  DELETE
+ *   company/tasks           |  index()   | tasks.index         |  GET
+ *   company/tasks/create    |  create()  | tasks.create        |  GET
+ *   company/tasks/{id}      |  show()    | tasks.show          |  GET
+ *   company/tasks/{id}/edit |  edit()    | tasks.edit          |  GET
+ *   company/tasks           |  store()   | tasks.store         |  POST
+ *   company/tasks/{id}      |  update()  | tasks.update        |  PUT / PATCH
+ *   company/tasks/{id}      |  destroy() | tasks.destroy       |  DELETE
  *
- *   Route::resource('tasks', 'Company\TaskController');
  */
 
 

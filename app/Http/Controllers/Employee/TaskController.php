@@ -13,8 +13,8 @@ class TaskController extends Controller
         return view('employee.my_tasks');
     }
 
-    public function allTasks() {
-        return view('employee.all_tasks');
+    public function tasks() {
+        return view('employee.tasks');
     }
 
 
