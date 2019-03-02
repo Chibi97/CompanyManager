@@ -11,26 +11,33 @@
 |
 */
 
-Route::get('/', 'FrontController@index')->name('job-offers');
+Route::get('/', 'FrontController@home')->name('job-offers');
 
-Route::get('/register', 'Authentication\UserController@create')->name('register');
-Route::get('/login', 'Authentication\LoginController@create')->name('login');
+Route::get('/register', 'Authentication\UserController@index')->name('register-form');
+Route::get('/login', 'Authentication\LoginController@index')->name('login-form');
 
 // E M P L O Y E E
-Route::get('/employee', function () {
-    return view('employee.dashboard');
-})->name('employee_dashboard');
+Route::get('/employee', 'Employee\DashboardController@stats')->name('employee.dashboard');
+Route::get('/employee/tasks', 'Employee\TaskController@allTasks')->name('employee.tasks');
+Route::get('/employee/my-tasks', 'Employee\TaskController@myTasks')->name('employee.my-tasks');
 
-Route::get('/employee/my-tasks', function () {
-    return view('employee.my_tasks');
-})->name('my-tasks');
-
-
-Route::get('/employee/all-tasks', function () {
-    return view('employee.all_tasks');
-})->name('all-tasks');
-
-
+// B O S S
+Route::get('/company', 'Company\DashboardController@stats')->name('company.dashboard');
+Route::get('/company/tasks', 'Company\TaskController@index')->name('company.tasks');
+Route::get('/company/tasks/create', 'Company\TaskController@create')->name('company.tasks.create');
+/*
+ *   uri              |  method    | name for the route  |  verb
+ *
+ *   /tasks           |  index()   | tasks.index         |  GET
+ *   /tasks/create    |  create()  | tasks.create        |  GET
+ *   /tasks/{id}      |  show()    | tasks.show          |  GET
+ *   /tasks/{id}/edit |  edit()    | tasks.edit          |  GET
+ *   /tasks           |  store()   | tasks.store         |  POST
+ *   /tasks/{id}      |  update()  | tasks.update        |  PUT
+ *   /tasks/{id}      |  destroy() | tasks.destroy       |  DELETE
+ *
+ *   Route::resource('tasks', 'Company\TaskController');
+ */
 
 
 

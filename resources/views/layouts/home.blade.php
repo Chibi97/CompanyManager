@@ -19,35 +19,35 @@
                 <div class="header__navbar">
                     <ul class="list-unstyled">
                         <li>
-                            <a href="#">
+                            <a href="{{ route('job-offers') }}">
                                 <i class="fas fa-home"></i>Dashboard
                                 <span class="bot-line"></span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="#">
+                            <a href="{{ route('company.dashboard') }}">
                                 <i class="fas fa-lock-open"></i>Admin panel
                                 <span class="bot-line"></span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="#">
+                            <a href="{{ route('company.tasks') }}">
                                 <i class="fas fa-tasks"></i>Tasks
                                 <span class="bot-line"></span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="#">
+                            <a href="{{ route('login-form') }}">
                                 <i class="fas fa-sign-in-alt"></i>Login
                                 <span class="bot-line"></span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="#">
+                            <a href="{{ route('register-form') }}">
                                 <i class="fas fa-user-plus"></i>Register
                                 <span class="bot-line"></span>
                             </a>

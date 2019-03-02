@@ -18,15 +18,15 @@
         <div class="container-fluid">
             <ul class="navbar-mobile__list list-unstyled">
                 <li class="has-sub">
-                    <a class="js-arrow" href="{{ route('employee_dashboard') }}">
+                    <a class="js-arrow" href="{{ route('employee.dashboard') }}">
                         <i class="fas fa-home"></i>Dashboard</a>
                 </li>
                 <li>
-                    <a href="{{ route('my-tasks') }}">
+                    <a href="{{ route('employee.my-tasks') }}">
                         <i class="fas fa-thumbtack"></i>My Tasks</a>
                 </li>
                 <li>
-                    <a href="{{ route('all-tasks') }}">
+                    <a href="{{ route('employee.tasks') }}">
                         <i class="fas fa-tasks"></i>Available Tasks</a>
                 </li>
 

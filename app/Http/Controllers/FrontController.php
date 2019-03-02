@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 class FrontController extends Controller
 {
-    public function index()
+    public function home()
     {
-        return view('layouts.job_offers');
+        return view('layouts.home');
     }
 }

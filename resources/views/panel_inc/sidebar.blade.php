@@ -7,18 +7,18 @@
     <div class="menu-sidebar__content js-scrollbar1">
         <nav class="navbar-sidebar">
             <ul class="list-unstyled navbar__list">
-                <li class="{{ Request::route()->named('employee_dashboard') ? 'active' : '' }} has-sub">
-                    <a href="{{ route('employee_dashboard') }}">
+                <li class="{{ Request::route()->named('employee.dashboard') ? 'active' : '' }} has-sub">
+                    <a href="{{ route('employee.dashboard') }}">
                         <i class="fas fa-home"></i>Dashboard
                     </a>
                 </li>
-                <li class="{{ Request::route()->named('my-tasks') ? 'active' : '' }}">
-                    <a href="{{ route('my-tasks') }}">
+                <li class="{{ Request::route()->named('employee.my-tasks') ? 'active' : '' }}">
+                    <a href="{{ route('employee.my-tasks') }}">
                         <i class="fas fa-thumbtack"></i>My Tasks
                     </a>
                 </li>
-                <li class="{{ Request::route()->named('all-tasks') ? 'active' : '' }}">
-                    <a href="{{ route('all-tasks') }}">
+                <li class="{{ Request::route()->named('employee.tasks') ? 'active' : '' }}">
+                    <a href="{{ route('employee.tasks') }}">
                         <i class="fas fa-tasks"></i>Available Tasks
                     </a>
                 </li>
