@@ -11,19 +11,26 @@
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard');
-})->name('home');
+Route::get('/', 'FrontController@index')->name('job-offers');
 
+Route::get('/register', 'Authentication\UserController@create')->name('register');
+Route::get('/login', 'Authentication\LoginController@create')->name('login');
 
-Route::get('/my-tasks', function () {
+// E M P L O Y E E
+Route::get('/employee', function () {
+    return view('employee.dashboard');
+})->name('employee_dashboard');
+
+Route::get('/employee/my-tasks', function () {
     return view('employee.my_tasks');
 })->name('my-tasks');
 
 
-Route::get('/all-tasks', function () {
+Route::get('/employee/all-tasks', function () {
     return view('employee.all_tasks');
 })->name('all-tasks');
+
+
 
 
 

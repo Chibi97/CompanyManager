@@ -1,14 +1,14 @@
 <aside class="menu-sidebar d-none d-lg-block">
     <div class="logo">
-        <a href="#">
+        <a href="{{ route('job-offers') }}">
             <img src="{{ asset('images/icon/logo.png') }}" alt="Cool Admin" />
         </a>
     </div>
     <div class="menu-sidebar__content js-scrollbar1">
         <nav class="navbar-sidebar">
             <ul class="list-unstyled navbar__list">
-                <li class="{{ Request::route()->named('home') ? 'active' : '' }} has-sub">
-                    <a href="{{ route('home') }}">
+                <li class="{{ Request::route()->named('employee_dashboard') ? 'active' : '' }} has-sub">
+                    <a href="{{ route('employee_dashboard') }}">
                         <i class="fas fa-home"></i>Dashboard
                     </a>
                 </li>

@@ -1,5 +1,5 @@
 
-@extends('layouts.platform')
+@extends('layouts.panel')
 
 @section('content')
 <div class="main-content">

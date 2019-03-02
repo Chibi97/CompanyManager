@@ -33,3 +33,7 @@
   margin-left: 2em;
 }
 
+.account-dropdown .info .content {
+  margin-left: 0 !important;
+}
+

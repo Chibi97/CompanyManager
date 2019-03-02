@@ -12,3 +12,11 @@
 @import 'dashboard';
 @import 'task_list';
 
+.account-dropdown {
+  .info {
+    .content {
+      margin-left: 0 !important;
+    }
+  }
+}
+

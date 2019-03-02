@@ -3,7 +3,7 @@
     <div class="header-mobile__bar">
         <div class="container-fluid">
             <div class="header-mobile-inner">
-                <a class="logo" href="index.html">
+                <a class="logo" href="{{ route('job-offers') }}">
                     <img src="{{ asset('images/icon/logo.png') }}" alt="CoolAdmin" />
                 </a>
                 <button class="hamburger hamburger--slider" type="button">
@@ -18,7 +18,7 @@
         <div class="container-fluid">
             <ul class="navbar-mobile__list list-unstyled">
                 <li class="has-sub">
-                    <a class="js-arrow" href="{{ route('home') }}">
+                    <a class="js-arrow" href="{{ route('employee_dashboard') }}">
                         <i class="fas fa-home"></i>Dashboard</a>
                 </li>
                 <li>
