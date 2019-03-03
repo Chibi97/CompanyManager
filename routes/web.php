@@ -13,16 +13,16 @@
 
 Route::get('/', 'FrontController@home')->name('job-offers');
 
-Route::get('/register', 'Authentication\UserController@index')->name('register-form');
-Route::get('/login', 'Authentication\LoginController@index')->name('login-form');
+Route::get('/register', 'Authentication\UserController@create')->name('register-form');
+Route::get('/login', 'Authentication\LoginController@create')->name('login-form');
 
 // E M P L O Y E E
-Route::get('/employee/statistics', 'Employee\DashboardController@stats')->name('employee.dashboard');
+Route::get('/employee', 'Employee\DashboardController@stats')->name('employee.dashboard');
 Route::get('/employee/tasks', 'Employee\TaskController@tasks')->name('employee.tasks');
 Route::get('/employee/my-tasks', 'Employee\TaskController@myTasks')->name('employee.my-tasks');
 
 // B O S S
-Route::get('/company/statistics', 'Company\DashboardController@stats')->name('company.dashboard');
+Route::get('/company', 'Company\DashboardController@stats')->name('company.dashboard');
 Route::resource('company/tasks', 'Company\TaskController');
 /*
  *   uri                     |  method    | name for the route  |  verb

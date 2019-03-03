@@ -44,6 +44,14 @@
                                 <i class="fas fa-sign-in-alt"></i>Login
                                 <span class="bot-line"></span>
                             </a>
+
+                            {{--<button type="button" data-toggle="modal" data-target="#loginModal">
+                                <a>
+                                    <i class="fas fa-sign-in-alt"></i>
+                                    Login
+                                    <span class="bot-line"></span>
+                                </a>
+                            </button> --}}
                         </li>
 
                         <li>
@@ -589,6 +597,8 @@
     </div>
 
 </div>
+
+
 <script src="{{ asset('js/bundle.js') }}"></script>
 </body>
 

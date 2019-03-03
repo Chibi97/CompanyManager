@@ -6,7 +6,6 @@
 </head>
 
 <body>
-   {{-- class="animsition" --}}
     <div class="page-wrapper">
         @include('panel_inc.mobile_nav')
 

@@ -9,8 +9,9 @@
 // @import '~bootstrap/scss/bootstrap';
 
 // SCSS files
-@import 'dashboard';
-@import 'task_list';
+@import 'employee';
+@import 'company';
+@import 'home';
 
 .account-dropdown {
   .info {
@@ -19,4 +20,6 @@
     }
   }
 }
+
+
 

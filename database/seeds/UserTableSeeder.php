@@ -18,7 +18,7 @@ class UserTableSeeder extends Seeder
         $companies = factory(Company::class, 4)->create()->pluck('id');
 
         factory(User::class, 24)->make()->each(function ($user, $index) use ($companies) {
-           if($index > 5) {
+           if($index < 5) {
                $user->role_id = 1;
            } else {
                $user->role_id = 2;

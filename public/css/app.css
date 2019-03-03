@@ -33,6 +33,39 @@
   margin-left: 2em;
 }
 
+.header__navbar ul li button a {
+  display: block;
+  font-size: 16px;
+  color: #ccc !important;
+  padding: 25px 30px;
+  border-left: 1px solid rgba(255, 255, 255, 0.102);
+}
+
+@media (max-width: 1570px) and (min-width: 992px) {
+  .header__navbar ul li button a {
+    padding: 25px 15px;
+  }
+}
+
+@media (max-width: 1315px) and (min-width: 992px) {
+  .header__navbar ul li button a {
+    font-size: 13px;
+    padding: 27px 15px;
+  }
+}
+
+.header__navbar ul li button a i {
+  margin-right: 13px;
+}
+
+.page-content--bge5 {
+  overflow: auto;
+}
+
+.page-content--bge5 .login-wrap {
+  padding: 3vh 0;
+}
+
 .account-dropdown .info .content {
   margin-left: 0 !important;
 }
