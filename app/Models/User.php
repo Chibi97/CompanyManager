@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Request;
 use PharIo\Manifest\Application;
 
@@ -39,11 +40,6 @@ class User extends Authenticatable
 //        'email_verified_at' => 'datetime',
 //    ];
 
-//    public function company()
-//    {
-//        return $this->belongsTo(Company::class);
-//    }
-
     public function logs() {
         return $this->hasMany(UserLog::class);
     }
@@ -57,8 +53,17 @@ class User extends Authenticatable
         return $this->belongsToMany(Task::class);
     }
 
-//    public function offers() {
-//        return $this->hasMany(JobOffer::class);
-//    }
+    public function role() {
+        return $this->belongsTo(Role::class);
+    }
+
+    public function getUserAndRole($email, $password) {
+       // if(Hash::check($password, User::where('email','=','olja@gmail.com')->first()->password)) {
+            $user = User::with('role')
+                ->where("email","=", $email)
+                ->firstOrFail();
+            return $user;
+      //  }
+    }
 
 }

@@ -13,8 +13,10 @@
 
 Route::get('/', 'FrontController@home')->name('job-offers');
 
-Route::get('/register', 'Authentication\UserController@create')->name('register-form');
+Route::get('/register', 'Authentication\RegisterController@create')->name('register-form');
 Route::get('/login', 'Authentication\LoginController@create')->name('login-form');
+Route::post('/login', 'Authentication\LoginController@store')->name('login');
+Route::get('/logout', 'Authentication\LoginController@destroy')->name('logout');
 
 // E M P L O Y E E
 Route::get('/employee', 'Employee\DashboardController@stats')->name('employee.dashboard');

@@ -61,6 +61,13 @@
                             </a>
                         </li>
 
+                        <li>
+                            <a href="{{ route('logout') }}">
+                                <i class="fas fa-sign-out-alt"></i>Logout
+                                <span class="bot-line"></span>
+                            </a>
+                        </li>
+
                     </ul>
                 </div>
                 <div class="header__tool">

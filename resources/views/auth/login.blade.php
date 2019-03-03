@@ -2,7 +2,8 @@
 
 @section('form')
     <div class="login-form">
-        <form action="" method="post">
+        <form action="{{ route('login') }}" method="POST">
+            @csrf
             <div class="form-group">
                 <label>Email Address</label>
                 <input class="au-input au-input--full" type="email" name="email" placeholder="Email">
@@ -11,7 +12,7 @@
                 <label>Password</label>
                 <input class="au-input au-input--full" type="password" name="password" placeholder="Password">
             </div>
-            <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">sign in</button>
+            <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit" name="login">sign in</button>
         </form>
         <div class="register-link">
             <p>
