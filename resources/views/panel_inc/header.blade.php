@@ -10,15 +10,10 @@
                     </button>
                 </form>
                 <div class="header-button">
-                    <div class="account-wrap">
-                          <div class="account-item clearfix js-item-menu">
-                              {{-- <div class="image">
-                                  <img src="images/icon/avatar-01.jpg" alt="John Doe" />
-                              </div> --}}
-                              <div class="content">
-                                  <button class="au-btn au-btn-icon au-btn--blue">Logout</button>
-                              </div>
-                        </div>
+                    <div class="content">
+                        <a href="{{ route('logout') }}" class="au-btn au-btn-icon au-btn--blue">
+                            Logout
+                        </a>
                     </div>
                 </div>
             </div>

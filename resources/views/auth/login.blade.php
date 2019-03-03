@@ -2,6 +2,11 @@
 
 @section('form')
     <div class="login-form">
+        @if(session()->has("error"))
+            <div class="alert alert-warning">
+                {{ session()->get("error") }}
+            </div>
+        @endif
         <form action="{{ route('login') }}" method="POST">
             @csrf
             <div class="form-group">

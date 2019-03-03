@@ -15,27 +15,31 @@ class LoginController extends Controller
 
     public function store(Request $request) {
         $model = new User();
-        $user = $model->getUserAndRole($request->input('email'), Hash::make($request->input('password')));
-        //dd($user);
-        session()->put("user", $user);
 
-        //dd(session()->get('user'));
+        try {
+            $user = $model->getUserAndRole($request->input('email'), $request->input('password'));
+            session()->put("user", $user);
+
+        } catch(\Exception $e) {
+            $e->getMessage();
+        }
+        $route = "login-form";
 
         if(session()->has("user")) {
             $authorized = session()->get('user');
             if($authorized->role['name'] == "Boss") {
-                return redirect()->route("company.dashboard");
+                $route = "company.dashboard";
             }
-            return redirect()->route("employee.dashboard");
+            else $route = "employee.dashboard";
         }
-        return redirect()->route("job-offers");
+
+        return redirect()->route($route)->with("error", "Your email or password is wrong.");
     }
 
     public function destroy() {
         if(session()->has("user")) {
             session()->forget("user");
         }
-
         return redirect()->route("login-form");
     }
 

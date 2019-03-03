@@ -58,12 +58,15 @@ class User extends Authenticatable
     }
 
     public function getUserAndRole($email, $password) {
-       // if(Hash::check($password, User::where('email','=','olja@gmail.com')->first()->password)) {
-            $user = User::with('role')
-                ->where("email","=", $email)
-                ->firstOrFail();
+
+        $user = User::with('role')
+            ->where("email","=", $email)
+            ->firstOrFail();
+
+        if ($user && Hash::check($password, $user->password)) {
             return $user;
-      //  }
+        }
+        return null;
     }
 
 }
