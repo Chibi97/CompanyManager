@@ -19,13 +19,19 @@ Route::post('/login', 'Authentication\LoginController@store')->name('login');
 Route::get('/logout', 'Authentication\LoginController@destroy')->name('logout');
 
 // E M P L O Y E E
-Route::get('/employee', 'Employee\DashboardController@stats')->name('employee.dashboard');
-Route::get('/employee/tasks', 'Employee\TaskController@tasks')->name('employee.tasks');
-Route::get('/employee/my-tasks', 'Employee\TaskController@myTasks')->name('employee.my-tasks');
+Route::group(['prefix' => 'employee'], function () {
+    Route::get('/', 'Employee\DashboardController@stats')->name('employee.dashboard');
+    Route::get('/tasks', 'Employee\TaskController@tasks')->name('employee.tasks');
+    Route::get('/my-tasks', 'Employee\TaskController@myTasks')->name('employee.my-tasks');
+});
+
 
 // B O S S
-Route::get('/company', 'Company\DashboardController@stats')->name('company.dashboard');
-Route::resource('company/tasks', 'Company\TaskController');
+Route::group(['prefix' => 'company'], function() {
+    Route::get('/', 'Company\DashboardController@stats')->name('company.dashboard');
+    Route::resource('/tasks', 'Company\TaskController');
+});
+
 /*
  *   uri                     |  method    | name for the route  |  verb
  *

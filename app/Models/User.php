@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use App\Models\Exception\RedirectException;
+use App\Models\Exception\UserNotFoundException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -57,16 +60,28 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class);
     }
 
-    public function getUserAndRole($email, $password) {
+    public function isBoss()
+    {
+        return $this->role['name'] == 'Boss';
+    }
 
-        $user = User::with('role')
-            ->where("email","=", $email)
-            ->firstOrFail();
+    public static function getUserAndRole($email, $password) {
+        $errors = ['error' => 'Your email or password is incorrect'];
+
+        try {
+            $user = User::with('role')
+                ->where("email","=", $email)
+                ->firstOrFail();
+        } catch(ModelNotFoundException $ex) {
+            throw RedirectException::make(route('login-form'),
+                $errors);
+        }
 
         if ($user && Hash::check($password, $user->password)) {
             return $user;
         }
-        return null;
+
+        throw RedirectException::make(route('login-form'), $errors);
     }
 
 }

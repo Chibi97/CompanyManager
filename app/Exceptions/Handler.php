@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use App\Models\Exception\RedirectException;
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
@@ -46,6 +47,12 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if($exception instanceof RedirectException) {
+            return redirect()
+                ->to($exception->getRedirection())
+                ->with($exception->getErrors());
+        }
+
         return parent::render($request, $exception);
     }
 }
