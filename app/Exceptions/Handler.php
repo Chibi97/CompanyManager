@@ -50,7 +50,8 @@ class Handler extends ExceptionHandler
         if($exception instanceof RedirectException) {
             return redirect()
                 ->to($exception->getRedirection())
-                ->with($exception->getErrors());
+                ->withErrors($exception->getErrors())
+                ->withInput();
         }
 
         return parent::render($request, $exception);

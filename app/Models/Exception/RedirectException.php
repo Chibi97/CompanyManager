@@ -13,6 +13,13 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class RedirectException extends ModelNotFoundException
 {
+    /**
+     *  app\Exceptions\Handler.php
+     *  make sure this exception is handled by top-class
+     *  because nobody's gonna catch it
+     *
+     * */
+
     private $redirectTo;
     private $errors;
 

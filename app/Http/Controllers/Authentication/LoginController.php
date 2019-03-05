@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Authentication;
 
+use App\Http\Requests\CheckUsers;
+use App\Http\Requests\StoreUsers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -12,7 +14,7 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
-    public function store(Request $request) {
+    public function store(CheckUsers $request) {
 
         $user = User::getUserAndRole($request->input('email'), $request->input('password'));
         session()->put("user", $user);
@@ -22,7 +24,6 @@ class LoginController extends Controller
             return redirect()->route("company.dashboard");
         }
         else return redirect()->route("employee.dashboard");
-
     }
 
     public function destroy() {

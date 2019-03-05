@@ -25,7 +25,6 @@ Route::group(['prefix' => 'employee'], function () {
     Route::get('/my-tasks', 'Employee\TaskController@myTasks')->name('employee.my-tasks');
 });
 
-
 // B O S S
 Route::group(['prefix' => 'company'], function() {
     Route::get('/', 'Company\DashboardController@stats')->name('company.dashboard');

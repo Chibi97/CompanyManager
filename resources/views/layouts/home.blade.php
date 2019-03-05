@@ -25,38 +25,19 @@
                             </a>
                         </li>
 
-                        <li>
-                            <a href="{{ route('company.dashboard') }}">
-                                <i class="fas fa-lock-open"></i>Admin panel
-                                <span class="bot-line"></span>
-                            </a>
-                        </li>
+                        @if(session()->has("user"))
+                            @if(session()->get("user")->isBoss())
+                                <li>
+                                    <a href="{{ route('company.dashboard') }}">
+                                        <i class="fas fa-lock-open"></i>Admin panel
+                                        <span class="bot-line"></span>
+                                    </a>
+                                </li>
+                            @endif
 
                         <li>
-                            <a href="{{ route('tasks.index') }}">
-                                <i class="fas fa-tasks"></i>Tasks
-                                <span class="bot-line"></span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="{{ route('login-form') }}">
-                                <i class="fas fa-sign-in-alt"></i>Login
-                                <span class="bot-line"></span>
-                            </a>
-
-                            {{--<button type="button" data-toggle="modal" data-target="#loginModal">
-                                <a>
-                                    <i class="fas fa-sign-in-alt"></i>
-                                    Login
-                                    <span class="bot-line"></span>
-                                </a>
-                            </button> --}}
-                        </li>
-
-                        <li>
-                            <a href="{{ route('register-form') }}">
-                                <i class="fas fa-user-plus"></i>Register
+                            <a href="{{ session()->get("user")->isBoss()? route('tasks.index') : route('employee.tasks') }}">
+                                <i class="fas fa-tasks"></i>Task Management
                                 <span class="bot-line"></span>
                             </a>
                         </li>
@@ -67,6 +48,24 @@
                                 <span class="bot-line"></span>
                             </a>
                         </li>
+
+                        @else
+                            <li>
+                                <a href="{{ route('login-form') }}">
+                                    <i class="fas fa-sign-in-alt"></i>Login
+                                    <span class="bot-line"></span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{{ route('register-form') }}">
+                                    <i class="fas fa-user-plus"></i>Register
+                                    <span class="bot-line"></span>
+                                </a>
+                            </li>
+
+                        @endif
+
 
                     </ul>
                 </div>

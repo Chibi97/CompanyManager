@@ -2,16 +2,19 @@
 
 @section('form')
     <div class="login-form">
-        @if(session()->has("error"))
+        @if ($errors->any() )
             <div class="alert alert-warning">
-                {{ session()->get("error") }}
+                @foreach ($errors->all() as $error)
+                    <p>{{ $error }}</p>
+                @endforeach
             </div>
         @endif
+
         <form action="{{ route('login') }}" method="POST">
             @csrf
             <div class="form-group">
                 <label>Email Address</label>
-                <input class="au-input au-input--full" type="email" name="email" placeholder="Email">
+                <input class="au-input au-input--full" type="email" name="email" placeholder="Email" value="{{ old('email') }}">
             </div>
             <div class="form-group">
                 <label>Password</label>

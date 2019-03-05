@@ -7,10 +7,8 @@ use App\Models\Exception\UserNotFoundException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Request;
-use PharIo\Manifest\Application;
+use Illuminate\Support\MessageBag;
 
 class User extends Authenticatable
 {
@@ -68,12 +66,14 @@ class User extends Authenticatable
     public static function getUserAndRole($email, $password) {
         $errors = ['error' => 'Your email or password is incorrect'];
 
+        $redirectTo = "login-form";
+
         try {
             $user = User::with('role')
                 ->where("email","=", $email)
                 ->firstOrFail();
         } catch(ModelNotFoundException $ex) {
-            throw RedirectException::make(route('login-form'),
+            throw RedirectException::make(route($redirectTo),
                 $errors);
         }
 
@@ -81,7 +81,7 @@ class User extends Authenticatable
             return $user;
         }
 
-        throw RedirectException::make(route('login-form'), $errors);
+        throw RedirectException::make(route($redirectTo), $errors);
     }
 
 }
