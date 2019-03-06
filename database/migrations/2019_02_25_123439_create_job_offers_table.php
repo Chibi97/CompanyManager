@@ -17,8 +17,8 @@ class CreateJobOffersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->text('description');
-            $table->dateTime('start_date');
-            $table->dateTime('end_date');
+            $table->timestamp('start_date')->useCurrent();
+            $table->timestamp('end_date')->useCurrent();
             $table->unsignedInteger('profession_id');
             $table->foreign('profession_id')->references('id')->on('professions');
             $table->unsignedInteger('user_id');

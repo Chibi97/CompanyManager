@@ -5,9 +5,7 @@ namespace App\Http\Controllers\Authentication;
 use App\Http\Requests\StoreUsers;
 use App\Models\Company;
 use App\Models\Role;
-use App\Models\User;
 use App\Models\UserStatus;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 
@@ -32,6 +30,7 @@ class RegisterController extends Controller
         ]);
 
         $user->role()->associate($role);
+        // $user->role_id = $role->id
         $user->userStatus()->associate($status);
         $user->save();
 

@@ -17,8 +17,8 @@ class CreateTasksTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('description');
-            $table->dateTime('start_date');
-            $table->dateTime('end_date');
+            $table->timestamp('start_date')->useCurrent();
+            $table->timestamp('end_date')->useCurrent();
             $table->integer('count');
             $table->unsignedInteger('task_priority_id');
             $table->foreign('task_priority_id')->references('id')->on('task_priorities');

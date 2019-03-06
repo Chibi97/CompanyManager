@@ -17,6 +17,17 @@ class UserTableSeeder extends Seeder
     {
         $companies = factory(Company::class, 4)->create()->pluck('id');
 
+        $testingAccount = User::make([
+                'first_name' => 'Olja',
+                'last_name'  => 'Ivkovic',
+                'email'      => 'admin@mail.com',
+                'password'   => '$2y$10$ejYuVqUIXe7MyxUgPIsMQuL6j1t5XqGZlDuPrxDRwy.Xj7De.Qdki', //Secret123!
+            ]);
+        $testingAccount->role_id = 1;
+        $testingAccount->user_status_id = 1;
+        $testingAccount->company_id = $this->randEl($companies);
+        $testingAccount->save();
+
         factory(User::class, 24)->make()->each(function ($user, $index) use ($companies) {
            if($index < 5) {
                $user->role_id = 1;

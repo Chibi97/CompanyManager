@@ -18,7 +18,7 @@ class CreateCandidatesTable extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('email');
-            $table->dateTime('application_date');
+            $table->timestamp('application_date')->useCurrent;
             $table->string('cv_file');
             $table->double('avg_rating');
             $table->string('status')->nullable();

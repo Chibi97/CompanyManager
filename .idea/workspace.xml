@@ -4,12 +4,15 @@
     <list default="true" id="d2eb6209-fb57-416d-9ffa-979f097874ae" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Authentication/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Authentication/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/StoreUsers.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/StoreUsers.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Company.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Company.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/JobOfferFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/JobOfferFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/UserFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/UserFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_02_25_123439_create_job_offers_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_02_25_123439_create_job_offers_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_02_25_135113_create_candidates_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_02_25_135113_create_candidates_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_02_25_140816_create_tasks_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_02_25_140816_create_tasks_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_02_25_141732_create_user_logs_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_02_25_141732_create_user_logs_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_02_25_142142_create_task_comments_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_02_25_142142_create_task_comments_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/UserTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/UserTableSeeder.php" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -63,8 +66,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Authentication/RegisterController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+            <state relative-caret-position="442">
+              <caret line="37" column="5" lean-forward="true" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
               <folding>
                 <element signature="e#55#88#0#PHP" expanded="true" />
               </folding>
@@ -72,29 +75,38 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/database/factories/UserFactory.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="123">
+              <caret line="22" column="83" lean-forward="true" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="83" />
+              <folding>
+                <element signature="e#7#27#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Http/Requests/StoreUsers.php">
+        <entry file="file://$PROJECT_DIR$/database/seeds/UserTableSeeder.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="28" column="25" selection-start-line="28" selection-start-column="25" selection-end-line="28" selection-end-column="25" />
+            <state relative-caret-position="200">
+              <caret line="28" column="32" selection-start-line="28" selection-start-column="32" selection-end-line="28" selection-end-column="32" />
+              <folding>
+                <element signature="e#7#38#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/auth/login.blade.php">
+        <entry file="file://$PROJECT_DIR$/app/Models/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="24" selection-start-column="24" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/auth/register.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="28" column="44" selection-start-line="28" selection-start-column="44" selection-end-line="29" selection-end-column="101" />
+            <state relative-caret-position="-1143">
+              <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
+              <folding>
+                <element signature="e#30#73#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -128,11 +140,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/database/migrations/2019_02_25_140816_create_tasks_table.php" />
-        <option value="$PROJECT_DIR$/database/seeds/TruncateDBSeeder.php" />
-        <option value="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" />
-        <option value="$PROJECT_DIR$/database/seeds/TaskPriorityTableSeeder.php" />
-        <option value="$PROJECT_DIR$/database/seeds/TaskTableSeeder.php" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/resources/views/inc/meta.blade.php" />
@@ -157,7 +164,6 @@
         <option value="$PROJECT_DIR$/resources/sass/app.scss" />
         <option value="$PROJECT_DIR$/resources/sass/_home.scss" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/64baeef7-5b65-4383-94cc-5b0d000f2543/console.sql" />
-        <option value="$PROJECT_DIR$/database/seeds/UserTableSeeder.php" />
         <option value="$PROJECT_DIR$/app/Models/Role.php" />
         <option value="$PROJECT_DIR$/resources/views/company/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/company/stats.blade.php" />
@@ -176,9 +182,15 @@
         <option value="$PROJECT_DIR$/app/Models/Company.php" />
         <option value="$PROJECT_DIR$/app/Models/User.php" />
         <option value="$PROJECT_DIR$/resources/views/auth/register.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Authentication/RegisterController.php" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/64baeef7-5b65-4383-94cc-5b0d000f2543/console_3.sql" />
         <option value="$PROJECT_DIR$/app/Http/Requests/StoreUsers.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Authentication/RegisterController.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_02_25_123439_create_job_offers_table.php" />
+        <option value="$PROJECT_DIR$/database/factories/JobOfferFactory.php" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/64baeef7-5b65-4383-94cc-5b0d000f2543/console_4.sql" />
+        <option value="$PROJECT_DIR$/database/factories/UserFactory.php" />
+        <option value="$PROJECT_DIR$/database/seeds/UserTableSeeder.php" />
       </list>
     </option>
   </component>
@@ -287,7 +299,7 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
-    <option name="width" value="1233" />
+    <option name="width" value="1193" />
     <option name="height" value="1038" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -298,7 +310,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -337,6 +348,22 @@
               <item name="CompanyManager" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="Http" type="462c0819:PsiDirectoryNode" />
+              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="Company" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CompanyManager" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CompanyManager" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="Employee" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CompanyManager" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CompanyManager" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
               <item name="Requests" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -344,6 +371,23 @@
               <item name="CompanyManager" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="Models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CompanyManager" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CompanyManager" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CompanyManager" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CompanyManager" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+              <item name="factories" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CompanyManager" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CompanyManager" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+              <item name="seeds" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CompanyManager" type="b2602c69:ProjectViewProjectNode" />
@@ -400,6 +444,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -436,7 +481,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="PHP Built-in Web Server.Serve">
+  <component name="RunManager" selected="npm.Watch">
     <configuration name="Serve" type="PhpBuiltInWebServerConfigurationType" factoryName="PHP Built-in Web Server" document_root="$PROJECT_DIR$/public" port="8000">
       <method v="2" />
     </configuration>
@@ -484,7 +529,8 @@
       <workItem from="1551631907351" duration="236000" />
       <workItem from="1551648755510" duration="6211000" />
       <workItem from="1551737926465" duration="6388000" />
-      <workItem from="1551792654452" duration="20160000" />
+      <workItem from="1551792654452" duration="20325000" />
+      <workItem from="1551872887003" duration="7305000" />
     </task>
     <servers />
   </component>
@@ -494,13 +540,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="163467000" />
+    <option name="totallyTimeSpent" value="170937000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19153225" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22379032" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -515,12 +561,12 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50067204" side_tool="true" weight="0.73721594" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.3877841" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.4900568" />
       <window_info anchor="bottom" id="Database Console" order="12" sideWeight="0.49932796" weight="0.73721594" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Database" order="3" visible="true" weight="0.16599463" />
+      <window_info anchor="right" id="Database" order="3" visible="true" weight="0.20295699" />
     </layout>
     <layout-to-restore>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19153225" />
@@ -565,168 +611,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/login_modal.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="608">
-          <caret line="32" column="6" selection-start-line="32" selection-start-column="6" selection-end-line="32" selection-end-column="6" />
-          <folding>
-            <element signature="e#393#400#1#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/sass/app.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/sass/_home.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="27" column="19" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/64baeef7-5b65-4383-94cc-5b0d000f2543/console.sql">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/factories/UserFactory.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="22" column="53" lean-forward="true" selection-start-line="22" selection-start-column="53" selection-end-line="22" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Role.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="12" column="34" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/panel_inc/sidebar.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/panel_inc/mobile_nav.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="627">
-          <caret line="33" column="49" lean-forward="true" selection-start-line="33" selection-start-column="49" selection-end-line="33" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/panel_inc/header.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/company/stats.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="10" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/panel.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Session/Store.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="442" column="20" selection-start-line="442" selection-start-column="20" selection-end-line="442" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/api.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="15" column="24" lean-forward="true" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_ide_helper.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="14" column="10" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/company/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="25" selection-start-column="25" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Kernel.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Support/Facades/Redirect.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="474">
-          <caret line="28" column="5" lean-forward="true" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="698" column="5" selection-start-line="698" selection-start-column="5" selection-end-line="698" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="103">
-          <caret line="37" column="45" selection-start-line="37" selection-start-column="45" selection-end-line="37" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bootstrap/app.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/64baeef7-5b65-4383-94cc-5b0d000f2543/console_2.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="20" selection-start-column="20" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Task.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Condition.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Profession.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Requests/CheckUsers.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="37" column="86" selection-start-line="37" selection-start-column="86" selection-end-line="37" selection-end-column="86" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/layouts/home.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="483">
@@ -850,27 +734,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/seeds/UserTableSeeder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Http/FormRequest.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="125">
           <caret line="127" selection-start-line="127" selection-end-line="127" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-486">
-          <caret line="41" column="8" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="8" />
-          <folding>
-            <element signature="e#30#73#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -884,6 +751,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/64baeef7-5b65-4383-94cc-5b0d000f2543/console_3.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="23" selection-start-column="23" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/auth/login.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -893,32 +767,356 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/auth/register.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
+        <state relative-caret-position="532">
           <caret line="28" column="44" selection-start-line="28" selection-start-column="44" selection-end-line="29" selection-end-column="101" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/64baeef7-5b65-4383-94cc-5b0d000f2543/console_3.sql">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Employee/TaskController.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/seeds/TruncateDBSeeder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="627">
+          <caret line="33" column="20" lean-forward="true" selection-start-line="33" selection-start-column="20" selection-end-line="33" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Company/TaskController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-828" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/seeds/DatabaseSeeder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="14" column="36" lean-forward="true" selection-start-line="14" selection-start-column="36" selection-end-line="14" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/FrontController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Controller.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/seeds/JobOfferTableSeeder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/factories/JobOfferFactory.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://DATABASE/64baeef7-5b65-4383-94cc-5b0d000f2543">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>DATABASE</ID>
+          <OriginalElement>64baeef7-5b65-4383-94cc-5b0d000f2543</OriginalElement>
+          <nodes>
+            <node x="200.0" y="586.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.types</node>
+            <node x="231.84700520833326" y="0.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.task_statuses</node>
+            <node x="429.31250000000006" y="563.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.task_user</node>
+            <node x="638.8730468749999" y="1381.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.candidate_form_field</node>
+            <node x="600.1230468749999" y="1104.5">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.form_field</node>
+            <node x="635.1230468749999" y="851.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.forms</node>
+            <node x="645.0345052083333" y="0.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.user_statuses</node>
+            <node x="221.0" y="1618.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.password_resets</node>
+            <node x="151.25" y="1104.5">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.options</node>
+            <node x="659.0345052083333" y="563.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.user_logs</node>
+            <node x="451.03450520833326" y="0.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.roles</node>
+            <node x="1195.5345052083333" y="1404.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.job_offer_condition</node>
+            <node x="0.0" y="551.5">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.task_comments</node>
+            <node x="1226.5345052083333" y="0.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.companies</node>
+            <node x="562.0345052083333" y="173.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.users</node>
+            <node x="1424.5345052083333" y="1404.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.condition_profession</node>
+            <node x="863.5345052083333" y="1024.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.candidates</node>
+            <node x="1455.2845052083333" y="253.5">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.professions</node>
+            <node x="859.0345052083333" y="517.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.job_offers</node>
+            <node x="104.84700520833326" y="184.5">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.tasks</node>
+            <node x="1253.5345052083333" y="1104.5">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.conditions</node>
+            <node x="0.0" y="1618.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.migrations</node>
+            <node x="37.84700520833326" y="0.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.task_difficulties</node>
+            <node x="965.5345052083333" y="1404.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.candidate_condition</node>
+            <node x="196.5" y="828.0">64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.fields</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.condition_profession" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.conditions">
+              <point x="-53.75" y="-73.0" />
+              <point x="1478.2845052083333" y="1361.0" />
+              <point x="1426.0345052083333" y="1361.0" />
+              <point x="69.0" y="73.0" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.job_offers" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.professions">
+              <point x="53.75" y="-130.5" />
+              <point x="1020.2845052083333" y="497.0" />
+              <point x="1498.7845052083333" y="497.0" />
+              <point x="-43.5" y="61.5" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.tasks" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.task_difficulties">
+              <point x="-58.5" y="-130.5" />
+              <point x="163.34700520833326" y="148.0" />
+              <point x="124.84700520833326" y="148.0" />
+              <point x="0.0" y="61.5" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.forms" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.job_offers">
+              <point x="0.0" y="-50.0" />
+              <point x="738.1230468749999" y="803.0" />
+              <point x="894.8678385416666" y="803.0" />
+              <point x="-71.66666666666663" y="130.5" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.users" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.companies">
+              <point x="73.0" y="-142.0" />
+              <point x="744.5345052083333" y="148.0" />
+              <point x="1270.0345052083333" y="148.0" />
+              <point x="-43.5" y="61.5" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.candidate_condition" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.candidates">
+              <point x="-52.5" y="-73.0" />
+              <point x="51.5" y="153.5" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.candidate_form_field" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.form_field">
+              <point x="-53.25" y="-96.0" />
+              <point x="0.0" y="73.0" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.job_offers" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.users">
+              <point x="-53.75" y="-130.5" />
+              <point x="912.7845052083333" y="487.0" />
+              <point x="753.6595052083333" y="487.0" />
+              <point x="82.125" y="142.0" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.tasks" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.task_statuses">
+              <point x="58.5" y="-130.5" />
+              <point x="280.34700520833326" y="148.0" />
+              <point x="318.84700520833326" y="148.0" />
+              <point x="0.0" y="61.5" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.conditions" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.companies">
+              <point x="0.0" y="-73.0" />
+              <point x="43.5" y="61.5" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.options" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.fields">
+              <point x="0.0" y="-73.0" />
+              <point x="-45.25" y="73.0" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.candidate_form_field" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.candidates">
+              <point x="53.25" y="-96.0" />
+              <point x="798.6230468749999" y="1361.0" />
+              <point x="915.0345052083333" y="1361.0" />
+              <point x="-51.5" y="153.5" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.user_logs" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.users">
+              <point x="0.0" y="-84.5" />
+              <point x="749.0345052083333" y="497.0" />
+              <point x="698.9095052083333" y="497.0" />
+              <point x="27.375" y="142.0" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.users" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.roles">
+              <point x="-73.0" y="-142.0" />
+              <point x="598.5345052083333" y="148.0" />
+              <point x="538.0345052083333" y="148.0" />
+              <point x="0.0" y="61.5" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.task_user" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.tasks">
+              <point x="-45.0" y="-84.5" />
+              <point x="474.31250000000006" y="477.0" />
+              <point x="280.34700520833326" y="477.0" />
+              <point x="58.5" y="130.5" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.candidates" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.job_offers">
+              <point x="0.0" y="-153.5" />
+              <point x="0.0" y="130.5" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.task_user" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.users">
+              <point x="45.0" y="-84.5" />
+              <point x="564.3125" y="497.0" />
+              <point x="644.1595052083333" y="497.0" />
+              <point x="-27.375" y="142.0" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.task_comments" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.tasks">
+              <point x="-45.0" y="-96.0" />
+              <point x="45.0" y="477.0" />
+              <point x="163.34700520833326" y="477.0" />
+              <point x="-58.5" y="130.5" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.job_offer_condition" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.conditions">
+              <point x="52.25" y="-73.0" />
+              <point x="1352.2845052083333" y="1361.0" />
+              <point x="1357.0345052083333" y="1361.0" />
+              <point x="0.0" y="73.0" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.form_field" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.forms">
+              <point x="46.0" y="-73.0" />
+              <point x="0.0" y="50.0" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.form_field" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.fields">
+              <point x="-46.0" y="-73.0" />
+              <point x="646.1230468749999" y="999.0" />
+              <point x="332.25" y="999.0" />
+              <point x="45.25" y="73.0" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.job_offer_condition" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.job_offers">
+              <point x="-52.25" y="-73.0" />
+              <point x="1247.7845052083333" y="1351.0" />
+              <point x="1243.0345052083333" y="1351.0" />
+              <point x="1243.0345052083333" y="803.0" />
+              <point x="1038.201171875" y="803.0" />
+              <point x="71.66666666666674" y="130.5" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.fields" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.types">
+              <point x="0.0" y="-73.0" />
+              <point x="0.0" y="61.5" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.task_comments" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.users">
+              <point x="45.0" y="-96.0" />
+              <point x="135.0" y="487.0" />
+              <point x="589.4095052083333" y="487.0" />
+              <point x="-82.125" y="142.0" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.users" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.user_statuses">
+              <point x="0.0" y="-142.0" />
+              <point x="671.5345052083333" y="148.0" />
+              <point x="732.0345052083333" y="148.0" />
+              <point x="0.0" y="61.5" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.condition_profession" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.professions">
+              <point x="53.75" y="-73.0" />
+              <point x="43.5" y="61.5" />
+            </edge>
+            <edge source="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.candidate_condition" target="64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.conditions">
+              <point x="52.5" y="-73.0" />
+              <point x="1123.0345052083333" y="1361.0" />
+              <point x="1288.0345052083333" y="1361.0" />
+              <point x="-69.0" y="73.0" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="1.218066743383199" x="524.4496929617384" y="616.0603318773022" />
+          <SelectedNodes>
+            <node>64baeef7-5b65-4383-94cc-5b0d000f2543.TABLE:company_manager.job_offers</node>
+          </SelectedNodes>
+          <Categories>
+            <Category>Key columns</Category>
+            <Category>Columns</Category>
+          </Categories>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/64baeef7-5b65-4383-94cc-5b0d000f2543/console_4.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="23" selection-start-column="23" selection-end-column="23" />
+          <caret column="42" selection-start-column="42" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/JobOffer.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Condition.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Requests/StoreUsers.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="29" column="58" lean-forward="true" selection-start-line="29" selection-start-column="58" selection-end-line="29" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Requests/CheckUsers.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="703">
+          <caret line="37" column="86" selection-start-line="37" selection-start-column="86" selection-end-line="37" selection-end-column="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2014_10_12_100000_create_password_resets_table.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_24_154219_create_roles_table.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_24_164935_create_user_statuses_table.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_24_165324_create_companies_table.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_122551_create_professions_table.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_123439_create_job_offers_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="21" lean-forward="true" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_125202_create_fk_for_users.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_125739_create_conditions_table.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_133338_create_condition_profession_table.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="8" column="7" lean-forward="true" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/company/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/factories/UserFactory.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="22" column="83" lean-forward="true" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="83" />
+          <folding>
+            <element signature="e#7#27#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1143">
+          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
+          <folding>
+            <element signature="e#30#73#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Authentication/RegisterController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+        <state relative-caret-position="442">
+          <caret line="37" column="5" lean-forward="true" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
           <folding>
             <element signature="e#55#88#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Requests/StoreUsers.php">
+    <entry file="file://$PROJECT_DIR$/database/seeds/UserTableSeeder.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="28" column="25" selection-start-line="28" selection-start-column="25" selection-end-line="28" selection-end-column="25" />
+        <state relative-caret-position="200">
+          <caret line="28" column="32" selection-start-line="28" selection-start-column="32" selection-end-line="28" selection-end-column="32" />
+          <folding>
+            <element signature="e#7#38#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
