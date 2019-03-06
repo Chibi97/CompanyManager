@@ -26,11 +26,11 @@ class StoreUsers extends FormRequest
         $specialCharactersPass = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}/';
 
         return [
-            'first_name' => 'required|alpha|min:2|max:50',
-            'last_name'  => 'required|alpha|min:2|max:50',
+            'company'    => 'required|min:3|max:50',
+            'first-name' => 'required|alpha|min:2|max:50',
+            'last-name'  => 'required|alpha|min:2|max:50',
             'email'      => 'required|unique:users|email',
             'password'   => ["required","regex:$specialCharactersPass"],
-            'name'       => 'required|min:3|max:50'
         ];
     }
 
@@ -39,7 +39,6 @@ class StoreUsers extends FormRequest
         return [
             'password.regex' => 'A password must contain min 8 characters, at least one upper case,
                            at least one down case, and at least one special character',
-            'password.required' => 'You must enter a valid password',
         ];
     }
 }

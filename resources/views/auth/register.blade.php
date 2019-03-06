@@ -2,24 +2,32 @@
 
 @section('form')
     <div class="login-form">
-        <form action="" method="post">
+        @if ($errors->any() )
+            <div class="alert alert-warning">
+                @foreach ($errors->all() as $error)
+                    <p>{{ $error }}</p>
+                @endforeach
+            </div>
+        @endif
+        <form action="{{ route('register') }}" method="post">
+            @csrf
             <div class="form-group">
                 <label>Company Name</label>
-                <input class="au-input au-input--full" type="text" name="company" placeholder="Company Name">
+                <input class="au-input au-input--full" type="text" name="company" placeholder="Company Name" value="{{ old('company') }}">
             </div>
             <div class="form-group">
                 <label>Your First Name</label>
-                <input class="au-input au-input--full" type="text" name="first-name" placeholder="First Name">
+                <input class="au-input au-input--full" type="text" name="first-name" placeholder="First Name" value="{{ old('first-name') }}">
             </div>
 
             <div class="form-group">
                 <label>Your Last Name</label>
-                <input class="au-input au-input--full" type="text" name="first-name" placeholder="Last Name">
+                <input class="au-input au-input--full" type="text" name="last-name" placeholder="Last Name" value="{{ old('last-name') }}">
             </div>
 
             <div class="form-group">
                 <label>Email Address</label>
-                <input class="au-input au-input--full" type="email" name="email" placeholder="Email">
+                <input class="au-input au-input--full" type="email" name="email" placeholder="Email" value="{{ old('email') }}">
             </div>
             <div class="form-group">
                 <label>Password</label>

@@ -20,7 +20,7 @@
                 <label>Password</label>
                 <input class="au-input au-input--full" type="password" name="password" placeholder="Password">
             </div>
-            <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit" name="login">sign in</button>
+            <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">sign in</button>
         </form>
         <div class="register-link">
             <p>
