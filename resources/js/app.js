@@ -1,12 +1,22 @@
+try {
+    window.Popper = require('popper.js').default;
+    window.$ = window.jQuery = require('jquery');
+} catch (e) {}
 
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
+window.axios = require('axios');
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
-require('./bootstrap');
+let token = document.head.querySelector('meta[name="csrf-token"]');
 
-$('document').ready( () => {
+if (token) {
+    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+} else {
+    console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+}
 
-});
+$(document).ready(function() {
+    var form = $("#date-filters");
+    $(".select-change").on('input', function() {
+        form.submit()
+    })
+})
