@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Hash;
 class RegisterController extends Controller
 {
     public $helper;
+
     function __construct()
     {
         $this->helper = new UserHelper();

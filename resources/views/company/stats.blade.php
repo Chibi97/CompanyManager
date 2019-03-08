@@ -7,27 +7,24 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="overview-wrap">
-                            <form id="date-filters" action="{{route('company.dashboard')}}" method="get">
-                            <ul class="user-stats">
-                                <li>
+                            <form id="date-filters" action="{{route('company.dashboard')}}" method="GET" class="d-flex">
+                                <div class="f-group">
                                     <label>Month: </label>
                                     <select class="select-change" name="selectMnt" id="SelectLm" class="form-control-sm form-control">
                                         @foreach($months as $month)
                                             <option> {{ $month }}</option>
                                         @endforeach
                                     </select>
-                                </li>
+                                </div>
 
-                                <li>
+                                <div class="f-group ml-4">
                                     <label>Year: </label>
                                     <select class="select-change" name="selectYr" id="SelectLm" class="form-control-sm form-control">
-                                        <option value="1">2019</option>
-                                        <option value="2">2018</option>
-                                        <option value="3">2017</option>
-                                        <option value="4">2016</option>
+                                        @foreach($years as $year)
+                                            <option> {{ $year }}</option>
+                                        @endforeach
                                     </select>
-                                </li>
-                            </ul>
+                                </div>
                             </form>
                         </div>
                     </div>
