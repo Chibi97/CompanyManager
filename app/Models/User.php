@@ -41,20 +41,6 @@ class User extends Authenticatable
 //        'email_verified_at' => 'datetime',
 //    ];
 
-    public static function boot()
-    {
-        parent::boot();
-        static::creating(function($model) {
-            $model->generateHash();
-        });
-    }
-
-    protected function generateHash()
-    {
-        $random_bytes = md5(uniqid(mt_rand(), true));
-        $this->api_token = $random_bytes;
-    }
-
     public function logs() {
         return $this->hasMany(UserLog::class);
     }

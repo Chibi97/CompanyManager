@@ -15,6 +15,7 @@ use App\Models\Role;
 use App\Models\User;
 use App\Models\UserStatus;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Helpers;
 
 class UserHelper
 {
@@ -37,8 +38,15 @@ class UserHelper
 
     }
 
-    public function show(User $user) {
+    public function show(User $user)
+    {
         return $user;
+    }
+
+    public function index()
+    {
+        $company = CompanyManager::getInstance()->retrieve("company");
+        return $company->users;
     }
 
 }

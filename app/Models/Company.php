@@ -10,6 +10,20 @@ class Company extends Model
         "name"
     ];
 
+    public static function boot()
+    {
+        parent::boot();
+        static::creating(function($model) {
+            $model->generateHash();
+        });
+    }
+
+    protected function generateHash()
+    {
+        $random_bytes = md5(uniqid(mt_rand(), true));
+        $this->api_token = $random_bytes;
+    }
+
     public function users()
     {
         return $this->hasMany(User::class);
@@ -18,9 +32,4 @@ class Company extends Model
     public function tasks() {
         return $this->hasMany(Task::class);
     }
-
-//Product::select('id', 'name', 'code')
-//->with('ProductPrice', 'ProductPictures')
-//->where('categoryid', 1)
-//->get();
 }
