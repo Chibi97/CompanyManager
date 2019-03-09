@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
 class Task extends Model
@@ -29,11 +30,30 @@ class Task extends Model
         return $this->belongsToMany(User::class);
     }
 
-    public static function allTasksForCompany(Company $company)
+    public function taskStatus()
+    {
+        return $this->belongsTo(TaskStatus::class);
+    }
+
+    public function isStatus($check)
+    {
+        return $this->taskStatus->name == $check;
+    }
+
+    public static function allTasksForCompany(Company $company, $opts = [])
     {
         $tasks = $company
             ->users
-            ->map(function($employee) { return $employee->tasks; })
+            ->load(['tasks' => function($query) use ($opts) {
+                if(isset($opts['year'])) {
+                    $query->whereRaw("YEAR(start_date) = ?", array($opts['year']));
+                }
+
+                if(isset($opts['month'])) {
+                    $query->whereRaw("MONTH(start_date) = ?", array($opts['month']));
+                }
+            }, 'tasks.taskStatus'])
+            ->map(function($employee) { return $employee->tasks; } )
             ->flatten();
 
         return $tasks;

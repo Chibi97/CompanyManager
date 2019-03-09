@@ -25,8 +25,9 @@ class UserTableSeeder extends Seeder
             ]);
         $testingAccount->role_id = 1;
         $testingAccount->user_status_id = 1;
-        $testingAccount->company_id = $this->randEl($companies);
+        $testingAccount->company_id = 1;
         $testingAccount->save();
+
 
         factory(User::class, 24)->make()->each(function ($user, $index) use ($companies) {
            if($index < 5) {
@@ -34,6 +35,7 @@ class UserTableSeeder extends Seeder
            } else {
                $user->role_id = 2;
            }
+
             $user->user_status_id = rand(1,3);
             $user->company_id = $this->randEl($companies);
             $user->save();

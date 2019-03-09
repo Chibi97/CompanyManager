@@ -14,9 +14,9 @@ class RegisterController extends Controller
 {
     public $helper;
 
-    function __construct()
+    function __construct(UserHelper $helper)
     {
-        $this->helper = new UserHelper();
+        $this->helper = $helper;
     }
 
     public function create()

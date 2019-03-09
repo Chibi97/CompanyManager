@@ -10,16 +10,16 @@
                             <form id="date-filters" action="{{route('company.dashboard')}}" method="GET" class="d-flex">
                                 <div class="f-group">
                                     <label>Month: </label>
-                                    <select class="select-change" name="selectMnt" id="SelectLm" class="form-control-sm form-control">
-                                        @foreach($months as $month)
-                                            <option> {{ $month }}</option>
+                                    <select data-selected="{{  $month  }}" class="select-change" name="month" id="SelectLm" class="form-control-sm form-control">
+                                        @foreach($months as $i => $month)
+                                            <option value="{{ $i + 1 }}"> {{ $month }}</option>
                                         @endforeach
                                     </select>
                                 </div>
 
                                 <div class="f-group ml-4">
                                     <label>Year: </label>
-                                    <select class="select-change" name="selectYr" id="SelectLm" class="form-control-sm form-control">
+                                    <select data-selected="{{ $year }}" class="select-change" name="year" id="SelectLm" class="form-control-sm form-control">
                                         @foreach($years as $year)
                                             <option> {{ $year }}</option>
                                         @endforeach
@@ -30,80 +30,29 @@
                     </div>
 
                 </div>
-                <div class="row m-t-25">
-                    <div class="col-sm-6 col-lg-3">
-                        <div class="overview-item overview-item--c1">
+                <div class="row m-t-25 stats-container">
+                    @foreach($stats as $label => $assoc)
+                    <div class="stat-item col-sm-6 col-lg-3">
+                        <div class="overview-item {{ $assoc['css']  }}">
                             <div class="overview__inner">
                                 <div class="overview-box clearfix">
                                     <div class="icon">
-                                        <i class="far fa-clock"></i>
+                                        <i class="{{ $assoc['icon']  }}"></i>
                                     </div>
                                     <div class="text">
-                                        <h2>10</h2>
-                                        <span>tasks are currently in the making</span>
+                                        <h2>{{  $assoc['count']  }}</h2>
+                                        <span>tasks are <strong class="text-lowercase">{{ $label }}</strong></span>
                                     </div>
                                 </div>
-                                <div class="overview-chart">
-                                    <canvas id="widgetChart1"></canvas>
-                                </div>
+                                {{--<div class="overview-chart">--}}
+                                    {{--<canvas id="widgetChart1"></canvas>--}}
+                                {{--</div>--}}
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-lg-3">
-                        <div class="overview-item overview-item--c2">
-                            <div class="overview__inner">
-                                <div class="overview-box clearfix">
-                                    <div class="icon">
-                                        <i class="far fa-check-square"></i>
-                                    </div>
-                                    <div class="text">
-                                        <h2>5</h2>
-                                        <span>tasks are done</span>
-                                    </div>
-                                </div>
-                                <div class="overview-chart">
-                                    <canvas id="widgetChart2"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-3">
-                        <div class="overview-item overview-item--c3">
-                            <div class="overview__inner">
-                                <div class="overview-box clearfix">
-                                    <div class="icon">
-                                        <i class="fas fa-pause"></i>
-                                    </div>
-                                    <div class="text">
-                                        <h2>7</h2>
-                                        <span>tasks are on hold</span>
-                                    </div>
-                                </div>
-                                <div class="overview-chart">
-                                    <canvas id="widgetChart3"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-3">
-                        <div class="overview-item overview-item--c4">
-                            <div class="overview__inner">
-                                <div class="overview-box clearfix">
-                                    <div class="icon">
-                                        <i class="fas fa-user-times"></i>
-                                    </div>
-                                    <div class="text">
-                                        <h2>3</h2>
-                                        <span>tasks are refused</span>
-                                    </div>
-                                </div>
-                                <div class="overview-chart">
-                                    <canvas id="widgetChart4"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
+
             </div>
         </div>
     </div>

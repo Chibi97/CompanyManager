@@ -19,8 +19,7 @@ class LoginController extends Controller
         $user = User::getUserAndRole($request->input('email'), $request->input('password'));
         session()->put("user", $user);
 
-        $authorized = session()->get('user');
-        if($authorized->isBoss()) {
+        if($user->isBoss()) {
             return redirect()->route("company.dashboard");
         }
         else return redirect()->route("employee.dashboard");

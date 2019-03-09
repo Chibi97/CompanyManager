@@ -21,5 +21,63 @@
   }
 }
 
+.page-container {
+  height:100vh;
+  overflow: hidden;
+  @media(max-width: 992px) {
+    overflow:auto;
+  }
+}
+
+.stats-container {
+  margin-bottom: 88px;
+    .stat-item {
+      .overview-box {
+        display:flex;
+        flex-direction: row;
+        .icon { font-size: 50px !important; }
+        @media(min-width: 992px) {
+          flex-direction: column;
+          .icon {
+            font-size: 40px !important;
+          }
+        }
+
+        @media(min-width: 1200px) {
+          flex-direction: row;
+        }
+      }
+    }
+
+    .overview-item {
+      padding: 0 !important;
+      height: 178.6px;
+      .overview__inner {
+        padding: 30px;
+        span, strong {
+          font-size: 18px;
+        }
+
+        @media(min-width: 992px) {
+          padding: 12px;
+          span, strong {
+            font-size: 12px;
+          }
+        }
+
+        @media(min-width: 1200px) {
+          padding: 30px;
+        }
+
+        @media(min-width: 1480px) {
+          span, strong {
+            font-size: 18px;
+          }
+        }
+      }
+    }
+  }
+
+
 
 

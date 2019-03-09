@@ -15007,6 +15007,9 @@ if (token) {
 
 $(document).ready(function () {
   var form = $("#date-filters");
+  $(".select-change").each(function () {
+    $(this).val($(this).data('selected'));
+  });
   $(".select-change").on('input', function () {
     form.submit();
   });
