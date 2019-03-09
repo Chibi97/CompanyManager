@@ -9,15 +9,16 @@
 namespace App\Http\Helpers;
 
 
+use App\Http\Requests\StoreUsers;
 use App\Models\Company;
 use App\Models\Role;
+use App\Models\User;
 use App\Models\UserStatus;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class UserHelper
 {
-    public function store(Request $request) {
+    public function store(StoreUsers $request) {
         $company = Company::create(['name' => $request->input('company')]);
         $role    = Role::where('name', 'Boss')->first();
         $status  = UserStatus::where('name', 'Well done!')->first();
@@ -34,6 +35,10 @@ class UserHelper
         $user->userStatus()->associate($status);
         return $user->save();
 
+    }
+
+    public function show(User $user) {
+        return $user;
     }
 
 }

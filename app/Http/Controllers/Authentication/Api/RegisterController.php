@@ -4,26 +4,26 @@ namespace App\Http\Controllers\Authentication\Api;
 
 use App\Http\Helpers\UserHelper;
 use App\Http\Requests\StoreUsers;
-use Illuminate\Http\Request;
+use App\Models\User;
 use App\Http\Controllers\Controller;
 
 class RegisterController extends Controller
 {
     public $helper;
-    function __construct()
+    function __construct(UserHelper $helper)
     {
-        $this->helper = new UserHelper();
+        $this->helper = $helper;
     }
-    public function index() {
-        return [1,2,3];
+    public function show(User $user) {
+        return $this->helper->show($user);
     }
 
     public function store(StoreUsers $request) {
         try {
             $this->helper->store($request);
         } catch(\Exception $e) {
-            return response(["message" => $e->getMessage()], 500);
+            return response(["message" => $e->getMessage()], 422);
         }
-        return response([], 204);
+        return response(["message" => "Successfully stored!"], 204);
     }
 }

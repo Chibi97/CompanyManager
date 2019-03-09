@@ -21,6 +21,5 @@ $factory->define(User::class, function (Faker $faker) {
         'last_name'  => $faker->lastName,
         'email' => $faker->unique()->safeEmail,
         'password' => '$2y$10$ejYuVqUIXe7MyxUgPIsMQuL6j1t5XqGZlDuPrxDRwy.Xj7De.Qdki', // Secret123!
-
     ];
 });

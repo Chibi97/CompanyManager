@@ -17,5 +17,5 @@ use Illuminate\Http\Request;
 //    return $request->user();
 //});
 
-Route::get('/proba', 'Authentication\Api\RegisterController@index');
-Route::post('/proba', 'Authentication\Api\RegisterController@store');
+Route::get('/users/{user}', 'Authentication\Api\RegisterController@show');
+Route::post('/users', 'Authentication\Api\RegisterController@store');
