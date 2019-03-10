@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class MyAuth
 {
@@ -22,14 +23,14 @@ class MyAuth
         $user = $request->session()->get("user");
 
         if(!$user) {
-           return redirect()->route('login-form');
+            throw new NotFoundHttpException("Page not found");
         }
         if($arg === 'boss' && !$user->isBoss()) {
-            return redirect()->back();
+            throw new NotFoundHttpException("Page not found");
         }
 
         if($arg === 'employee' && !$user->isEmployee()) {
-            return redirect()->back();
+            throw new NotFoundHttpException("Page not found");
         }
 
         return $next($request);

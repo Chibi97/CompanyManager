@@ -52,8 +52,7 @@ class DashboardController extends Controller
         }
 
         $years = Task::getStartYearsForTasks($user->company);
-        $defaultYear = $years[0] ?? Carbon::now()->year;
-        $year  = $request->query('year') ?? $defaultYear;
+        $year  = $request->query('year') ?? $years[0];
 
         return view('company.stats', compact("months", "years", "stats", "year", "month"));
     }

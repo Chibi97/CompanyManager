@@ -48,26 +48,26 @@ class Task extends Model
             ->flatten()->pluck('start_date')
             ->map(function($y) {
                 return Carbon::createFromFormat('Y-m-d H:i:s', $y)->year;
-            });
-        $years = json_decode(json_encode($years), false);
-        $years = array_unique($years);
+            })
+            ->unique()
+            ->toArray();
+
         rsort($years);
+        if(empty($years)) {
+            $years[0] = Carbon::now()->year;
+        }
         return $years;
     }
 
     public static function allTasksForCompany(Company $company, $opts = [])
     {
         $years = self::getStartYearsForTasks($company);
-        if(empty($years)) {
-            $years[0] = Carbon::now()->year;
-        }
 
         $tasks = $company
             ->users
             ->load(['tasks' => function($query) use ($opts, $years) {
-                if(isset($opts['year'])) {
-                    $query->whereRaw("YEAR(start_date) = ?", array($opts['year']));
-                } else $query->whereRaw("YEAR(start_date) = ?", $years[0]);
+                $year = $opts['year'] ?? $years[0];
+                $query->whereRaw("YEAR(start_date) = ?", array($year));
 
                 if(isset($opts['month'])) {
                     if($opts['month'] != 0) {
