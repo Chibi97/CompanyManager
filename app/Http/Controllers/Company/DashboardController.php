@@ -10,14 +10,16 @@ use Illuminate\Support\Carbon;
 
 class DashboardController extends Controller
 {
-    public function stats(Request $request) {
+    public function stats(Request $request)
+    {
         $months = [];
+        $months[] = "All";
         foreach(range(1,12) as $month_num) {
             $months[] = Carbon::create(2019, $month_num, 1, 0, 0, 0)
                         ->format("F");
         }
 
-        $month = $request->query('month') ?? 1;
+        $month = $request->query('month') ?? 0;
 
         $user = session()->get('user');
         $user->refresh();
@@ -49,17 +51,18 @@ class DashboardController extends Controller
             }
         }
 
-        $startDates = Task::allTasksForCompany($user->company)->pluck('start_date');
-        $years = [];
-        foreach($startDates as $date) {
-            $years[] = (new Carbon($date))->format('Y');
-        }
-        $years = array_unique($years);
-        rsort($years);
+        $years = Task::getStartYearsForTasks($user->company);
         $defaultYear = $years[0] ?? Carbon::now()->year;
         $year  = $request->query('year') ?? $defaultYear;
 
         return view('company.stats', compact("months", "years", "stats", "year", "month"));
+    }
+
+    public function showDueDateTasks(Request $request)
+    {
+
+        return view('company.due_date_tasks');
+
     }
 
 }
