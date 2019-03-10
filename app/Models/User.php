@@ -72,6 +72,11 @@ class User extends Authenticatable
         return $this->role['name'] == 'Boss';
     }
 
+    public function isEmployee()
+    {
+        return $this->role['name'] == 'Employee';
+    }
+
     public static function getUserAndRole($email, $password) {
         $errors = ['error' => 'Your email or password is incorrect'];
 

@@ -23,6 +23,10 @@
                                         @foreach($years as $year)
                                             <option> {{ $year }}</option>
                                         @endforeach
+
+                                        @if(!$years)
+                                            <option>{{ $year }}</option>
+                                        @endif
                                     </select>
                                 </div>
                             </form>

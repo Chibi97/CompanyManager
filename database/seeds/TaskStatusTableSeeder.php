@@ -12,7 +12,7 @@ class TaskStatusTableSeeder extends Seeder
      */
     public function run()
     {
-        $statuses = ['Done','Currently working on','On hold', 'Dropped', 'I need some more time'];
+        $statuses = ['Done','Currently working on','On hold', 'In need of more time'];
 
         foreach($statuses as $status) {
             \DB::table('task_statuses')->insert([

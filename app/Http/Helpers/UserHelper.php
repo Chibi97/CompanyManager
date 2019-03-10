@@ -34,7 +34,8 @@ class UserHelper
         $user->role()->associate($role);
         // $user->role_id = $role->id
         $user->userStatus()->associate($status);
-        return $user->save();
+        $user->save();
+        return session()->put("user", $user);
 
     }
 

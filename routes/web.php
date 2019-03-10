@@ -20,14 +20,14 @@ Route::post('/login', 'Authentication\LoginController@store')->name('login');
 Route::get('/logout', 'Authentication\LoginController@destroy')->name('logout');
 
 // E M P L O Y E E
-Route::group(['prefix' => 'employee'], function () {
+Route::group(['middleware' => 'MyAuth:employee', 'prefix' => 'employee'], function () {
     Route::get('/', 'Employee\DashboardController@stats')->name('employee.dashboard');
     Route::get('/tasks', 'Employee\TaskController@tasks')->name('employee.tasks');
     Route::get('/my-tasks', 'Employee\TaskController@myTasks')->name('employee.my-tasks');
 });
 
 // B O S S
-Route::group(['prefix' => 'company'], function() {
+Route::group(['middleware' => 'MyAuth:boss', 'prefix' => 'company'], function() {
     Route::get('/', 'Company\DashboardController@stats')->name('company.dashboard');
     Route::resource('/tasks', 'Company\TaskController');
 });

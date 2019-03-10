@@ -4,12 +4,9 @@ namespace App\Http\Controllers\Company;
 
 use App\Models\Task;
 use App\Models\TaskStatus;
-use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 
 class DashboardController extends Controller
 {
@@ -20,21 +17,20 @@ class DashboardController extends Controller
                         ->format("F");
         }
 
-        $year  = $request->query('year')  ?? Carbon::now()->year;
         $month = $request->query('month') ?? 1;
 
         $user = session()->get('user');
         $user->refresh();
 
         $tasks = Task::allTasksForCompany($user->company, $request->query());
-        $statuses = TaskStatus::all()->take(4); // TODO: need to scope this to company
+        $statuses = TaskStatus::all()->take(4); // TODO: maybe to scope this to company
 
         $stats = [];
         $icons = [
-            'far fa-clock',
             'far fa-check-square',
+            'far fa-clock',
             'fas fa-pause',
-            'fas fa-user-times'
+            'fas fa-hourglass-end'
         ];
 
         foreach ($statuses as $index => $status) {
@@ -60,6 +56,8 @@ class DashboardController extends Controller
         }
         $years = array_unique($years);
         rsort($years);
+        $defaultYear = $years[0] ?? Carbon::now()->year;
+        $year  = $request->query('year') ?? $defaultYear;
 
         return view('company.stats', compact("months", "years", "stats", "year", "month"));
     }
