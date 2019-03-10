@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: oljaw
- * Date: 3/9/2019
- * Time: 2:47 AM
- */
 
 namespace App\Http\Helpers;
-
 
 class CompanyManager
 {

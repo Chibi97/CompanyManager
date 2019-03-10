@@ -35,12 +35,14 @@
                                 </li>
                             @endif
 
-                        <li>
-                            <a href="{{ session()->get("user")->isBoss()? route('tasks.index') : route('employee.tasks') }}">
-                                <i class="fas fa-tasks"></i>Task Management
-                                <span class="bot-line"></span>
-                            </a>
-                        </li>
+                            @if(session()->get("user")->isEmployee())
+                                <li>
+                                    <a href="{{ route('employee.dashboard') }}">
+                                        <i class="fas fa-tasks"></i>Task Management
+                                        <span class="bot-line"></span>
+                                    </a>
+                                </li>
+                            @endif
 
                         <li>
                             <a href="{{ route('logout') }}">

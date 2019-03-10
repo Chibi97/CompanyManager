@@ -4,6 +4,4 @@
     <div class="tasks">
         <h1>Company tasks</h1>
     </div>
-
-
-@endsection()
+@endsection
