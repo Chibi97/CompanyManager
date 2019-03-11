@@ -15,7 +15,6 @@ use App\Models\Role;
 use App\Models\User;
 use App\Models\UserStatus;
 use Illuminate\Support\Facades\Hash;
-use App\Http\Helpers;
 
 class UserHelper
 {
@@ -35,8 +34,7 @@ class UserHelper
         // $user->role_id = $role->id
         $user->userStatus()->associate($status);
         $user->save();
-        return session()->put("user", $user);
-
+        return $user;
     }
 
     public function show(User $user)

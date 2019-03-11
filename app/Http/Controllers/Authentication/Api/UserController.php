@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Authentication\Api;
 
 use App\Http\Helpers\UserHelper;
 use App\Http\Requests\StoreUsers;
+use App\Http\Requests\UpdateUser;
 use App\Models\User;
-use App\Models\Company;
 use App\Http\Controllers\Controller;
 
 class UserController extends Controller
@@ -35,5 +35,15 @@ class UserController extends Controller
     {
         $users = $this->helper->index();
         return response($users, 200);
+    }
+
+    public function update($user, UpdateUser $request)
+    {
+        //dd($user);
+        $data = $request->all();
+        $found = User::find($user);
+        $found->fill($data);
+        $found->save();
+
     }
 }

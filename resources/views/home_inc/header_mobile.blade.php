@@ -17,59 +17,40 @@
         <div class="container-fluid">
             <ul class="navbar-mobile__list list-unstyled">
                 <li class="has-sub">
-                    <a class="js-arrow" href="#">
+                    <a class="js-arrow" href="{{ route('job-offers') }}">
                         <i class="fas fa-home"></i>Dashboard</a>
                 </li>
-                <li>
-                    <a href="table.html">
-                        <i class="fas fa-lock-open"></i>Admin panel</a>
-                </li>
-                <li>
-                    <a href="form.html">
-                        <i class="fas fa-tasks"></i>Tasks</a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fas fa-sign-in-alt"></i>Login</a>
-                </li>
-                <li>
-                    <a href="map.html">
-                        <i class="fas fa-user-plus"></i>Register</a>
-                </li>
+
+                @if(session()->has("user"))
+                    @if(session()->get("user")->isBoss())
+                        <li>
+                            <a href="{{ route('company.dashboard') }}">
+                                <i class="fas fa-lock-open"></i>Management Panel</a>
+                        </li>
+                    @endif
+
+                    @if(session()->get("user")->isEmployee())
+                        <li>
+                            <a href="{{ route('employee.dashboard') }}">
+                                <i class="fas fa-tasks"></i>Task Management</a>
+                        </li>
+                    @endif
+                    <li>
+                        <a href="{{ route('logout') }}">
+                            <i class="fas fa-sign-out-alt"></i>Logout</a>
+                    </li>
+                @else
+
+                    <li>
+                        <a href="{{ route('login-form') }}">
+                            <i class="fas fa-sign-in-alt"></i>Login</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('register-form') }}">
+                            <i class="fas fa-user-plus"></i>Register</a>
+                    </li>
+                @endif
             </ul>
         </div>
     </nav>
 </header>
-
-<div class="sub-header-mobile-2 d-block d-lg-none">
-    <div class="header__tool">
-        <div class="account-wrap">
-            <div class="account-item account-item--style2 clearfix js-item-menu">
-                <div class="content">
-                    <a class="js-acc-btn" href="#">john doe</a>
-                    <i class="fas fa-sort-down"></i>
-                </div>
-                <div class="account-dropdown js-dropdown">
-                    <div class="info clearfix">
-                        <div class="content">
-                            <h5 class="name">
-                                <a href="#">john doe</a>
-                            </h5>
-                            <span class="email">johndoe@example.com</span>
-                        </div>
-                    </div>
-                    <div class="account-dropdown__body">
-                        <div class="account-dropdown__item">
-                            <a href="#">
-                                <i class="zmdi zmdi-settings"></i>Settings</a>
-                        </div>
-                        <div class="account-dropdown__item">
-                            <a href="#">
-                                <i class="zmdi zmdi-power"></i>Logout</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>

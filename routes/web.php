@@ -12,12 +12,14 @@
 */
 
 Route::get('/', 'FrontController@home')->name('job-offers');
-
-Route::get('/register', 'Authentication\RegisterController@create')->name('register-form');
-Route::post('/register', 'Authentication\RegisterController@store')->name('register');
-Route::get('/login', 'Authentication\LoginController@create')->name('login-form');
-Route::post('/login', 'Authentication\LoginController@store')->name('login');
 Route::get('/logout', 'Authentication\LoginController@destroy')->name('logout');
+
+Route::group(['middleware'=> 'RedirectIfLogin'],function() {
+    Route::post('/login', 'Authentication\LoginController@store')->name('login');
+    Route::post('/register', 'Authentication\RegisterController@store')->name('register');
+    Route::get('/login', 'Authentication\LoginController@create')->name('login-form');
+    Route::get('/register', 'Authentication\RegisterController@create')->name('register-form');
+});
 
 // E M P L O Y E E
 Route::group(['middleware' => 'MyAuth:employee', 'prefix' => 'employee'], function () {

@@ -10,6 +10,15 @@ use Illuminate\Support\Carbon;
 
 class DashboardController extends Controller
 {
+//    public $user;
+//    public function __construct()
+//    {
+//        $user = session()->get('user');
+//        //dd($user);
+//        //$this->user->refresh();
+//    }
+
+
     public function stats(Request $request)
     {
         $months = [];
@@ -53,15 +62,18 @@ class DashboardController extends Controller
 
         $years = Task::getStartYearsForTasks($user->company);
         $year  = $request->query('year') ?? $years[0];
+        $dueDateTasks = self::showDueDateTasks();
+        //dd($dueDateTasks);
 
-        return view('company.stats', compact("months", "years", "stats", "year", "month"));
+        return view('company.stats', compact("months", "years", "stats", "year", "month", "dueDateTasks"));
     }
 
-    public function showDueDateTasks(Request $request)
+    public static function showDueDateTasks()
     {
-
-        return view('company.due_date_tasks');
-
+        $user = session()->get('user');
+        $user->refresh();
+        $tasks = Task::dueDateTasks($user->company);
+        return $tasks;
     }
 
 }

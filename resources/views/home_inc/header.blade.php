@@ -12,7 +12,6 @@
                         <a href="{{ route('job-offers') }}">
                             <i class="fas fa-home"></i>Dashboard
                             <span class="bot-line"></span>
-                            <h1>{{ $user }}</h1>
                         </a>
                     </li>
 
@@ -20,7 +19,7 @@
                         @if(session()->get("user")->isBoss())
                             <li>
                                 <a href="{{ route('company.dashboard') }}">
-                                    <i class="fas fa-lock-open"></i>Admin panel
+                                    <i class="fas fa-lock-open"></i>Management panel
                                     <span class="bot-line"></span>
                                 </a>
                             </li>

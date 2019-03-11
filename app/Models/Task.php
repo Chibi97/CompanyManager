@@ -81,4 +81,24 @@ class Task extends Model
         return $tasks;
     }
 
+    public static function dueDateTasks(Company $company)
+    {
+        // users assigned to, task status, task priority, time left!
+        $tasks = $company->users
+            ->load('tasks')->pluck('tasks')
+            ->flatten()
+            ->map(function($task) {
+                $date = Carbon::createFromFormat('Y-m-d H:i:s', $task->end_date);
+                if($date->diffInDays(Carbon::now()) <= 10 && !$date->isPast()) {
+                    return $task;
+                }
+            })
+            ->flatten()->unique()
+            ->filter(function ($value) {
+                return $value != null;
+            });
+
+        return $tasks;
+    }
+
 }

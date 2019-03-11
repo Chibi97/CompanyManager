@@ -10,3 +10,8 @@
 
 @section('message', __('Sorry, the page you are looking for could not be found.'))
 
+{{--@extends('home_inc.job_offers')--}}
+
+{{--@section('content')--}}
+    {{--<h1>Sorry, the page you are looking for could not be found.</h1>--}}
+{{--@endsection--}}

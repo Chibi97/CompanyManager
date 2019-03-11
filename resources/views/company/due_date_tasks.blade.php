@@ -1,6 +1,6 @@
 <div class="due-date-tasks">
-    <h2 class="shadow-font">Due date tasks</h2>
-    <h2 class="over-shadow-font">Due date tasks</h2>
+
+    <h3 class="title-5">Due date tasks</h3>
     <div class="table-responsive table-responsive-data2">
         <table class="table table-data2">
             <thead>
@@ -14,10 +14,10 @@
             </tr>
             </thead>
             <tbody>
-            @for($i = 1; $i <= 4; $i++)
+            @foreach($dueDateTasks as $i => $task)
                 <tr class="tr-shadow">
                     <td>
-                        <span class="block-email">Task #{{ $i }} about something</span>
+                        <span class="block-email">{{ $task->name }}</span>
                     </td>
                     <td class="desc">
                         <ul>
@@ -25,16 +25,16 @@
                             {{--<li>Ryan Reynolds</li>--}}
                         </ul>
                     </td>
-                    <td>2019-02-07 02:12</td>
+                    <td>{{ $task->start_date }}</td>
                     <td>
                         <span class="status--process">In the making</span>
                     </td>
                     <td>HIGH</td>
-                    <td class="danger">{{$i + 3}} days</td>
+                    <td class="danger">{{ $i }} days</td>
 
                 </tr>
                 <tr class="spacer"></tr>
-            @endfor
+            @endforeach
             </tbody>
         </table>
     </div>
