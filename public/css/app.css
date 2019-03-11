@@ -82,6 +82,10 @@ select {
   margin-left: 0 !important;
 }
 
+.info-color {
+  color: #4272d7;
+}
+
 .page-container {
   height: 100vh;
   overflow: auto;
@@ -160,9 +164,5 @@ select {
 
 .dashboard-wrapper .due-date-tasks .table-responsive table {
   margin: 15px 0 130px;
-}
-
-.dashboard-wrapper .due-date-tasks .table-responsive table .danger {
-  color: #c82333;
 }
 

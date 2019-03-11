@@ -35,7 +35,6 @@ class CheckApiToken
                 return $next($request);
             }
         }
-
         return response(["message" => "Not authorized"], 403);
     }
 }

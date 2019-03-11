@@ -36,6 +36,10 @@ class Task extends Model
         return $this->belongsTo(TaskStatus::class);
     }
 
+    public function taskPriority() {
+        return $this->belongsTo(TaskPriority::class);
+    }
+
     public function isStatus($check)
     {
         return $this->taskStatus->name == $check;
@@ -83,13 +87,16 @@ class Task extends Model
 
     public static function dueDateTasks(Company $company)
     {
-        // users assigned to, task status, task priority, time left!
         $tasks = $company->users
-            ->load('tasks')->pluck('tasks')
+            ->load(['tasks', 'tasks.taskPriority', 'tasks.taskStatus', 'tasks.users'])
+            ->pluck('tasks')
             ->flatten()
             ->map(function($task) {
                 $date = Carbon::createFromFormat('Y-m-d H:i:s', $task->end_date);
-                if($date->diffInDays(Carbon::now()) <= 10 && !$date->isPast()) {
+                $now  = Carbon::now();
+                if($date->diffInDays($now) < 10 && !$date->isPast()) {
+                    $value = $date->diffInDays($now) == 0? "1 day" : $date->diffInDays($now) . " days";
+                    $task->setAttribute('daysLeft', $value);
                     return $task;
                 }
             })
@@ -97,6 +104,7 @@ class Task extends Model
             ->filter(function ($value) {
                 return $value != null;
             });
+
 
         return $tasks;
     }

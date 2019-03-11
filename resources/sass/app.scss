@@ -34,6 +34,10 @@ select {
   }
 }
 
+.info-color {
+  color: $primary;
+}
+
 .page-container {
   height:100vh;
   overflow:auto;
@@ -96,10 +100,6 @@ select {
 
         table {
           margin: 15px 0 130px;
-
-          .danger {
-            color: #c82333;
-          }
         }
       }
     }

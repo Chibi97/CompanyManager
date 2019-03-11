@@ -56,8 +56,8 @@
                         </div>
                     @endforeach
                 </div>
+                @include('company.due_date_tasks')
             </div>
-            @include('company.due_date_tasks')
         </div>
     </div>
 @endsection
