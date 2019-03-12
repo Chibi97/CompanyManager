@@ -23,8 +23,7 @@ class StoreUsers extends FormRequest
      */
     public function rules()
     {
-        return
-            array_merge(['company' => 'required|min:3|max:50', self::myRules()]);
+        return self::myRules() + ['company' => ['required', 'min:3', 'max:50']];
     }
 
     public static function myRules($flag = "required")
@@ -32,18 +31,24 @@ class StoreUsers extends FormRequest
         $specialCharactersPass = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}/';
 
         return [
-            'first-name' => ["$flag", "alpha", "min:2", "max:50"],
-            'last-name'  => ["$flag", "alpha", "min:2", "max:50"],
+            'first_name' => ["$flag", "alpha", "min:2", "max:50"],
+            'last_name'  => ["$flag", "alpha", "min:2", "max:50"],
             'email'      => ["$flag", "unique:users", "email"],
             'password'   => ["$flag", "regex:$specialCharactersPass"],
         ];
+
     }
 
     public function messages()
     {
+        return self::myMessages();
+    }
+
+    public static function myMessages()
+    {
         return [
-            'password.regex' => 'A password must contain min 8 characters, at least one upper case,
-                           at least one down case, and at least one special character',
+            'password.regex' => 'A password must contain min 8 characters, at least one upper case' .
+                'at least one down case, and at least one special character',
         ];
     }
 }

@@ -28,9 +28,6 @@ class UpdateUser extends FormRequest
 
     public function messages()
     {
-        return [
-            'password.regex' => 'A password must contain min 8 characters, at least one upper case ' .
-                           'at least one down case, and at least one special character',
-        ];
+        return StoreUsers::myMessages();
     }
 }

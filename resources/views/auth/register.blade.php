@@ -17,12 +17,14 @@
             </div>
             <div class="form-group">
                 <label>Your First Name</label>
-                <input class="au-input au-input--full" type="text" name="first-name" placeholder="First Name" value="{{ old('first-name') }}">
+                <input class="au-input au-input--full" type="text" name="first_name" placeholder="First Name"
+                       value="{{ old('first_name') }}">
             </div>
 
             <div class="form-group">
                 <label>Your Last Name</label>
-                <input class="au-input au-input--full" type="text" name="last-name" placeholder="Last Name" value="{{ old('last-name') }}">
+                <input class="au-input au-input--full" type="text" name="last_name" placeholder="Last Name" value="{{
+                 old('last_name') }}">
             </div>
 
             <div class="form-group">

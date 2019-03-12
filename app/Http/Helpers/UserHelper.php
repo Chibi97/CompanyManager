@@ -14,6 +14,7 @@ use App\Models\Company;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\UserStatus;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class UserHelper
@@ -24,8 +25,8 @@ class UserHelper
         $status  = UserStatus::where('name', 'Well done!')->first();
 
         $user = $company->users()->make([
-            'first_name' => $request->input('first-name'),
-            'last_name'  => $request->input('last-name'),
+            'first_name' => $request->input('first_name'),
+            'last_name'  => $request->input('last_name'),
             'email'      => $request->input('email'),
             'password'   => Hash::make($request->input('password')),
         ]);
@@ -34,7 +35,7 @@ class UserHelper
         // $user->role_id = $role->id
         $user->userStatus()->associate($status);
         $user->save();
-        return $user;
+        return $user->load('company');
     }
 
     public function show(User $user)

@@ -17,10 +17,9 @@ use Illuminate\Http\Request;
 //    return $request->user();
 //});
 
-Route::group(['middleware' => ['CheckApiToken']], function () {
-//     If company token is acquired through headers, then proceed to these actions
-    Route::get('/users/', 'Authentication\Api\UserController@index');
-    Route::get('/users/{user}', 'Authentication\Api\UserController@show');
-    Route::post('/users', 'Authentication\Api\UserController@store');
-    Route::put('/users/{user}', 'Authentication\Api\UserController@update');
-});
+
+Route::get('/users/', 'Authentication\Api\UserController@index');
+Route::get('/users/{user}', 'Authentication\Api\UserController@show');
+Route::post('/users', 'Authentication\Api\UserController@store');
+Route::put('/users/{user}', 'Authentication\Api\UserController@update');
+

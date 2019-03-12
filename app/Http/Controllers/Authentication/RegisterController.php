@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Authentication;
 
 use App\Http\Helpers\UserHelper;
-use App\Http\Middleware\RedirectIfLogin;
 use App\Http\Requests\StoreUsers;
 use App\Http\Controllers\Controller;
 

@@ -3,15 +3,14 @@
 namespace App\Http\Controllers\Authentication\Api;
 
 use App\Http\Helpers\CompanyManager;
-use Closure;
 use App\Http\Helpers\UserHelper;
 use App\Http\Requests\StoreUsers;
 use App\Http\Requests\UpdateUser;
+use App\Models\Company;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -19,6 +18,7 @@ class UserController extends Controller
     function __construct(UserHelper $helper)
     {
         $this->helper = $helper;
+        $this->middleware("CheckApiToken")->except('store');
         $this->middleware("Before")->only('show', 'update', 'destroy');
     }
 
@@ -35,8 +35,9 @@ class UserController extends Controller
 
     public function store(StoreUsers $request)
     {
-        $this->helper->store($request);
-        return response(["message" => "Successfully stored!"], 201);
+        $result = $this->helper->store($request);
+        return response(["message" => "Successfully stored!",
+                         "token"   => $result->company->api_token ], 201);
     }
 
     public function index()
