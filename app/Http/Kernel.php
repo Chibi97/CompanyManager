@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\AddAcceptingHeader;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -40,6 +41,7 @@ class Kernel extends HttpKernel
         'api' => [
             'throttle:60,1',
             'bindings',
+            \App\Http\Middleware\AddAcceptingHeader::class,
         ],
     ];
 
@@ -62,7 +64,8 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'CheckApiToken' => \App\Http\Middleware\CheckApiToken::class,
         'MyAuth' => \App\Http\Middleware\MyAuth::class,
-        'RedirectIfLogin' => \App\Http\Middleware\RedirectIfLogin::class
+        'RedirectIfLogin' => \App\Http\Middleware\RedirectIfLogin::class,
+        'Before' => \App\Http\Middleware\BeforeAction::class,
     ];
 
     /**

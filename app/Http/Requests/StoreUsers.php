@@ -23,14 +23,19 @@ class StoreUsers extends FormRequest
      */
     public function rules()
     {
+        return
+            array_merge(['company' => 'required|min:3|max:50', self::myRules()]);
+    }
+
+    public static function myRules($flag = "required")
+    {
         $specialCharactersPass = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}/';
 
         return [
-            'company'    => 'required|min:3|max:50',
-            'first-name' => 'required|alpha|min:2|max:50',
-            'last-name'  => 'required|alpha|min:2|max:50',
-            'email'      => 'required|unique:users|email',
-            'password'   => ["required","regex:$specialCharactersPass"],
+            'first-name' => ["$flag", "alpha", "min:2", "max:50"],
+            'last-name'  => ["$flag", "alpha", "min:2", "max:50"],
+            'email'      => ["$flag", "unique:users", "email"],
+            'password'   => ["$flag", "regex:$specialCharactersPass"],
         ];
     }
 

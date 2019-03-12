@@ -2,17 +2,12 @@
 
 namespace App\Http\Controllers\Authentication;
 
-use App\Http\Middleware\RedirectIfLogin;
 use App\Http\Requests\CheckUsers;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 
 class LoginController extends Controller
 {
-    public function __construct()
-    {
-    }
-
     public function create() {
         return view('auth.login');
     }

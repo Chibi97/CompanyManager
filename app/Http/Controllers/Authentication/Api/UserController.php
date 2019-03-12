@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers\Authentication\Api;
 
+use App\Http\Helpers\CompanyManager;
+use Closure;
 use App\Http\Helpers\UserHelper;
 use App\Http\Requests\StoreUsers;
 use App\Http\Requests\UpdateUser;
 use App\Models\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -14,6 +19,13 @@ class UserController extends Controller
     function __construct(UserHelper $helper)
     {
         $this->helper = $helper;
+        $this->middleware("Before")->only('show', 'update', 'destroy');
+    }
+
+    public static function before(Request $request)
+    {
+        $user = $request->route('user');
+        return $user->isPartOfCompany(CompanyManager::getInstance()->retrieve('company'));
     }
 
     public function show(User $user)
@@ -23,12 +35,8 @@ class UserController extends Controller
 
     public function store(StoreUsers $request)
     {
-        try {
-            $this->helper->store($request);
-        } catch(\Exception $e) {
-            return response(["message" => $e->getMessage()], 422);
-        }
-        return response(["message" => "Successfully stored!"], 204);
+        $this->helper->store($request);
+        return response(["message" => "Successfully stored!"], 201);
     }
 
     public function index()
@@ -37,13 +45,15 @@ class UserController extends Controller
         return response($users, 200);
     }
 
-    public function update($user, UpdateUser $request)
+    public function update(User $user, UpdateUser $request)
     {
-        //dd($user);
         $data = $request->all();
-        $found = User::find($user);
-        $found->fill($data);
-        $found->save();
+        if($request->input('password')) {
+            $data['password'] = Hash::make($request->input('password'));
+        }
 
+        $user->fill($data);
+        $user->save();
+        return response(["message" => "Successfully updated!"], 204);
     }
 }

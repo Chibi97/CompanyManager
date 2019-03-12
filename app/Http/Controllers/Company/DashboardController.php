@@ -53,14 +53,13 @@ class DashboardController extends Controller
 
         $years = Task::getStartYearsForTasks($user->company);
         $year  = $request->query('year') ?? $years[0];
-        $dueDateTasks = self::showDueDateTasks();
-            //->toArray();
+        $dueDateTasks = $this->showDueDateTasks();
 
         return view('company.stats',
             compact("months", "years", "stats", "year", "month", "dueDateTasks"));
     }
 
-    public static function showDueDateTasks()
+    public function showDueDateTasks()
     {
         $user = session()->get('user');
         $user->refresh();

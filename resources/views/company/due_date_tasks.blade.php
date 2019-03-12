@@ -23,7 +23,7 @@
                         <td class="desc">
                             <ul>
                                 @foreach($task->users as $user)
-                                    <li>{{ $user->first_name . " " . $user->last_name }}</li>
+                                    <li class="info-color">{{ $user->first_name . " " . $user->last_name }}</li>
                                 @endforeach
                             </ul>
                         </td>
@@ -33,7 +33,7 @@
                         </td>
                         <td>{{ $task->taskPriority->name }}</td>
                         <td> {{ $task->end_date }}</td>
-                        <td class="danger">{{ $task->daysLeft }}</td>
+                        <td class="text-danger">{{ $task->daysLeft }}</td>
 
                     </tr>
                     <tr class="spacer"></tr>
