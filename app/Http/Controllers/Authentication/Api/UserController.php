@@ -6,11 +6,9 @@ use App\Http\Helpers\CompanyManager;
 use App\Http\Helpers\UserHelper;
 use App\Http\Requests\StoreUsers;
 use App\Http\Requests\UpdateUser;
-use App\Models\Company;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -48,13 +46,24 @@ class UserController extends Controller
 
     public function update(User $user, UpdateUser $request)
     {
-        $data = $request->all();
-        if($request->input('password')) {
-            $data['password'] = Hash::make($request->input('password'));
-        }
+        $this->helper->update($user, $request);
+        return response(["message" => "Successfully updated!"], 200);
+    }
 
-        $user->fill($data);
-        $user->save();
-        return response(["message" => "Successfully updated!"], 204);
+    public function promote(User $user)
+    {
+        $this->helper->promote($user);
+        return response(["message" => "Successfully updated role!"], 200);
+    }
+
+    public function demote(User $user)
+    {
+        $this->helper->demote($user);
+        return response(["message" => "Successfully updated role!"], 200);
+    }
+
+    public function updateCompany(User $user, UpdateUser $request)
+    {
+        $this->helper->update($user, $request);
     }
 }

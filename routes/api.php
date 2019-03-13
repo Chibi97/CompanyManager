@@ -22,4 +22,6 @@ Route::get('/users/', 'Authentication\Api\UserController@index');
 Route::get('/users/{user}', 'Authentication\Api\UserController@show');
 Route::post('/users', 'Authentication\Api\UserController@store');
 Route::put('/users/{user}', 'Authentication\Api\UserController@update');
+Route::put('/users/{user}/promote', 'Authentication\Api\UserController@promote');
+Route::put('/users/{user}/demote', 'Authentication\Api\UserController@demote');
 
