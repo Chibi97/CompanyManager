@@ -9,6 +9,7 @@ use App\Http\Requests\UpdateUser;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use mysql_xdevapi\Exception;
 
 class UserController extends Controller
 {
@@ -47,7 +48,7 @@ class UserController extends Controller
     public function update(User $user, UpdateUser $request)
     {
         $this->helper->update($user, $request);
-        return response(["message" => "Successfully updated!"], 200);
+        return response(["message" => "User successfully updated!"], 200);
     }
 
     public function promote(User $user)
@@ -62,8 +63,11 @@ class UserController extends Controller
         return response(["message" => "Successfully updated role!"], 200);
     }
 
-    public function updateCompany(User $user, UpdateUser $request)
+    public function destroy(User $user)
     {
-        $this->helper->update($user, $request);
+        $this->helper->destroy($user);
+        return response(["message" => "User successfully deleted"], 200);
     }
+
+
 }

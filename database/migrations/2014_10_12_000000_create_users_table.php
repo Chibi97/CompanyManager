@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             //$table->boolean('is_activated');
             $table->timestamps();
+            $table->softDeletes();
             $table->unsignedInteger('role_id');
             $table->unsignedInteger('company_id');
             $table->unsignedInteger('user_status_id');

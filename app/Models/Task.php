@@ -93,9 +93,9 @@ class Task extends Model
             ->flatten()
             ->map(function($task) {
                 $date = Carbon::createFromFormat('Y-m-d H:i:s', $task->end_date);
-                $now  = Carbon::now();
+                $now  = Carbon::now('Europe/Belgrade');
                 if($date->diffInDays($now) <= 10 && !$date->isPast()) {
-                    $value = $date->diffInDays($now) . " days";
+                    $value = $date->diffInDays($now) == 1 ? "1 day" : $date->diffInDays($now) . " days";
                     $task->setAttribute('daysLeft', $value);
                     return $task;
                 }

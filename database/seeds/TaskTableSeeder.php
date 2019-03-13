@@ -18,9 +18,9 @@ class TaskTableSeeder extends Seeder
         $faker = \Faker\Factory::create();
         $users = User::all()->pluck('id')->toArray();
 
-        factory(Task::class, 30)->make()->each(function ($task)  use($users, $faker) {
+        factory(Task::class, 50)->make()->each(function ($task)  use($users, $faker) {
             $task->task_priority_id = rand(1,4);
-            $task->task_status_id = rand(1,5);
+            $task->task_status_id = rand(1,4);
             $task->save();
             $task->comments()->attach($faker->randomElement($users),
                                       ["comment" => $faker->text(100),

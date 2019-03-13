@@ -6,6 +6,10 @@ use App\Models\Exception\RedirectException;
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+
 class Handler extends ExceptionHandler
 {
     /**
@@ -52,6 +56,18 @@ class Handler extends ExceptionHandler
                 ->to($exception->getRedirection())
                 ->withErrors($exception->getErrors())
                 ->withInput();
+        }
+
+        if($exception instanceof ModelNotFoundException && $request->is('api/*')) {
+            return response(['error' => 'Resource item not found'],404);
+        }
+
+        if($exception instanceof NotFoundHttpException && $request->is('api/*')) {
+            return response(['error' => 'Resource not found'], 404);
+        }
+
+        if($exception instanceof MethodNotAllowedHttpException && $request->is('api/*')) {
+            return response(['error' => 'Method now allowed'], 405);
         }
 
         return parent::render($request, $exception);
