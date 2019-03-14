@@ -29,7 +29,7 @@ class UserHelper
 
     public function show(User $user)
     {
-        return $user;
+        return $user->load('role');
     }
 
     public function index()

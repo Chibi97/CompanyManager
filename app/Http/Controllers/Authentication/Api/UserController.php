@@ -9,11 +9,11 @@ use App\Http\Requests\UpdateUser;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use mysql_xdevapi\Exception;
 
 class UserController extends Controller
 {
     public $helper;
+
     function __construct(UserHelper $helper)
     {
         $this->helper = $helper;
@@ -36,7 +36,7 @@ class UserController extends Controller
     {
         $result = $this->helper->store($request);
         return response(["message" => "Successfully stored!",
-                         "token"   => $result->company->api_token ], 201);
+            "token" => $result->company->api_token], 201);
     }
 
     public function index()

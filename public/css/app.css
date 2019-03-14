@@ -23,14 +23,40 @@
   font-size: 50px !important;
 }
 
-.tasks {
-  min-height: 100vh;
-  padding: 6em 1em;
+.section__content .btn {
+  color: white;
+  margin: 1em 0;
+  border-radius: 5px !important;
 }
 
-.tasks .au-card {
-  margin-bottom: 6em;
-  margin-left: 2em;
+.section__content .btn-arh {
+  background: #e06c6b;
+}
+
+.section__content .btn-edit {
+  background: #4272d7;
+}
+
+@media (min-width: 992px) {
+  .section__content .the-card {
+    flex: 0 0 55%;
+    max-width: 55%;
+  }
+}
+
+@media (min-width: 1400px) {
+  .section__content .the-card {
+    flex: 0 0 33.3333%;
+    max-width: 33.3333%;
+  }
+}
+
+.section__content .the-card .form-control {
+  border-radius: 5px !important;
+}
+
+.section__content .select-user {
+  width: 60%;
 }
 
 .header__navbar ul li button a {

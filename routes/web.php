@@ -31,6 +31,7 @@ Route::group(['middleware' => 'MyAuth:employee', 'prefix' => 'employee'], functi
 // B O S S
 Route::group(['middleware' => 'MyAuth:boss', 'prefix' => 'company'], function() {
     Route::get('/', 'Company\DashboardController@stats')->name('company.dashboard');
+    Route::resource('/users', 'Company\UserController');
     Route::resource('/tasks', 'Company\TaskController');
 });
 

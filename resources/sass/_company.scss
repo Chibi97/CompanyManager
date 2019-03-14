@@ -1,9 +1,36 @@
 
-.tasks {
-  min-height: 100vh;
-  padding: 6em 1em;
-  .au-card {
-    margin-bottom:6em;
-    margin-left: 2em;
+.section__content {
+  .btn {
+    color: white;
+    margin: 1em 0;
+    border-radius: 5px !important;
+  }
+  .btn-arh {
+    background: #e06c6b;
+  }
+
+  .btn-edit {
+    background: $primary;
+  }
+
+  .the-card {
+    @media(min-width: 992px) {
+      flex: 0 0 55%;
+      max-width: 55%;
+    }
+
+    @media(min-width: 1400px) {
+      flex: 0 0 33.3333%;
+      max-width: 33.3333%;
+    }
+
+    .form-control {
+      border-radius: 5px !important;
+    }
+  }
+
+  .select-user {
+    width: 60%;
   }
 }
+

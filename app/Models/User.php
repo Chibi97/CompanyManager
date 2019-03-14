@@ -94,13 +94,25 @@ class User extends Authenticatable
         return $this->company_id == $company->id;
     }
 
+    public function getFullNameAttribute()
+    {
+        return $this->first_name . ' ' . $this->last_name;
+    }
+
+    public function getUserNames()
+    {
+        $company = $this->company;
+        $users = $company->users->pluck('full_name', 'id');
+        return $users;
+    }
+
     public static function getUserAndRole($email, $password) {
         $errors = ['error' => 'Your email or password is incorrect'];
 
         $redirectTo = "login-form";
 
         try {
-            $user = User::with('role')
+            $user = User::with('role', 'company')
                 ->where("email","=", $email)
                 ->firstOrFail();
         } catch(ModelNotFoundException $ex) {
@@ -114,7 +126,6 @@ class User extends Authenticatable
 
         throw RedirectException::make(route($redirectTo), $errors);
     }
-
 
     public static function storeUserAndCompany($company, $firstName, $lastName, $email, $password)
     {

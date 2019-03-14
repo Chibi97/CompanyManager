@@ -15,7 +15,10 @@
 
             @include('panel_inc.header')
 
-            @yield('content') 
+            <div class="main-content">
+                @yield('content')
+
+            </div>
         </div>
 
     </div>

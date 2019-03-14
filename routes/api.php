@@ -28,5 +28,4 @@ Route::delete('/users/{user}', 'Authentication\Api\UserController@destroy');
 
 Route::fallback( function() {
     return response()->json(['message' => 'Resource not found'], 404);
-})->name('fallback');
-
+});
