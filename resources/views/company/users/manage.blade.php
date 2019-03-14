@@ -1,11 +1,12 @@
 @extends('layouts.panel')
 
 @section('content')
-    <div class="section__content section__content--p30">
+    <div class="section__content section__content--p30 manage-users">
         <div class="container-fluid">
             <div class="row">
 
                 <div class="the-card col-12 col-md-6 col-lg-4">
+                    <span class="user-status">Well done!</span>
                     <div class="au-card chart-percent-card">
                         <div class="au-card-inner">
                             <form action="" method="post">

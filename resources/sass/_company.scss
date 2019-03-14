@@ -1,5 +1,5 @@
 
-.section__content {
+.manage-users {
   .btn {
     color: white;
     margin: 1em 0;
@@ -26,6 +26,20 @@
 
     .form-control {
       border-radius: 5px !important;
+    }
+
+    position: relative;
+    .user-status {
+      position: absolute;
+      font-size: 10px;
+      padding: .8em;
+      top: -14px;
+      right: 27px;
+      background: $primary;
+      color: white;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
     }
   }
 

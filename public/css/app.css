@@ -23,39 +23,54 @@
   font-size: 50px !important;
 }
 
-.section__content .btn {
+.manage-users .btn {
   color: white;
   margin: 1em 0;
   border-radius: 5px !important;
 }
 
-.section__content .btn-arh {
+.manage-users .btn-arh {
   background: #e06c6b;
 }
 
-.section__content .btn-edit {
+.manage-users .btn-edit {
   background: #4272d7;
 }
 
+.manage-users .the-card {
+  position: relative;
+}
+
 @media (min-width: 992px) {
-  .section__content .the-card {
+  .manage-users .the-card {
     flex: 0 0 55%;
     max-width: 55%;
   }
 }
 
 @media (min-width: 1400px) {
-  .section__content .the-card {
+  .manage-users .the-card {
     flex: 0 0 33.3333%;
     max-width: 33.3333%;
   }
 }
 
-.section__content .the-card .form-control {
+.manage-users .the-card .form-control {
   border-radius: 5px !important;
 }
 
-.section__content .select-user {
+.manage-users .the-card .user-status {
+  position: absolute;
+  font-size: 10px;
+  padding: 0.8em;
+  top: -14px;
+  right: 27px;
+  background: #4272d7;
+  color: white;
+  border-radius: 5px;
+}
+
+.manage-users .select-user {
   width: 60%;
 }
 

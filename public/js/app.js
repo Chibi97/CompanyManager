@@ -13167,6 +13167,7 @@ function setFormFieldForUser(user) {
   $("#lname").val(user.last_name);
   $("#email").val(user.email);
   $('select[name="role"]').val(user.role.id);
+  $('.user-status').html(user.user_status.name);
 }
 
 /***/ }),
