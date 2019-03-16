@@ -13121,19 +13121,39 @@ $(document).ready(function () {
     form.submit();
   });
   var userSelect = $("#onChangeUser");
-  var headers = {
-    headers: {
-      'Authorization': $('meta[name="api_token"]').attr('content')
-    }
-  };
   userSelect.change(function () {
     var id = $(this).val();
     var url = baseUrl + "/api/users/".concat(id);
-    ajaxGet(url, function (data) {
-      setFormFieldForUser(data);
-    }, headers);
+    var headers = {
+      headers: {
+        'Authorization': $('meta[name="api_token"]').attr('content')
+      }
+    };
+
+    if ($(this).val() != 0) {
+      ajaxGet(url, function (data) {
+        setFormFieldForUser(data);
+      }, headers);
+    } else {
+      var fields = [$("#fname"), $("#lname"), $("#email"), $('select[name="role"]')];
+
+      for (var _i = 0; _i < fields.length; _i++) {
+        field = fields[_i];
+        field.val("");
+      }
+
+      $('.user-status').html("Status");
+    }
   });
 });
+
+function setFormFieldForUser(user) {
+  $("#fname").val(user.first_name);
+  $("#lname").val(user.last_name);
+  $("#email").val(user.email);
+  $('select[name="role"]').val(user.role.id);
+  $('.user-status').html(user.user_status.name);
+}
 
 function ajaxGet(url, cbSuccess, headers) {
   __ajax(headers, url, "GET", cbSuccess);
@@ -13160,14 +13180,6 @@ function __ajax(headers, url, verb, cbSuccess, data) {
       console.log(xhr.status, xhr.responseText);
     }
   });
-}
-
-function setFormFieldForUser(user) {
-  $("#fname").val(user.first_name);
-  $("#lname").val(user.last_name);
-  $("#email").val(user.email);
-  $('select[name="role"]').val(user.role.id);
-  $('.user-status').html(user.user_status.name);
 }
 
 /***/ }),

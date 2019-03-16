@@ -11,14 +11,14 @@
 |
 */
 
-Route::get('/', 'FrontController@home')->name('job-offers');
+Route::get('/', 'FrontController@home')->name('job.offers');
 Route::get('/logout', 'Authentication\LoginController@destroy')->name('logout');
 
 Route::group(['middleware'=> 'RedirectIfLogin'],function() {
     Route::post('/login', 'Authentication\LoginController@store')->name('login');
+    Route::get('/login', 'Authentication\LoginController@create')->name('login.form');
     Route::post('/register', 'Authentication\RegisterController@store')->name('register');
-    Route::get('/login', 'Authentication\LoginController@create')->name('login-form');
-    Route::get('/register', 'Authentication\RegisterController@create')->name('register-form');
+    Route::get('/register', 'Authentication\RegisterController@create')->name('register.form');
 });
 
 // E M P L O Y E E
@@ -31,7 +31,7 @@ Route::group(['middleware' => 'MyAuth:employee', 'prefix' => 'employee'], functi
 // B O S S
 Route::group(['middleware' => 'MyAuth:boss', 'prefix' => 'company'], function() {
     Route::get('/', 'Company\DashboardController@stats')->name('company.dashboard');
-    Route::resource('/users', 'Company\UserController');
+    Route::resource('/users', 'Company\UserController')->only(['index', 'update', 'destroy']);
     Route::resource('/tasks', 'Company\TaskController');
 });
 

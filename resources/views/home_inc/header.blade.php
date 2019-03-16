@@ -9,7 +9,7 @@
             <div class="header__navbar">
                 <ul class="list-unstyled">
                     <li>
-                        <a href="{{ route('job-offers') }}">
+                        <a href="{{ route('job.offers') }}">
                             <i class="fas fa-home"></i>Dashboard
                             <span class="bot-line"></span>
                         </a>
@@ -43,14 +43,14 @@
 
                     @else
                         <li>
-                            <a href="{{ route('login-form') }}">
+                            <a href="{{ route('login.form') }}">
                                 <i class="fas fa-sign-in-alt"></i>Login
                                 <span class="bot-line"></span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="{{ route('register-form') }}">
+                            <a href="{{ route('register.form') }}">
                                 <i class="fas fa-user-plus"></i>Register
                                 <span class="bot-line"></span>
                             </a>

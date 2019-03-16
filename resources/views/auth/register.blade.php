@@ -40,7 +40,7 @@
         <div class="register-link">
             <p>
                 Already have an account?
-                <a href="{{ route('login-form') }}">Sign In Here</a>
+                <a href="{{ route('login.form') }}">Sign In Here</a>
             </p>
         </div>
     </div>

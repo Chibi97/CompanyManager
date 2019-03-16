@@ -6,7 +6,7 @@
             <div class="row">
 
                 <div class="the-card col-12 col-md-6 col-lg-4">
-                    <span class="user-status">Well done!</span>
+                    <span class="user-status">Status</span>
                     <div class="au-card chart-percent-card">
                         <div class="au-card-inner">
                             <form action="" method="post">
@@ -45,11 +45,11 @@
                                     </select>
                                 </div>
                                 <div>
-                                    <button id="payment-button" type="submit" class="btn btn-edit btn-md btn-block">
+                                    <button name="updateUser" type="submit" class="btn btn-edit btn-md btn-block">
                                         <i class="far fa-edit m-r-10"></i> Update</span>
                                     </button>
 
-                                    <button id="payment-button" type="submit" class="btn btn-arh btn-md btn-block">
+                                    <button name="ArchiveUser" type="submit" class="btn btn-arh btn-md btn-block">
                                         <i class="fas fa-user-times m-r-10"></i> Archive</span>
                                     </button>
                                 </div>
@@ -62,7 +62,7 @@
                     <meta name="api_token" content="{{ $token }}" />
                     <select data-selected="0" class="select-user" id="onChangeUser" name="users">
                         <option value="0">Select an employee</option>
-                        @foreach($allUsers as $id => $user)
+                        @foreach($fullNames as $id => $user)
                             <option value="{{ $id }}"> {{ $user }} </option>
                         @endforeach
                     </select>

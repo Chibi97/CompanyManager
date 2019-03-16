@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: oljaw
- * Date: 3/6/2019
- * Time: 6:00 PM
- */
 
 namespace App\Http\Helpers;
 
@@ -34,7 +28,12 @@ class UserHelper
 
     public function index()
     {
-        $company = CompanyManager::getInstance()->retrieve("company");
+        if(session()->has('user')) {
+            $company = session()->get('user')->company;
+        } else {
+            $company = CompanyManager::getInstance()->retrieve('company');
+        }
+
         return $company->users;
     }
 

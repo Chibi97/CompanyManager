@@ -23,7 +23,7 @@ class MyAuth
         $user = $request->session()->get("user");
 
         if(!$user) {
-            if($arg === 'boss' || $arg === 'employee') return redirect()->route('login-form');
+            if($arg === 'boss' || $arg === 'employee') return redirect()->route('login.form');
             throw new NotFoundHttpException("Page not found");
         }
         if($arg === 'boss' && !$user->isBoss()) {

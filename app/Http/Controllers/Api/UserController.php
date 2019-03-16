@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Authentication\Api;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Helpers\CompanyManager;
 use App\Http\Helpers\UserHelper;

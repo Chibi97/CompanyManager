@@ -1,6 +1,6 @@
 <aside class="menu-sidebar d-none d-lg-block">
     <div class="logo">
-        <a href="{{ route('job-offers') }}">
+        <a href="{{ route('job.offers') }}">
             <img src="{{ asset('images/icon/logo.png') }}" alt="Cool Admin" />
         </a>
     </div>
@@ -31,19 +31,19 @@
                         </a>
                     </li>
 
-                    <li class="{{ Request::route()->named('company.users.manage') ? 'active' : '' }} has-sub">
+                    <li class="{{ Request::route()->named('users.index') ? 'active' : '' }} has-sub">
                         <a href="{{ route('users.index') }}">
                             <i class="fas fa-user-edit"></i>Manage employees
                         </a>
                     </li>
 
-                    <li class="{{ Request::route()->named('company.users.manage') ? 'active' : '' }} has-sub">
+                    <li class="{{ Request::route()->named('') ? 'active' : '' }} has-sub">
                         <a href="{{ route('users.index') }}">
                             <i class="fas fa-tasks"></i>Tasks
                         </a>
                     </li>
 
-                    <li class="{{ Request::route()->named('company.users.manage') ? 'active' : '' }} has-sub">
+                    <li class="{{ Request::route()->named('') ? 'active' : '' }} has-sub">
                         <a href="{{ route('users.index') }}">
                             <i class="fas fa-folder-plus"></i>Create a tasks
                         </a>

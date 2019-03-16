@@ -99,11 +99,9 @@ class User extends Authenticatable
         return $this->first_name . ' ' . $this->last_name;
     }
 
-    public function getUserNames()
+    public static function getUserNames($users)
     {
-        $company = $this->company;
-        $users = $company->users->pluck('full_name', 'id');
-        return $users;
+        return $users->pluck('full_name', 'id');
     }
 
     public static function getUserAndRole($email, $password) {

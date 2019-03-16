@@ -27,7 +27,7 @@ class LoginController extends Controller
         if(session()->has("user")) {
             session()->forget("user");
         }
-        return redirect()->route("login-form");
+        return redirect()->route("login.form");
     }
 
 }

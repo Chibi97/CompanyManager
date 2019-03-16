@@ -18,13 +18,13 @@ use Illuminate\Http\Request;
 //});
 
 
-Route::get('/users', 'Authentication\Api\UserController@index');
-Route::get('/users/{user}', 'Authentication\Api\UserController@show');
-Route::post('/users', 'Authentication\Api\UserController@store');
-Route::put('/users/{user}', 'Authentication\Api\UserController@update');
-Route::put('/users/{user}/promote', 'Authentication\Api\UserController@promote');
-Route::put('/users/{user}/demote', 'Authentication\Api\UserController@demote');
-Route::delete('/users/{user}', 'Authentication\Api\UserController@destroy');
+Route::get('/users', 'Api\UserController@index');
+Route::get('/users/{user}', 'Api\UserController@show');
+Route::post('/users', 'Api\UserController@store');
+Route::put('/users/{user}', 'Api\UserController@update');
+Route::put('/users/{user}/promote', 'Api\UserController@promote');
+Route::put('/users/{user}/demote', 'Api\UserController@demote');
+Route::delete('/users/{user}', 'Api\UserController@destroy');
 
 Route::fallback( function() {
     return response()->json(['message' => 'Resource not found'], 404);

@@ -17,7 +17,7 @@
         <div class="container-fluid">
             <ul class="navbar-mobile__list list-unstyled">
                 <li class="has-sub">
-                    <a class="js-arrow" href="{{ route('job-offers') }}">
+                    <a href="{{ route('job.offers') }}">
                         <i class="fas fa-home"></i>Dashboard</a>
                 </li>
 
@@ -42,11 +42,11 @@
                 @else
 
                     <li>
-                        <a href="{{ route('login-form') }}">
+                        <a href="{{ route('login.form') }}">
                             <i class="fas fa-sign-in-alt"></i>Login</a>
                     </li>
                     <li>
-                        <a href="{{ route('register-form') }}">
+                        <a href="{{ route('register.form') }}">
                             <i class="fas fa-user-plus"></i>Register</a>
                     </li>
                 @endif

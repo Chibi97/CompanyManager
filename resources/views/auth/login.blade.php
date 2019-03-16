@@ -25,7 +25,7 @@
         <div class="register-link">
             <p>
                 You don't have an account?
-                <a href="{{ route('register-form') }}">Sign Up Here</a>
+                <a href="{{ route('register.form') }}">Sign Up Here</a>
             </p>
         </div>
     </div>
