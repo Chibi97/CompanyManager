@@ -27,6 +27,6 @@ class CheckApiToken
             return $next($request);
         }
 
-        return response(["message" => "Not authorized"], 403);
+        return response(["message" => "Bad API token"], 403);
     }
 }

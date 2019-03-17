@@ -58,18 +58,6 @@ class Handler extends ExceptionHandler
                 ->withInput();
         }
 
-        if($exception instanceof ModelNotFoundException && $request->is('api/*')) {
-            return response(['error' => 'Resource item not found'],404);
-        }
-
-        if($exception instanceof NotFoundHttpException && $request->is('api/*')) {
-            return response(['error' => 'Resource not found'], 404);
-        }
-
-        if($exception instanceof MethodNotAllowedHttpException && $request->is('api/*')) {
-            return response(['error' => 'Method now allowed'], 405);
-        }
-
         return parent::render($request, $exception);
     }
 }

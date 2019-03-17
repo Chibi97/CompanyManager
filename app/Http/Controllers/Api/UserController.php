@@ -21,7 +21,7 @@ class UserController extends Controller
         $this->middleware("Before")->only('show', 'update', 'destroy');
     }
 
-    public static function before(Request $request)
+    public function before(Request $request)
     {
         $user = $request->route('user');
         return $user->isPartOfCompany(CompanyManager::getInstance()->retrieve('company'));

@@ -9,12 +9,13 @@
                     <span class="user-status">Status</span>
                     <div class="au-card chart-percent-card">
                         <div class="au-card-inner">
-                            <form action="" method="post">
+                            <form id="updateUserForm" action="#" method="post" name="updateUserForm">
                                 @csrf
+                                {{ method_field('put') }}
 
                                 <div class="form-group">
                                     <label for="fname" class="control-label mb-1">First name</label>
-                                    <input id="fname" name="first_name" type="text" class="form-control
+                                    <input id="fname" data-id="0" name="first_name" type="text" class="form-control
                                             cc-exp" value="" >
                                 </div>
 
@@ -32,7 +33,7 @@
 
                                 <div class="form-group">
                                     <label for="pass" class="control-label mb-1">Password</label>
-                                    <input id="pass" name="password" type="text" class="form-control"
+                                    <input id="pass" name="password" type="password" class="form-control"
                                            value="">
                                 </div>
 
@@ -45,11 +46,11 @@
                                     </select>
                                 </div>
                                 <div>
-                                    <button name="updateUser" type="submit" class="btn btn-edit btn-md btn-block">
+                                    <button type="submit" class="btn btn-edit btn-md btn-block">
                                         <i class="far fa-edit m-r-10"></i> Update</span>
                                     </button>
 
-                                    <button name="ArchiveUser" type="submit" class="btn btn-arh btn-md btn-block">
+                                    <button type="submit" class="btn btn-arh btn-md btn-block">
                                         <i class="fas fa-user-times m-r-10"></i> Archive</span>
                                     </button>
                                 </div>

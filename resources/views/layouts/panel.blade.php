@@ -3,6 +3,10 @@
 
 <head>
     @include('meta')
+
+    <script>
+        let baseUrl = window.location.origin;
+    </script>
 </head>
 
 <body>

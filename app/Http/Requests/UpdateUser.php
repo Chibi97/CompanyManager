@@ -2,32 +2,18 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
-
-class UpdateUser extends FormRequest
+class UpdateUser extends StoreRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
-    {
-        return true;
-    }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
-    public function rules()
+    protected function rulesOverrides()
     {
-        return StoreUsers::myRules("");
-    }
+        $regex = StoreRequest::SPECIAL_CHARACTERS_PASS;
+        $rules = [];
 
-    public function messages()
-    {
-        return StoreUsers::myMessages();
+        if($this->input('password')) {
+            $rules['password'] = ["regex:$regex"];
+        }
+
+        return $rules;
     }
 }

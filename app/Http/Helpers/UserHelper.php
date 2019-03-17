@@ -8,17 +8,22 @@ use App\Models\User;
 
 class UserHelper
 {
-    public function store(StoreUsers $request) {
-            $model = new User();
-            $model->company   = $request->input('company');
-            $model->firstName = $request->input('first_name');
-            $model->lastName  = $request->input('last_name');
-            $model->email     = $request->input('email');
-            $model->password  = $request->input('password');
+    protected $model;
+    public function __construct()
+    {
+        $this->model = new User();
+    }
 
-            return User::storeUserAndCompany($model->company, $model->firstName,
-                                             $model->lastName, $model->email,
-                                             $model->password);
+    public function store(StoreUsers $request) {
+        $this->model->company   = $request->input('company');
+        $this->model->firstName = $request->input('first_name');
+        $this->model->lastName  = $request->input('last_name');
+        $this->model->email     = $request->input('email');
+        $this->model->password  = $request->input('password');
+
+            return User::storeUserAndCompany($this->model->company, $this->model->firstName,
+                $this->model->lastName, $this->model->email,
+                $this->model->password);
     }
 
     public function show(User $user)
@@ -40,6 +45,11 @@ class UserHelper
     public function update(User $user, UpdateUser $request)
     {
         $data = $request->all();
+        foreach ($data as $key => $val) {
+            if(!$val) {
+                unset($data[$key]);
+            }
+        }
         return $user->updateUser($data);
     }
 
