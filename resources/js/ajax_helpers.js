@@ -28,5 +28,10 @@ export function ajaxPost(url, data, cbSuccess, headers) {
 }
 
 export function ajaxPut(url, data, cbSuccess, headers) {
+    console.log(headers);
     ajax(headers, url, "PUT", cbSuccess, data)
+}
+
+export function ajaxDelete(url, cbSuccess, headers) {
+    ajax(headers, url, "DELETE", cbSuccess)
 }

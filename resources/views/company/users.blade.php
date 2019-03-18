@@ -22,7 +22,7 @@
                                      <p>{{ session()->get('success') }}</p>
                                 </div>
                             @endif
-                            <form id="updateUserForm" action="" method="post" name="updateUserForm">
+                            <form id="updateUserForm" action="" method="POST" name="updateUserForm">
                                 @csrf
                                 <input type="hidden" name="_method" value="PUT">
 
@@ -64,10 +64,14 @@
                                         <i class="far fa-edit m-r-10"></i> Update</span>
                                     </button>
 
-                                    <button type="submit" class="btn btn-arh btn-md btn-block">
-                                        <i class="fas fa-user-times m-r-10"></i> Archive</span>
-                                    </button>
                                 </div>
+                            </form>
+
+                            <form method="POST" action="" id="archive-user">
+                                <button id="btn-archive-user" type="submit"
+                                        class="btn btn-arh btn-md btn-block d-flex justify-content-center">
+                                    <i class="fas fa-user-times m-r-10"></i> Archive</span>
+                                </button>
                             </form>
                         </div>
                     </div>

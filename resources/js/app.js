@@ -1,3 +1,5 @@
+import $ from "jquery";
+
 try {
     window.Popper = require('popper.js').default;
     window.$ = window.jQuery = require('jquery');
@@ -5,11 +7,11 @@ try {
 }
 
 import flashInit from './flash';
-import {validateUpdateUsers, fillDropDown, setFormFieldForUser} from './form_handlers';
-import {ajaxGet, ajaxPut, ajaxPost} from "./ajax_helpers";
+import {validateUpdateUsers, fillDropDown, setFormFieldForUser, addLoadingSpinner, afterHttpAction} from './form_handlers';
+import {ajaxGet, ajaxPut, ajaxDelete, ajaxPost} from "./ajax_helpers";
 
-window.baseUrl = window.location.origin;
 flashInit();
+window.baseUrl = window.location.origin;
 
 $(document).ready(function () {
     var form = $("#date-filters");
@@ -26,8 +28,9 @@ $(document).ready(function () {
             'Authorization': $('meta[name="api_token"]').attr('content')
         }
     }
-    var userSelect = $("#onChangeUser");
 
+    // ------------ SHOW USER INFO ------------
+    var userSelect = $("#onChangeUser");
     userSelect.change(function () {
         var id = $(this).val();
         var url = baseUrl + `/api/users/${id}`;
@@ -44,6 +47,21 @@ $(document).ready(function () {
         }
     })
 
+    // ------------ ARCHIVE USER ------------
+    var btnArchive = $("#btn-archive-user");
+    var archiveUser = $("#archive-user");
+    archiveUser.submit(function (e){
+        e.preventDefault();
+        var id = $("#onChangeUser").val();
+        var oldState = btnArchive.html();
+        addLoadingSpinner($("#btn-archive-user"));
+        ajaxDelete(`${baseUrl}/api/users/${id}`, function(msg) {
+            afterHttpAction(oldState, msg, $("#message-target"), $("#btn-archive-user"));
+            fillDropDown(headers, userSelect);
+        });
+    })
+
+    // ------------ UPDATE USER ------------
     var counter = 0;
     var updateUser = $("form[name='updateUserForm']");
     updateUser.submit(function(e) {
@@ -65,25 +83,16 @@ $(document).ready(function () {
             $("#message-target").flash(errors, {type: "warning", fade: 5000});
         } else {
             let message;
-            let old = $("#btn-update-user").html();
+            let oldState = $("#btn-update-user").html();
 
             const fn = () => {
                 if(counter == 2) {
-                    $("#message-target").flash(message, {type: "success", fade: 5000});
-                    $("#btn-update-user").html(old);
-                    $("#btn-update-user").attr('disabled', false);
+                    afterHttpAction(oldState, message, $("#message-target"), $("#btn-update-user"));
                     counter = 0;
                 }
             }
 
-            $("#btn-update-user").html(`<div class="semipolar-spinner" :style="spinnerStyle">
-                                            <div class="ring"></div>
-                                            <div class="ring"></div>
-                                            <div class="ring"></div>
-                                            <div class="ring"></div>
-                                            <div class="ring"></div>
-                                        </div>`);
-            $("#btn-update-user").attr('disabled', true);
+            addLoadingSpinner($("#btn-update-user"));
 
             ajaxPut(`${baseUrl}/api/users/${id}`, valid, function(msg) {
                 counter++;
@@ -98,6 +107,7 @@ $(document).ready(function () {
             });
         }
     })
+
 })
 
 

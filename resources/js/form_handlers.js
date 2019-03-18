@@ -1,5 +1,6 @@
 import {validateEmail, validateName, validatePassword, validateSelectBox} from "./validation";
 import {ajaxGet} from "./ajax_helpers";
+import $ from "jquery";
 
 export function validateUpdateUsers(valid, errors) {
     var form = $("form[name='updateUserForm']");
@@ -41,5 +42,22 @@ export function setFormFieldForUser(user) {
     $("#email").val(user.email);
     $('select[name="role"]').val(user.role.id);
     $('.user-status').html(user.user_status.name);
+}
+
+export function addLoadingSpinner(button) {
+    button.html(`<div class="semipolar-spinner" :style="spinnerStyle">
+                    <div class="ring"></div>
+                    <div class="ring"></div>
+                    <div class="ring"></div>
+                    <div class="ring"></div>
+                    <div class="ring"></div>
+                </div>`);
+    button.attr('disabled', true);
+}
+
+export function afterHttpAction(oldState, message, messageDiv, button) {
+    messageDiv.flash(message, {type: "success", fade: 5000});
+    button.html(oldState);
+    button.attr('disabled', false);
 }
 
