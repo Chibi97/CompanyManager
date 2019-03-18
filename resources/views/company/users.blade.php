@@ -3,9 +3,9 @@
 @section('content')
     <div class="section__content section__content--p30 manage-users">
         <div class="container-fluid">
-            <div class="row">
+            <div class="row update-wrapper">
 
-                <div class="the-card col-12 col-md-6 col-lg-4">
+                <div class="the-card col-12 col-md-6 col-lg-6">
                     <span class="user-status">Status</span>
                     <div class="au-card chart-percent-card">
                         <div id="message-target" class="au-card-inner">
@@ -73,7 +73,7 @@
                     </div>
                 </div>
 
-                <div class="col-12 col-md-6 col-lg-6">
+                <div class="col-12 col-md-4 col-lg-4 user-select-wrapper">
                     <meta name="api_token" content="{{ $token }}" />
                     <select data-selected="0" class="select-user" id="onChangeUser" name="users">
                         <option value="0">Select an employee</option>

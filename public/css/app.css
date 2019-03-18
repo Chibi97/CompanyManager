@@ -23,6 +23,28 @@
   font-size: 50px !important;
 }
 
+.manage-users .update-wrapper {
+  flex-direction: row;
+}
+
+@media (max-width: 767px) {
+  .manage-users .update-wrapper {
+    flex-direction: column-reverse;
+  }
+}
+
+.manage-users .update-wrapper .user-select-wrapper .select-user {
+  margin-bottom: 3em;
+  width: 100%;
+}
+
+@media (max-width: 767px) {
+  .manage-users .update-wrapper .user-select-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+}
+
 .manage-users .btn {
   color: white;
   margin: 1em 0;
@@ -68,10 +90,6 @@
   background: #4272d7;
   color: white;
   border-radius: 5px;
-}
-
-.manage-users .select-user {
-  width: 60%;
 }
 
 .header__navbar ul li button a {

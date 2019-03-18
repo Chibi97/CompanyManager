@@ -3,7 +3,6 @@
 
 <head>
     @include('meta')
-
 </head>
 
 <body>

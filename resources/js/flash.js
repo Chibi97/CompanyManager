@@ -1,7 +1,7 @@
 const showMessage = (message, type) => ($(`<div class="alert alert-${type}">${message}</div>`));
 
-function init(jQuery) {
-    jQuery.fn.flash = function (message, opts = {}) {
+function init() {
+    $.fn.flash = function (message, opts = {}) {
         let html = "";
         if(typeof message === 'object') {
             for(let elem in message) {
@@ -19,7 +19,5 @@ function init(jQuery) {
         }
 
     }
-
-
 }
 export default init;
