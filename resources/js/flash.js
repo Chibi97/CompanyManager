@@ -1,4 +1,14 @@
-const showMessage = (message, type) => ($(`<div class="alert alert-${type}">${message}</div>`));
+
+const showMessage = function(message, type) {
+    return $(`<div class="alert alert-${type}">
+          <!--<div class="d-flex justify-content-end">-->
+              <!--<button type="button" class="close" data-dismiss="alert">-->
+                  <!--<span>&times;</span>-->
+              <!--</button>-->
+          <!--</div>-->
+              ${message}
+      </div>`);
+}
 
 function init() {
     $.fn.flash = function (message, opts = {}) {
@@ -18,6 +28,9 @@ function init() {
             setTimeout(() => { div.fadeOut(1000) }, opts.fade)
         }
 
+        // if(opts.fixed) {
+        //     div.addClass('prettifyModal');
+        // }
     }
 }
 export default init;

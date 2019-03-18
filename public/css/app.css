@@ -235,6 +235,17 @@ select {
   overflow: auto;
 }
 
+.prettifyModal {
+  position: fixed;
+  z-index: 3;
+  text-align: center;
+  top: 40px;
+  left: 50%;
+  -webkit-transform: translate(-50%);
+          transform: translate(-50%);
+  width: 50%;
+}
+
 .dashboard-wrapper .stats-container {
   margin-bottom: 20px;
 }
