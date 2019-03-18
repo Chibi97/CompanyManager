@@ -12,7 +12,7 @@
             <div class="login-wrap">
                 <div class="login-content">
                     <div class="login-logo">
-                        <a href="#">
+                        <a href="{{ route('job.offers') }}">
                             <img src="images/icon/logo.png" alt="CoolAdmin">
                         </a>
                     </div>

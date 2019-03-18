@@ -8,10 +8,23 @@
                 <div class="the-card col-12 col-md-6 col-lg-4">
                     <span class="user-status">Status</span>
                     <div class="au-card chart-percent-card">
-                        <div class="au-card-inner">
-                            <form id="updateUserForm" action="#" method="post" name="updateUserForm">
+                        <div id="message-target" class="au-card-inner">
+                            @if ($errors->any() )
+                                <div class="alert alert-warning">
+                                    @foreach ($errors->all() as $error)
+                                        <p>{{ $error }}</p>
+                                    @endforeach
+                                </div>
+                            @endif
+
+                            @if(session()->has('success'))
+                                <div class="alert alert-success">
+                                     <p>{{ session()->get('success') }}</p>
+                                </div>
+                            @endif
+                            <form id="updateUserForm" action="" method="post" name="updateUserForm">
                                 @csrf
-                                {{ method_field('put') }}
+                                <input type="hidden" name="_method" value="PUT">
 
                                 <div class="form-group">
                                     <label for="fname" class="control-label mb-1">First name</label>
@@ -46,7 +59,8 @@
                                     </select>
                                 </div>
                                 <div>
-                                    <button type="submit" class="btn btn-edit btn-md btn-block">
+                                    <button id="btn-update-user" type="submit" class="btn btn-edit btn-md btn-block
+                                    d-flex justify-content-center">
                                         <i class="far fa-edit m-r-10"></i> Update</span>
                                     </button>
 

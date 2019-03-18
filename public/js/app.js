@@ -13092,14 +13092,20 @@ module.exports = g;
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _flash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./flash */ "./resources/js/flash.js");
 try {
   window.Popper = __webpack_require__(/*! popper.js */ "./node_modules/popper.js/dist/esm/popper.js").default;
   window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 } catch (e) {}
 
+
+Object(_flash__WEBPACK_IMPORTED_MODULE_0__["default"])($);
+var baseUrl = window.location.origin;
 $(document).ready(function () {
   var form = $("#date-filters");
   var dateSelect = $(".select-change");
@@ -13109,15 +13115,16 @@ $(document).ready(function () {
   dateSelect.on('input', function () {
     form.submit();
   });
+  var headers = {
+    headers: {
+      'Authorization': $('meta[name="api_token"]').attr('content')
+    }
+  };
   var userSelect = $("#onChangeUser");
+  fillDropDown(headers, userSelect);
   userSelect.change(function () {
     var id = $(this).val();
     var url = baseUrl + "/api/users/".concat(id);
-    var headers = {
-      headers: {
-        'Authorization': $('meta[name="api_token"]').attr('content')
-      }
-    };
 
     if ($(this).val() != 0) {
       ajaxGet(url, function (data) {
@@ -13134,13 +13141,15 @@ $(document).ready(function () {
       $('.user-status').html("Status");
     }
   });
-  var ajax = true;
+  var counter = 0;
   var updateUser = $("form[name='updateUserForm']");
   updateUser.submit(function (e) {
+    e.preventDefault();
     var errors = {};
     var valid = {};
     var id = $("#fname").data('id');
     var idSel = $("#role").val();
+    $('#updateUserForm').attr('action', "".concat(baseUrl, "/company/users/").concat(id));
     var str;
 
     if (idSel == 1) {
@@ -13150,24 +13159,41 @@ $(document).ready(function () {
     }
 
     if (!validateUpdateUsers(valid, errors)) {
-      e.preventDefault();
-      showErrors(errors, $(this));
-    } else if (ajax) {
-      e.preventDefault();
-      $(this).find('input, select, button').attr('disabled', true);
-      ajaxPut("/api/users/".concat(id, "/").concat(str), {}, function () {
-        ajax = false;
-        updateUser.submit();
+      $("#message-target").flash(errors, {
+        type: "warning",
+        fade: 3000
       });
+      showMessages(errors, updateUser, 'warning');
     } else {
-      $(this).find('input, select, button').attr('disabled', false);
+      var message;
+      var old = $("#btn-update-user").html();
+
+      var fn = function fn() {
+        if (counter == 2) {
+          $("#message-target").flash(message, {
+            type: "success",
+            fade: 3000
+          });
+          $("#btn-update-user").html(old);
+          $("#btn-update-user").attr('disabled', false);
+          counter = 0;
+        }
+      };
+
+      $("#btn-update-user").html("<div class=\"semipolar-spinner\" :style=\"spinnerStyle\">\n                                            <div class=\"ring\"></div>\n                                            <div class=\"ring\"></div>\n                                            <div class=\"ring\"></div>\n                                            <div class=\"ring\"></div>\n                                            <div class=\"ring\"></div>\n                                        </div>");
+      $("#btn-update-user").attr('disabled', true);
+      ajaxPut("".concat(baseUrl, "/api/users/").concat(id), valid, function (msg) {
+        counter++;
+        message = msg;
+        fn();
+      });
+      ajaxPut("".concat(baseUrl, "/api/users/").concat(id, "/").concat(str), {}, function () {
+        counter++;
+        fn();
+      });
     }
   });
 });
-
-function showErrors() {
-  alert('work in progress');
-}
 
 function validateUpdateUsers(valid, errors) {
   var validations = [];
@@ -13177,8 +13203,8 @@ function validateUpdateUsers(valid, errors) {
   var email = form.find('#email').val();
   var password = form.find('#pass').val();
   var role = form.find('#role').val();
-  validations.push(validateName(firstName, valid, errors, "firstName"));
-  validations.push(validateName(lastName, valid, errors, "lastName"));
+  validations.push(validateName(firstName, valid, errors, "first_name"));
+  validations.push(validateName(lastName, valid, errors, "last_name"));
   validations.push(validateEmail(email, valid, errors));
   validations.push(validatePassword(password, valid, errors));
   validations.push(validateSelectBox(role, valid, errors, "role", 2));
@@ -13192,6 +13218,7 @@ function validateName(name, valid, errors, inputName) {
     valid[inputName] = name;
     return true;
   } else {
+    // var name =
     errors[inputName] = "Name should have capital letters and must be at least 2 characters.";
     return false;
   }
@@ -13231,6 +13258,13 @@ function validateSelectBox(item, valid, errors, input, maxId) {
   }
 }
 
+function fillDropDown(headers, ddl) {
+  ajaxGet("".concat(baseUrl, "/api/users"), function (resp) {
+    resp.forEach(function (item) {// $('')
+    });
+  }, headers);
+}
+
 function setFormFieldForUser(user) {
   $('#updateUserForm').attr('action', "".concat(baseUrl, "/company/users/").concat(user.id));
   $('#fname').data('id', user.id);
@@ -13267,10 +13301,53 @@ function __ajax(headers, url, verb, cbSuccess, data) {
     success: cbSuccess,
     data: data,
     error: function error(xhr, statusText, msg) {
-      console.log(xhr.status, xhr.responseText);
+      console.log(xhr.status, msg);
     }
   });
 }
+
+/***/ }),
+
+/***/ "./resources/js/flash.js":
+/*!*******************************!*\
+  !*** ./resources/js/flash.js ***!
+  \*******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+var showMessage = function showMessage(message, type) {
+  return $("<div class=\"alert alert-".concat(type, "\">").concat(message, "</div>"));
+};
+
+function init(jQuery) {
+  jQuery.fn.flash = function (message) {
+    var opts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+    var html = "";
+
+    if (_typeof(message) === 'object') {
+      for (var elem in message) {
+        html += "<p>".concat(message[elem], "</p>");
+      }
+    } else {
+      html = message;
+    }
+
+    var div = showMessage(html, opts.type);
+    $(this).prepend(div);
+
+    if (opts.fade) {
+      setTimeout(function () {
+        div.fadeOut(1000);
+      }, opts.fade);
+    }
+  };
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (init);
 
 /***/ }),
 

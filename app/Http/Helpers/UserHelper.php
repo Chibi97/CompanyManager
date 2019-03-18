@@ -4,6 +4,7 @@ namespace App\Http\Helpers;
 
 use App\Http\Requests\StoreUsers;
 use App\Http\Requests\UpdateUser;
+use App\Models\Exception\RedirectException;
 use App\Models\User;
 
 class UserHelper
@@ -21,9 +22,12 @@ class UserHelper
         $this->model->email     = $request->input('email');
         $this->model->password  = $request->input('password');
 
-            return User::storeUserAndCompany($this->model->company, $this->model->firstName,
-                $this->model->lastName, $this->model->email,
-                $this->model->password);
+        return User::storeUserAndCompany($this->model->company,
+                                         $this->model->firstName,
+                                         $this->model->lastName,
+                                         $this->model->email,
+                                         $this->model->password
+        );
     }
 
     public function show(User $user)
@@ -51,6 +55,7 @@ class UserHelper
             }
         }
         return $user->updateUser($data);
+
     }
 
     public function promote(User $user)

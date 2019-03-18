@@ -4,6 +4,14 @@ try {
 } catch (e) {
 }
 
+import init from './flash';
+init($);
+
+var baseUrl = window.location.origin;
+
+
+
+
 $(document).ready(function () {
     var form = $("#date-filters");
     var dateSelect = $(".select-change");
@@ -14,15 +22,18 @@ $(document).ready(function () {
         form.submit()
     })
 
+    var headers = {
+        headers: {
+            'Authorization': $('meta[name="api_token"]').attr('content')
+        }
+    }
     var userSelect = $("#onChangeUser");
+    fillDropDown(headers, userSelect);
+
     userSelect.change(function () {
         var id = $(this).val();
         var url = baseUrl + `/api/users/${id}`;
-        var headers = {
-            headers: {
-                'Authorization': $('meta[name="api_token"]').attr('content')
-            }
-        }
+
 
         if($(this).val() != 0) {
             ajaxGet(url, (data) => { setFormFieldForUser(data); }, headers);
@@ -35,13 +46,15 @@ $(document).ready(function () {
         }
     })
 
-    var ajax = true;
+    var counter = 0;
     var updateUser = $("form[name='updateUserForm']");
     updateUser.submit(function(e) {
+        e.preventDefault();
         var errors = {};
         var valid  = {};
         var id = $("#fname").data('id');
         var idSel = $("#role").val();
+        $('#updateUserForm').attr('action', `${baseUrl}/company/users/${id}`);
 
         var str;
         if(idSel == 1) {
@@ -51,25 +64,43 @@ $(document).ready(function () {
         }
 
         if(!validateUpdateUsers(valid, errors)) {
-            e.preventDefault();
-            showErrors(errors, $(this));
-        } else if(ajax){
-            e.preventDefault();
-            $(this).find('input, select, button').attr('disabled', true);
-            ajaxPut(`/api/users/${id}/${str}`, {}, function() {
-                ajax = false;
-                updateUser.submit();
+            $("#message-target").flash(errors, {type: "warning", fade: 3000});
+            showMessages(errors, updateUser, 'warning');
+        } else {
+            let message;
+            let old = $("#btn-update-user").html();
+
+            const fn = () => {
+                if(counter == 2) {
+                    $("#message-target").flash(message, {type: "success", fade: 3000});
+                    $("#btn-update-user").html(old);
+                    $("#btn-update-user").attr('disabled', false);
+                    counter = 0;
+                }
+            }
+
+            $("#btn-update-user").html(`<div class="semipolar-spinner" :style="spinnerStyle">
+                                            <div class="ring"></div>
+                                            <div class="ring"></div>
+                                            <div class="ring"></div>
+                                            <div class="ring"></div>
+                                            <div class="ring"></div>
+                                        </div>`);
+            $("#btn-update-user").attr('disabled', true);
+
+            ajaxPut(`${baseUrl}/api/users/${id}`, valid, function(msg) {
+                counter++;
+                message = msg;
+                fn();
             });
 
-        } else {
-            $(this).find('input, select, button').attr('disabled', false);
+            ajaxPut(`${baseUrl}/api/users/${id}/${str}`, {}, function() {
+                counter++;
+                fn();
+            });
         }
     })
 })
-
-function showErrors() {
-    alert('work in progress');
-}
 
 function validateUpdateUsers(valid, errors) {
     var validations = [];
@@ -80,8 +111,8 @@ function validateUpdateUsers(valid, errors) {
     var password  = form.find('#pass').val();
     var role      = form.find('#role').val();
 
-    validations.push(validateName(firstName, valid, errors, "firstName"));
-    validations.push(validateName(lastName, valid, errors, "lastName"));
+    validations.push(validateName(firstName, valid, errors, "first_name"));
+    validations.push(validateName(lastName, valid, errors, "last_name"));
     validations.push(validateEmail(email, valid, errors));
     validations.push(validatePassword(password, valid, errors));
     validations.push(validateSelectBox(role, valid, errors, "role", 2));
@@ -94,6 +125,7 @@ function validateName(name, valid, errors, inputName) {
         valid[inputName] = name;
         return true;
     } else {
+       // var name =
         errors[inputName] = "Name should have capital letters and must be at least 2 characters.";
         return false;
     }
@@ -132,6 +164,15 @@ function validateSelectBox(item, valid, errors, input, maxId) {
     }
 }
 
+function fillDropDown(headers, ddl) {
+    ajaxGet(`${baseUrl}/api/users`, (resp) => {
+        resp.forEach((item) => {
+           // $('')
+        });
+
+    }, headers);
+}
+
 function setFormFieldForUser(user) {
     $('#updateUserForm').attr('action', `${baseUrl}/company/users/${user.id}`);
     $('#fname').data('id', user.id);
@@ -168,7 +209,7 @@ function __ajax(headers, url, verb, cbSuccess, data) {
         success: cbSuccess,
         data: data,
         error: function (xhr, statusText, msg) {
-            console.log(xhr.status, xhr.responseText);
+            console.log(xhr.status, msg);
         }
     })
 }

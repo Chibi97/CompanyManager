@@ -47,6 +47,7 @@ abstract class StoreRequest extends FormRequest
         return [
             'password.regex' => 'A password must contain min 8 characters, at least one upper case' .
                 'at least one down case, and at least one special character',
+            'role.regex' => 'You must choose either Employee or a Boss'
         ];
     }
 

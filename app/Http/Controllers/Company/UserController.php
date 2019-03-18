@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Company;
 
 use App\Http\Helpers\UserHelper;
 use App\Http\Requests\UpdateUser;
+use App\Models\Exception\RedirectException;
 use App\Models\User;
 use App\Models\Role;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
@@ -35,7 +35,7 @@ class UserController extends Controller
         $users = $this->helper->index();
         $fullNames = User::getUserNames($users);
         $roles = Role::get()->pluck('name', 'id');
-        $token =  session()->get('user')->company->api_token;
+        $token =  $this->user->company->api_token;
 
         return view('company.users', compact('fullNames', 'token', 'roles'));
     }
@@ -43,7 +43,7 @@ class UserController extends Controller
     public function update(UpdateUser $request, User $user)
     {
         $this->helper->update($user, $request);
-        return redirect()->back()->withInput(['message' => 'Success']);
+        return redirect()->back()->with('success', 'User is successfully updated!');
     }
 
     public function destroy(User $user)

@@ -4,4 +4,4 @@
 manage all his/hers employees, give them tasks, see their status while they're working on those etc etc. Employees 
 can accept/deny tasks, see their statistics, help colleges on their tasks..In short, organizational platform to 
 companies. Project is made with Laravel framework, and it interacts with other 2 API's to make one unique application
- for full company management. Testing deployment.
+ for full company management.
