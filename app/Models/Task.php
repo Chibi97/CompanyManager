@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\DTOs\TaskDTO;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
@@ -9,17 +10,17 @@ use Illuminate\Support\Facades\DB;
 
 class Task extends Model
 {
+    private $model;
+
+    public function setModel(TaskDTO $task)
+    {
+        $this->model = $task;
+    }
+
     protected $fillable = [
         'name', 'description', 'start_date', 'end_date', 'count'
     ];
 
-//    public function difficulty() {
-//        return $this->belongsTo(TaskDifficulty::class);
-//    }
-
-//    public function status() {
-//        return $this->belongsTo(TaskStatus::class);
-//    }
 
     public function comments()
     {
@@ -107,6 +108,27 @@ class Task extends Model
 
 
         return $tasks;
+    }
+
+    public static function storeTask($name, $description, $start, $end, $numOfEmployees, $priority)
+    {
+        $status = TaskStatus::where('name', 'On hold')->first();
+        $priority = TaskPriority::where('name', $priority)->first();
+
+        $start = Carbon::createFromFormat('Y-m-d H:i:s', $start);
+        $end = Carbon::createFromFormat('Y-m-d H:i:s', $end);
+
+        $task = Task::make([
+            'name' => $name,
+            'description' => $description,
+            'start_date' => $start,
+            'end_date' => $end,
+            'count' => $numOfEmployees
+        ]);
+
+        $task->taskStatus()->associate($status);
+        $task->taskPriority()->associate($priority);
+        $task->save();
     }
 
 }

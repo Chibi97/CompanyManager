@@ -4,7 +4,6 @@ namespace App\Http\Helpers;
 
 use App\Http\Requests\StoreUsers;
 use App\Http\Requests\UpdateUser;
-use App\Models\Exception\RedirectException;
 use App\Models\User;
 
 class UserHelper

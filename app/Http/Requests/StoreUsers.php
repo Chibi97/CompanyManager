@@ -2,11 +2,11 @@
 
 namespace App\Http\Requests;
 
-class StoreUsers extends StoreRequest
+class StoreUsers extends StoreUsersRequest
 {
     protected function rulesOverrides()
     {
-        $regex = StoreRequest::SPECIAL_CHARACTERS_PASS;
+        $regex = StoreUsersRequest::SPECIAL_CHARACTERS_PASS;
         return [
             'email' => ['required', 'unique:users'],
             'company' => ['required', 'min:3', 'max:50'],

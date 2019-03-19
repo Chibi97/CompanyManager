@@ -2,12 +2,12 @@
 
 namespace App\Http\Requests;
 
-class UpdateUser extends StoreRequest
+class UpdateUser extends StoreUsersRequest
 {
 
     protected function rulesOverrides()
     {
-        $regex = StoreRequest::SPECIAL_CHARACTERS_PASS;
+        $regex = StoreUsersRequest::SPECIAL_CHARACTERS_PASS;
         $rules = [];
 
         if($this->input('password')) {
