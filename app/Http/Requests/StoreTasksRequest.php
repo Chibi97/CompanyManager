@@ -15,12 +15,14 @@ abstract class StoreTasksRequest extends FormRequest
     protected function baseRules()
     {
         return [
-          'name' => ["min:3", "max:50"],
-          'description' => ["min:10", "max:190"],
-          'start_date' => ["bail" ,"date_format:Y-m-d H:i:s", "before_or_equal:end_date"],
-          'end_date' => ["bail" ,"date_format:Y-m-d H:i:s", "after_or_equal:start_date"],
-          'count' => ["numeric", "min:1", "max:20"],
-          'priority' => ["alpha", "min:2", "max:30"]
+            'name' => ["min:3", "max:50"],
+            'description' => ["min:10", "max:190"],
+            'start_date' => ["bail" ,"date_format:Y-m-d H:i:s", "before_or_equal:end_date"],
+            'end_date' => ["bail" ,"date_format:Y-m-d H:i:s", "after_or_equal:start_date"],
+            'count' => ["numeric", "min:1", "max:20"],
+            'priority' => ["alpha", "min:2", "max:30"],
+            'employees' => ["array","min:1"],
+            'employees.*' => ["numeric","distinct", "min:1"]
         ];
     }
 

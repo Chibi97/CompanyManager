@@ -13,7 +13,9 @@ class StoreTask extends StoreTasksRequest
             'start_date' => ["required"],
             'end_date' => ["required"],
             'count' => ["required"],
-            'priority' => ["required"]
+            'priority' => ["required"],
+            'employees' => ["required"],
+            'employees.*' => ["required"]
         ];
     }
 

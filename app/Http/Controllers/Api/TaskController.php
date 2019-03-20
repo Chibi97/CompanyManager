@@ -17,13 +17,16 @@ class TaskController extends Controller
     {
         $this->helper = $helper;
         $this->middleware("CheckApiToken");
-//        $this->middleware("Before");
+        $this->middleware("Before");
     }
 
     public function before(Request $request)
     {
-        $userIds = CompanyManager::getInstance()->retrieve('company')->users->pluck('id')->toArray();
-        $employees = $request->input('employees');
+        $company = CompanyManager::getInstance()->retrieve('company');
+        if($employees = $request->input('employees')) {
+            return $company->canCompanyDoAction($employees);
+        }
+        return false;
     }
 
     public function index()
@@ -56,7 +59,6 @@ class TaskController extends Controller
     {
         //
     }
-
 
     public function destroy(Task $task)
     {

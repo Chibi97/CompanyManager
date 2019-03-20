@@ -1,4 +1,7 @@
 import $ from "jquery";
+import 'select2';
+var moment = require('moment');
+moment().format();
 
 try {
     window.Popper = require('popper.js').default;
@@ -7,10 +10,8 @@ try {
 }
 
 import flashInit from './flash';
-import {validateUpdateUsers, fillDropDown, setFormFieldForUser, addLoadingSpinner, afterHttpAction} from './form_handlers';
+import {validateUpdateUsers, fillDropDown, setFormFieldForUser, addLoadingSpinner, afterHttpAction, validateCreateTask} from './form_handlers';
 import {ajaxGet, ajaxPut, ajaxDelete, ajaxPost} from "./ajax_helpers";
-import 'select2';
-
 flashInit();
 window.baseUrl = window.location.origin;
 
@@ -31,19 +32,27 @@ $(document).ready(function () {
     }
 
     // ------------ ADD NEW TASK ------------
-    if(window.location.pathname == "company/tasks/create") {
-        document.querySelector("#startDate").valueAsDate = new Date();
-        document.querySelector("#endDate").valueAsDate = new Date();
-    }
-
-    var selectBoxUsers = $('.selectMultipleUsers');
-
+    var btnAddTask = $("#btn-add-task");
+    var selectBoxUsers = $('#selectMultipleUsers');
     selectBoxUsers.select2();
+
     var addTaskForm = $('#addNewTask');
     addTaskForm.submit(function (e) {
         e.preventDefault();
-        var emps = selectBoxUsers.val();
-
+        var valid = {};
+        var errors = {};
+        if(!validateCreateTask(valid,errors)) {
+            $("#message-target").flash(errors, {type: "warning", fade: 5000});
+        } else {
+            console.log(headers);
+            var oldState = btnAddTask.html();
+            var url = baseUrl + `/api/tasks`;
+            addLoadingSpinner($("#btn-archive-user"));
+            ajaxPost(url, valid, (resp) => {
+                console.log(resp);
+                afterHttpAction(oldState, resp, $("#message-target"), btnAddTask);
+            }, headers);
+        }
     })
 
 
@@ -52,7 +61,6 @@ $(document).ready(function () {
     userSelect.change(function () {
         var id = $(this).val();
         var url = baseUrl + `/api/users/${id}`;
-
 
         if($(this).val() != 0) {
             ajaxGet(url, (data) => { setFormFieldForUser(data); }, headers);

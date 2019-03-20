@@ -18,6 +18,21 @@ class Company extends Model
         });
     }
 
+    public function canCompanyDoAction(array $employees)
+    {
+        $userIds = $this->users->pluck('id')->toArray();
+
+        list($canPass, $cannotPass) = collect($employees)->partition(
+            function($emp) use($userIds) {
+            foreach($userIds as $id) {
+                if($emp == $id)
+                    return $emp;
+            }
+        });
+
+        return $cannotPass->isEmpty();
+    }
+
     protected function generateHash()
     {
         $random_bytes = md5(uniqid(mt_rand(), true));
