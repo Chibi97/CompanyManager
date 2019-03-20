@@ -14,7 +14,7 @@ class BeforeAction
         $controller = $route->getController();
 
         if(!$controller->before($request)) {
-            throw new UnauthorizedException("Not autohrized for this action");
+            throw new UnauthorizedException("Not authorized for this action");
         }
 
         return $next($request);

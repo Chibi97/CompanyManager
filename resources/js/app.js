@@ -9,6 +9,7 @@ try {
 import flashInit from './flash';
 import {validateUpdateUsers, fillDropDown, setFormFieldForUser, addLoadingSpinner, afterHttpAction} from './form_handlers';
 import {ajaxGet, ajaxPut, ajaxDelete, ajaxPost} from "./ajax_helpers";
+import 'select2';
 
 flashInit();
 window.baseUrl = window.location.origin;
@@ -28,6 +29,23 @@ $(document).ready(function () {
             'Authorization': $('meta[name="api_token"]').attr('content')
         }
     }
+
+    // ------------ ADD NEW TASK ------------
+    if(window.location.pathname == "company/tasks/create") {
+        document.querySelector("#startDate").valueAsDate = new Date();
+        document.querySelector("#endDate").valueAsDate = new Date();
+    }
+
+    var selectBoxUsers = $('.selectMultipleUsers');
+
+    selectBoxUsers.select2();
+    var addTaskForm = $('#addNewTask');
+    addTaskForm.submit(function (e) {
+        e.preventDefault();
+        var emps = selectBoxUsers.val();
+
+    })
+
 
     // ------------ SHOW USER INFO ------------
     var userSelect = $("#onChangeUser");
@@ -53,12 +71,17 @@ $(document).ready(function () {
     archiveUser.submit(function (e){
         e.preventDefault();
         var id = $("#onChangeUser").val();
-        var oldState = btnArchive.html();
-        addLoadingSpinner($("#btn-archive-user"));
-        ajaxDelete(`${baseUrl}/api/users/${id}`, function(msg) {
-            afterHttpAction(oldState, msg, $("#message-target"), $("#btn-archive-user"));
-            fillDropDown(headers, userSelect);
-        });
+        if(id != 0) {
+            var oldState = btnArchive.html();
+            addLoadingSpinner($("#btn-archive-user"));
+            ajaxDelete(`${baseUrl}/api/users/${id}`, function(msg) {
+                afterHttpAction(oldState, msg, $("#message-target"), $("#btn-archive-user"));
+                fillDropDown(headers, userSelect);
+            });
+        } else {
+            $("#message-target").flash("Please select an employee", {type: "danger", fade: 5000});
+        }
+
     })
 
     // ------------ UPDATE USER ------------

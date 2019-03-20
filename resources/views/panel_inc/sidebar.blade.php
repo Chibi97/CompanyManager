@@ -43,9 +43,9 @@
                         </a>
                     </li>
 
-                    <li class="{{ Request::route()->named('') ? 'active' : '' }} has-sub">
-                        <a href="{{ route('users.index') }}">
-                            <i class="fas fa-folder-plus"></i>Create a tasks
+                    <li class="{{ Request::route()->named('tasks.create') ? 'active' : '' }} has-sub">
+                        <a href="{{ route('tasks.create') }}">
+                            <i class="fas fa-folder-plus"></i>Create a task
                         </a>
                     </li>
 

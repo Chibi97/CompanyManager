@@ -17,3 +17,4 @@ mix.sourceMaps()
 
 mix.js('resources/vendor/bundle.js', 'public/js')
     .sass('resources/vendor/bundle.scss', 'public/css');
+

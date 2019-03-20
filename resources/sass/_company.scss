@@ -33,15 +33,15 @@
   }
 
   .the-card {
-    @media(min-width: 992px) {
-      flex: 0 0 55%;
-      max-width: 55%;
-    }
-
-    @media(min-width: 1400px) {
-      flex: 0 0 33.3333%;
-      max-width: 33.3333%;
-    }
+    //@media(min-width: 992px) {
+    //  flex: 0 0 55%;
+    //  max-width: 55%;
+    //}
+    //
+    //@media(min-width: 1400px) {
+    //  flex: 0 0 33.3333%;
+    //  max-width: 33.3333%;
+    //}
 
     .form-control {
       border-radius: 5px !important;

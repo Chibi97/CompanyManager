@@ -14,7 +14,37 @@
 @import 'home';
 @import 'animations';
 
-select {
+.select2-container {
+  width:408px !important;
+  margin: .5em 0;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+  color:white !important;
+}
+
+.select2-results__options li {
+  font-size: 1rem;
+}
+
+.select2-container--default .select2-selection--multiple {
+  border: 1px solid #ced4da !important;
+}
+
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+  border: 1px solid #ced4da !important;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+  background-color: $primary;
+  color: white;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+  color: white;
+}
+
+.prettySelect {
   border: none;
   outline: none;
   padding-left: 10px;
@@ -79,6 +109,7 @@ select {
         padding: 0 !important;
         height: 178.6px;
         .overview__inner {
+          padding: 30px;
           padding: 30px;
           span, strong {
             font-size: 18px;

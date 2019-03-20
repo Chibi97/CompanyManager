@@ -3,11 +3,27 @@
 namespace App\Http\Controllers\Company;
 
 use App\Models\Task;
+use App\Models\TaskPriority;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class TaskController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware("Before");
+    }
+
+    public function before()
+    {
+        $user = session()->get('user');
+        $user->refresh();
+        $users = $user->company->users;
+        $result = $users->whereIn('id', $user->id);
+        return $result->isNotEmpty();
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +31,6 @@ class TaskController extends Controller
      */
     public function index()
     {
-        return view('company.index');
     }
 
     /**
@@ -25,7 +40,10 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
+        $priorities = TaskPriority::all()->pluck('name');
+        $user = session()->get('user');
+        $employees = $user->getUserNames();
+        return view('company.tasks', compact('priorities', 'employees'));
     }
 
     /**

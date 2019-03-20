@@ -79,7 +79,7 @@
 
                 <div class="col-12 col-md-4 col-lg-4 user-select-wrapper">
                     <meta name="api_token" content="{{ $token }}" />
-                    <select data-selected="0" class="select-user" id="onChangeUser" name="users">
+                    <select data-selected="0" class="select-user prettySelect" id="onChangeUser" name="users">
                         <option value="0">Select an employee</option>
                         @foreach($fullNames as $id => $user)
                             <option value="{{ $id }}"> {{ $user }} </option>

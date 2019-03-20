@@ -11,5 +11,6 @@ class TaskDTO
     private $endDate;
     private $numOfEmployees;
     private $priority;
+    private $employees;
 
 }

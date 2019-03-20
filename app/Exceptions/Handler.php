@@ -6,6 +6,7 @@ use App\Models\Exception\RedirectException;
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
+use Illuminate\Validation\UnauthorizedException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -57,6 +58,11 @@ class Handler extends ExceptionHandler
                 ->withErrors($exception->getErrors())
                 ->withInput();
         }
+
+        if($exception instanceof UnauthorizedException && $request->is('api/*')) {
+            return response(["message" => "Unauthorized for this action"], 403);
+        }
+
 
         return parent::render($request, $exception);
     }

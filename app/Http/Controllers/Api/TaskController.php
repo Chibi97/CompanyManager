@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Helpers\CompanyManager;
 use App\Http\Helpers\TaskHelper;
 use App\Http\Requests\StoreTask;
 use App\Models\Task;
@@ -16,11 +17,13 @@ class TaskController extends Controller
     {
         $this->helper = $helper;
         $this->middleware("CheckApiToken");
-//      $this->middleware("Before")->only('show', 'update', 'destroy');
+//        $this->middleware("Before");
     }
 
     public function before(Request $request)
     {
+        $userIds = CompanyManager::getInstance()->retrieve('company')->users->pluck('id')->toArray();
+        $employees = $request->input('employees');
     }
 
     public function index()

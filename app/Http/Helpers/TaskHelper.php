@@ -26,6 +26,7 @@ class TaskHelper
     {
         $startDate = Carbon::createFromFormat('Y-m-d H:i:s', $request->input('start_date'));
         $endDate = Carbon::createFromFormat('Y-m-d H:i:s', $request->input('end_date'));
+
         if(($startDate->year < 2038 && $endDate->year < 2038) && ($startDate->year > 1969 && $endDate->year > 1969)) {
             $this->model->name = $request->input('name');
             $this->model->description = $request->input('description');
@@ -33,13 +34,15 @@ class TaskHelper
             $this->model->endDate = $endDate;
             $this->model->numOfEmployees = $request->input('count');
             $this->model->priority = $request->input('priority');
+            $this->model->employees = $request->input('employees');
 
             return Task::storeTask($this->model->name,
                 $this->model->description,
                 $this->model->startDate,
                 $this->model->endDate,
                 $this->model->numOfEmployees,
-                $this->model->priority
+                $this->model->priority,
+                $this->model->employees
             );
         } else {
             throw new UnprocessableEntityHttpException("Bad request");

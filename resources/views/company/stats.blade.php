@@ -10,7 +10,7 @@
                         <form id="date-filters" action="{{route('company.dashboard')}}" method="GET" class="d-flex">
                             <div class="f-group">
                                 <label>Month: </label>
-                                <select data-selected="{{ $month }}" class="select-change" name="month"
+                                <select data-selected="{{ $month }}" class="prettySelect select-change" name="month"
                                         id="SelectLm" class="form-control-sm form-control">
                                     @foreach($months as $i => $month)
                                         <option value="{{ $i }}"> {{ $month }}</option>
@@ -20,7 +20,8 @@
 
                             <div class="f-group ml-4">
                                 <label>Year: </label>
-                                <select data-selected="{{ $year }}" class="select-change" name="year" id="SelectLm"
+                                <select data-selected="{{ $year }}" class="prettySelect select-change" name="year"
+                                        id="SelectLm"
                                         class="form-control-sm form-control">
                                     @foreach($years as $year)
                                         <option> {{ $year }}</option>

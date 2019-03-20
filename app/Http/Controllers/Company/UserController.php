@@ -32,8 +32,8 @@ class UserController extends Controller
 
     public function index()
     {
-        $users = $this->helper->index();
-        $fullNames = User::getUserNames($users);
+        $this->helper->index();
+        $fullNames = session()->get('user')->getUserNames();
         $roles = Role::get()->pluck('name', 'id');
         $token =  $this->user->company->api_token;
 
