@@ -18,8 +18,14 @@ class TaskHelper
         $this->model = new Task();
     }
 
-    public function index(Request $request)
+    public function index()
     {
+        if(session()->has('user')) {
+            $company = session()->get('user')->company;
+        } else {
+            $company = CompanyManager::getInstance()->retrieve('company');
+        }
+        return $company->companyTasks();
     }
 
     public function store(StoreTask $request)
@@ -45,18 +51,25 @@ class TaskHelper
                 $this->model->employees
             );
         } else {
-            throw new UnprocessableEntityHttpException("Bad request");
+            throw new UnprocessableEntityHttpException();
         }
 
     }
 
     public function show(Task $task)
     {
-
+        return $task->load('taskStatus', 'taskPriority', 'users');
     }
 
     public function update(Task $task, Request $request)
     {
+        $data = $request->all();
+        foreach ($data as $key => $val) {
+            if(!$val) {
+                unset($data[$key]);
+            }
+        }
+        return $task->updateTask($data);
 
     }
 

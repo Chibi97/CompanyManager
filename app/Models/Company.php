@@ -18,7 +18,17 @@ class Company extends Model
         });
     }
 
-    public function canCompanyDoAction(array $employees)
+    public function companyTasks()
+    {
+        $coUsers = $this->users;
+        $tasks = $coUsers->map(function ($user) {
+            return $user->tasks->load('users');
+        });
+
+        return $tasks->flatten()->unique('id')->flatten();
+    }
+
+    public function canCompanyAddTask(array $employees)
     {
         $userIds = $this->users->pluck('id')->toArray();
 

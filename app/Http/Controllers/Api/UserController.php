@@ -41,8 +41,7 @@ class UserController extends Controller
 
     public function index()
     {
-        $users = $this->helper->index();
-        return response($users, 200);
+        return $users = $this->helper->index();
     }
 
     public function update(User $user, UpdateUser $request)

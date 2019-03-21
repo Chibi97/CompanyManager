@@ -26,7 +26,10 @@ Route::put('/users/{user}/promote', 'Api\UserController@promote');
 Route::put('/users/{user}/demote', 'Api\UserController@demote');
 Route::delete('/users/{user}', 'Api\UserController@destroy');
 
+Route::get('/tasks/', 'Api\TaskController@index');
+Route::get('/tasks/{task}', 'Api\TaskController@show');
 Route::post('/tasks', 'Api\TaskController@store');
+Route::put('/tasks/{task}', 'Api\TaskController@update');
 
 Route::fallback( function() {
     return response()->json(['message' => 'Resource not found'], 404);

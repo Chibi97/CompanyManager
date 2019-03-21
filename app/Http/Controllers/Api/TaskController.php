@@ -17,21 +17,25 @@ class TaskController extends Controller
     {
         $this->helper = $helper;
         $this->middleware("CheckApiToken");
-        $this->middleware("Before");
+        $this->middleware("Before")->except('index');
     }
 
     public function before(Request $request)
     {
         $company = CompanyManager::getInstance()->retrieve('company');
         if($employees = $request->input('employees')) {
-            return $company->canCompanyDoAction($employees);
+            return $company->canCompanyAddTask($employees);
+        }
+
+        if($task = $request->route('task')) {
+            return $task->isTaskFromCompany($company);
         }
         return false;
     }
 
     public function index()
     {
-        //
+        return $this->helper->index();
     }
 
 
@@ -52,12 +56,13 @@ class TaskController extends Controller
 
     public function show(Task $task)
     {
-        //
+        return $this->helper->show($task);
     }
 
-    public function update(Request $request, Task $task)
+    public function update(Task $task, Request $request)
     {
-        //
+        $this->helper->update($task, $request);
+        return response(["message" => "Updated!"], 200);
     }
 
     public function destroy(Task $task)

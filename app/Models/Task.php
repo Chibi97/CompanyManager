@@ -29,7 +29,7 @@ class Task extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class)->withPivot('is_accepted');
     }
 
     public function taskStatus()
@@ -44,6 +44,18 @@ class Task extends Model
     public function isStatus($check)
     {
         return $this->taskStatus->name == $check;
+    }
+
+    public function isTaskFromCompany(Company $company)
+    {
+        $taskUsers = $this->users;
+        $result = $taskUsers->map(function ($user) use ($company) {
+            if($user->company->id == $company->id) {
+                return true;
+            }
+        });
+
+       return !$result->contains(null);
     }
 
     public static function getStartYearsForTasks(Company $company)
@@ -139,6 +151,32 @@ class Task extends Model
                 ]);
         });
 
+    }
+
+    public function updateTask($data)
+    {
+        DB::transaction(function() use ($data) {
+            $status = TaskStatus::where('name', $data['status'])->first();
+            $priority = TaskPriority::where('name', $data['priority'])->first();
+            $this->fill($data);
+            $this->taskStatus()->associate($status);
+            $this->taskPriority()->associate($priority);
+            $this->save();
+            $users = $this->users->pluck('id');
+
+            $sync_arr = [];
+            collect($data['employees'])
+                ->filter(function($id) use ($users) { return !$users->contains($id); })
+                ->values()
+                ->each(function($id) use (&$sync_arr) {
+                    $sync_arr[$id] = ["is_accepted" => 0];
+                });
+
+            dd($sync_arr);
+
+
+            //$this->users()->sync($sync_arr);
+        });
     }
 
 }
