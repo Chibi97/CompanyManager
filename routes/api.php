@@ -30,6 +30,7 @@ Route::get('/tasks/', 'Api\TaskController@index');
 Route::get('/tasks/{task}', 'Api\TaskController@show');
 Route::post('/tasks', 'Api\TaskController@store');
 Route::put('/tasks/{task}', 'Api\TaskController@update');
+Route::delete('/tasks/{task}', 'Api\TaskController@destroy');
 
 Route::fallback( function() {
     return response()->json(['message' => 'Resource not found'], 404);

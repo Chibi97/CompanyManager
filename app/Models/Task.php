@@ -4,12 +4,18 @@ namespace App\Models;
 
 use App\Models\DTOs\TaskDTO;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\QueryException;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 class Task extends Model
 {
+    use SoftDeletes;
+
     private $model;
 
     public function setModel(TaskDTO $task)
@@ -29,7 +35,7 @@ class Task extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class)->withPivot('is_accepted');
+        return $this->belongsToMany(User::class);
     }
 
     public function taskStatus()
@@ -156,26 +162,57 @@ class Task extends Model
     public function updateTask($data)
     {
         DB::transaction(function() use ($data) {
-            $status = TaskStatus::where('name', $data['status'])->first();
-            $priority = TaskPriority::where('name', $data['priority'])->first();
+
+            if(isset($data['status'])) {
+                try {
+                    $status = TaskStatus::where('name', $data['status'])->first();
+                    $this->taskStatus()->associate($status);
+                } catch(QueryException $e) {
+                    throw new BadRequestHttpException();
+                }
+            }
+
+            if(isset($data['priority'])) {
+                try {
+                    $priority = TaskPriority::where('name', $data['priority'])->first();
+                    $this->taskPriority()->associate($priority);
+                } catch(QueryException $e) {
+                    throw new BadRequestHttpException();
+                }
+            }
+
             $this->fill($data);
-            $this->taskStatus()->associate($status);
-            $this->taskPriority()->associate($priority);
             $this->save();
-            $users = $this->users->pluck('id');
 
-            $sync_arr = [];
-            collect($data['employees'])
-                ->filter(function($id) use ($users) { return !$users->contains($id); })
-                ->values()
-                ->each(function($id) use (&$sync_arr) {
-                    $sync_arr[$id] = ["is_accepted" => 0];
-                });
+            if(isset($data['employees'])) {
+                $assignedUsers = $this->users->pluck('id');
+                $syncArr = [];
+                foreach($data['employees'] as $employee) {
+                    if($assignedUsers->contains($employee)) {
+                        $exist = User::find($employee);
+                        foreach($exist->tasks as $task) {
+                            $syncArr[$employee] = ['is_accepted' => $task->pivot->is_accepted,
+                                'created_at' => $task->pivot->created_at,
+                                'updated_at' => Carbon::now()
+                            ];
+                        }
+                    } else {
+                        $syncArr[$employee] = ['is_accepted' => 0,
+                            'created_at' => Carbon::now(),
+                            'updated_at' => Carbon::now()
+                        ];
+                    }
+                }
+                 $this->users()->sync($syncArr);
+            }
+        });
+    }
 
-            dd($sync_arr);
-
-
-            //$this->users()->sync($sync_arr);
+    public function deleteTask()
+    {
+        DB::transaction(function() {
+            $this->users()->detach();
+            $this->delete();
         });
     }
 

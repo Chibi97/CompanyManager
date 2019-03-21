@@ -5,9 +5,12 @@ namespace App\Http\Controllers\Api;
 use App\Http\Helpers\CompanyManager;
 use App\Http\Helpers\TaskHelper;
 use App\Http\Requests\StoreTask;
+use App\Http\Requests\UpdateTask;
 use App\Models\Task;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\HttpKernel\Exception\UnprocessableEntityHttpException;
 
 class TaskController extends Controller
@@ -59,14 +62,21 @@ class TaskController extends Controller
         return $this->helper->show($task);
     }
 
-    public function update(Task $task, Request $request)
+    public function update(Task $task, UpdateTask $request)
     {
-        $this->helper->update($task, $request);
-        return response(["message" => "Updated!"], 200);
+        try {
+            $this->helper->update($task, $request);
+            return response(["message" => "Updated!"], 200);
+        } catch(\Exception $e) {
+            return response(["error" => "Bad request! Please provide valid information (especially for status and priority)."],
+                400);
+        }
+
     }
 
     public function destroy(Task $task)
     {
-        //
+        $this->helper->destroy($task);
+        return response(["message" => "Task successfully deleted"], 200);
     }
 }

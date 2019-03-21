@@ -4,6 +4,7 @@ namespace App\Http\Helpers;
 
 
 use App\Http\Requests\StoreTask;
+use App\Http\Requests\UpdateTask;
 use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -61,7 +62,7 @@ class TaskHelper
         return $task->load('taskStatus', 'taskPriority', 'users');
     }
 
-    public function update(Task $task, Request $request)
+    public function update(Task $task, UpdateTask $request)
     {
         $data = $request->all();
         foreach ($data as $key => $val) {
@@ -75,7 +76,7 @@ class TaskHelper
 
     public function destroy(Task $task)
     {
-
+        $task->deleteTask();
     }
 
 

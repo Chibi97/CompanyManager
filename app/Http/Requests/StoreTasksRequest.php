@@ -20,7 +20,7 @@ abstract class StoreTasksRequest extends FormRequest
             'start_date' => ["bail" ,"date_format:Y-m-d H:i:s", "before_or_equal:end_date"],
             'end_date' => ["bail" ,"date_format:Y-m-d H:i:s", "after_or_equal:start_date"],
             'count' => ["numeric", "min:1", "max:20"],
-            'priority' => ["alpha", "min:2", "max:30"],
+            'priority' => ["regex:/^[a-zA-Z\s]+$/", "min:2", "max:30"],
             'employees' => ["array","min:1"],
             'employees.*' => ["numeric","distinct", "min:1"]
         ];
@@ -41,7 +41,7 @@ abstract class StoreTasksRequest extends FormRequest
     final public function messages()
     {
         return [
-            "priority.alpha" => "Priority should be one of these: Low, Medium, High, Really high"
+            "priority.regex" => "Priority should be one of these: Low, Medium, High, Really high"
         ];
     }
 
