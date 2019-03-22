@@ -1,4 +1,4 @@
-import {validateEmail, validateName, validatePassword, validateSelectBox, validateSimpleField, validateNumber, validateMultiSelectBox, validateDate} from "./validation";
+import {validateEmail, validateName, validatePassword, validateSelectBox, validateSimpleField, validateNumber, validateMultiSelectBox, validateDate, validateSelectBoxWithWords} from "./validation";
 import {ajaxGet} from "./ajax_helpers";
 import $ from "jquery";
 
@@ -27,15 +27,13 @@ export function validateCreateTask(valid, errors) {
     var endDate   = form.find('#endDate').val();
     var employees = form.find('#selectMultipleUsers').val();
     var priority  = form.find('#priority').val();
-    console.log(employees);
 
     validateSimpleField(name, valid, errors, "name", 3,50);
     validateSimpleField(desc, valid, errors, "description", 10,100);
-    validateSelectBox(priority, valid, errors, "priority");
+    validateSelectBoxWithWords(priority, valid, errors, "priority");
     validateNumber(count, valid, errors);
     validateMultiSelectBox(employees, valid, errors, "employees");
-    validateDate(startDate, valid, errors, "start_date");
-    validateDate(endDate, valid, errors, "end_date");
+    validateDate(startDate, endDate, valid, errors);
     return Object.keys(errors).length == 0;
 }
 

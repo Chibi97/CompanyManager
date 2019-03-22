@@ -130,13 +130,8 @@ class Task extends Model
 
     public static function storeTask($name, $description, $start, $end, $numOfEmployees, $priority, $employees)
     {
-        \DB::transaction(function () use($name, $description, $start, $end, $numOfEmployees, $priority, $employees) {
-            $status = TaskStatus::where('name', 'On hold')->first();
-            $priority = TaskPriority::where('name', $priority)->first();
-
-            $start = Carbon::createFromFormat('Y-m-d H:i:s', $start);
-            $end = Carbon::createFromFormat('Y-m-d H:i:s', $end);
-
+        DB::beginTransaction();
+        try {
             $task = Task::make([
                 'name' => $name,
                 'description' => $description,
@@ -145,8 +140,11 @@ class Task extends Model
                 'count' => $numOfEmployees
             ]);
 
+            $status = TaskStatus::where('name', 'On hold')->first();
+            $priority = TaskPriority::where('name', $priority)->first();
             $task->taskStatus()->associate($status);
             $task->taskPriority()->associate($priority);
+
             $task->save();
 
             $task->users()->attach($employees,
@@ -155,8 +153,13 @@ class Task extends Model
                     "created_at" => Carbon::now(),
                     "updated_at" => Carbon::now()
                 ]);
-        });
 
+        } catch(QueryException $e) {
+            DB::rollBack();
+            throw new BadRequestHttpException();
+        }
+
+        DB::commit();
     }
 
     public function updateTask($data)

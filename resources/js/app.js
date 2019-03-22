@@ -12,8 +12,14 @@ try {
 import flashInit from './flash';
 import {validateUpdateUsers, fillDropDown, setFormFieldForUser, addLoadingSpinner, afterHttpAction, validateCreateTask} from './form_handlers';
 import {ajaxGet, ajaxPut, ajaxDelete, ajaxPost} from "./ajax_helpers";
+import {validateSelectBoxWithWords} from "./validation";
 flashInit();
 window.baseUrl = window.location.origin;
+window.headers = {
+    headers: {
+        'Authorization': $('meta[name="api_token"]').attr('content')
+    }
+}
 
 $(document).ready(function () {
     var form = $("#date-filters");
@@ -24,12 +30,6 @@ $(document).ready(function () {
     dateSelect.on('input', function () {
         form.submit()
     })
-
-    var headers = {
-        headers: {
-            'Authorization': $('meta[name="api_token"]').attr('content')
-        }
-    }
 
     // ------------ ADD NEW TASK ------------
     var btnAddTask = $("#btn-add-task");
@@ -44,12 +44,10 @@ $(document).ready(function () {
         if(!validateCreateTask(valid,errors)) {
             $("#message-target").flash(errors, {type: "warning", fade: 5000});
         } else {
-            console.log(headers);
             var oldState = btnAddTask.html();
             var url = baseUrl + `/api/tasks`;
             addLoadingSpinner($("#btn-archive-user"));
             ajaxPost(url, valid, (resp) => {
-                console.log(resp);
                 afterHttpAction(oldState, resp, $("#message-target"), btnAddTask);
             }, headers);
         }
@@ -85,7 +83,7 @@ $(document).ready(function () {
             ajaxDelete(`${baseUrl}/api/users/${id}`, function(msg) {
                 afterHttpAction(oldState, msg, $("#message-target"), $("#btn-archive-user"));
                 fillDropDown(headers, userSelect);
-            });
+            }, headers);
         } else {
             $("#message-target").flash("Please select an employee", {type: "danger", fade: 5000});
         }
@@ -96,7 +94,7 @@ $(document).ready(function () {
     var counter = 0;
     var updateUser = $("form[name='updateUserForm']");
     updateUser.submit(function(e) {
-        e.preventDefault();
+       e.preventDefault();
         var errors = {};
         var valid  = {};
         var id = $("#fname").data('id');
@@ -130,12 +128,12 @@ $(document).ready(function () {
                 message = msg;
                 fn();
                 fillDropDown(headers, userSelect);
-            });
+            }, headers);
 
             ajaxPut(`${baseUrl}/api/users/${id}/${str}`, {}, function() {
                 counter++;
                 fn();
-            });
+            }, headers);
         }
     })
 

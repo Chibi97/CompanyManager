@@ -32,6 +32,8 @@ Route::post('/tasks', 'Api\TaskController@store');
 Route::put('/tasks/{task}', 'Api\TaskController@update');
 Route::delete('/tasks/{task}', 'Api\TaskController@destroy');
 
+Route::get('/task-priorities', 'Api\TaskPriorityController@index');
+
 Route::fallback( function() {
     return response()->json(['message' => 'Resource not found'], 404);
 });

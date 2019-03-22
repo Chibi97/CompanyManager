@@ -14,8 +14,8 @@ function init() {
     $.fn.flash = function (message, opts = {}) {
         let html = "";
         if(typeof message === 'object') {
-            for(let elem in message) {
-                html += `<p>${message[elem]}</p>`;
+            for(let msg in message) {
+                html += `<p>${ message[msg] }</p>`;
             }
         } else {
             html = message;

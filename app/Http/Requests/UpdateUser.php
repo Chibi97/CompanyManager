@@ -14,8 +14,10 @@ class UpdateUser extends StoreUsersRequest
             $rules['password'] = ["regex:$regex"];
         }
 
-        if($this->input('role')) {
-            $rules['role'] = ["regex:/^[1|2]$/"];
+        if(!$this->is('api/*')) {
+            if($this->input('role') || $this->input('role') == "") {
+                $rules['role'] = ["regex:/^[1|2]$/"];
+            }
         }
         return $rules;
     }

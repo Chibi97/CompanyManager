@@ -1,8 +1,6 @@
 import $ from 'jquery';
 
-function ajax(headers, url, verb, cbSuccess, data) {
-    var data = data || {};
-
+function ajax(headers, url, verb, cbSuccess, data, async = true) {
     if(headers) {
         $.ajaxSetup(headers);
     }
@@ -15,12 +13,13 @@ function ajax(headers, url, verb, cbSuccess, data) {
         data: data,
         error: function (xhr, statusText, msg) {
             console.log(xhr.status, msg);
-        }
+        },
+        async: async
     })
 }
 
-export function ajaxGet(url, cbSuccess, headers) {
-    ajax(headers, url, "GET", cbSuccess);
+export function ajaxGet(url, cbSuccess, headers, async) {
+    ajax(headers, url, "GET", cbSuccess, {}, async);
 }
 
 export function ajaxPost(url, data, cbSuccess, headers) {
@@ -28,7 +27,6 @@ export function ajaxPost(url, data, cbSuccess, headers) {
 }
 
 export function ajaxPut(url, data, cbSuccess, headers) {
-    console.log(headers);
     ajax(headers, url, "PUT", cbSuccess, data)
 }
 

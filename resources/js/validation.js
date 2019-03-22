@@ -1,3 +1,4 @@
+import {ajaxGet} from "./ajax_helpers";
 var moment = require('moment');
 moment().format();
 
@@ -30,6 +31,21 @@ export function validatePassword(pass, valid, errors) {
     }
 
 }
+
+export function validateSelectBoxWithWords(field, valid, errors, input) {
+    ajaxGet(baseUrl + '/api/task-priorities', (resp) => {
+        var names = [];
+        resp.forEach(function ($elem) {
+            names.push($elem.name);
+        })
+        if(names.includes(field)) {
+            valid[input] = field;
+        } else {
+            errors[input] = `You must choose an existing item in the ${input} select box.`;
+        }
+    }, headers, false);
+}
+
 
 export function validateSelectBox(item, valid, errors, input, maxId = 1) {
     if(item <= 0 || item > maxId) {
@@ -71,13 +87,36 @@ export function validateMultiSelectBox(array, valid, errors, input) {
     }
 }
 
-export function validateDate(date, valid, errors, input) {
-    date = moment(date, "YYYY-MM-DD HH:mm:ss");
-    if(date.isValid()) {
-        date = moment(date).format('YYYY-MM-DD HH:mm:ss');
-        valid[input] = date;
-    } else {
-        errors[input] = "Insert a valid date in format MM/DD/YYYY HH:mm"
-    }
+function formatDate(date) {
+    return moment(date).format('YYYY-MM-DD HH:mm:ss');
+}
 
+function isDateValid(date) {
+    date = moment(date, "YYYY-MM-DD HH:mm:ss");
+    return date.isValid();
+}
+
+function isDateAfterSpecDate(startDate, endDate) {
+    return moment(endDate).isSameOrAfter(startDate)
+}
+
+function formatDateResponse(date, valid, errors, input, invalidMessage) {
+    if(date = formatDate(date)) {
+        valid[input] = date;
+    } else errors['date'] = invalidMessage;
+}
+
+export function validateDate(startDate, endDate, valid, errors) {
+    var invalidMessage = 'Insert a valid date in format MM/DD/YYYY HH:mm.';
+
+    if(isDateValid(startDate) && isDateValid(endDate)) {
+       if(!isDateAfterSpecDate(startDate, endDate)) {
+           errors['date'] = 'End-Date must occur AFTER Start-Date!';
+       } else {
+          formatDateResponse(startDate, valid, errors, 'start_date', invalidMessage);
+          formatDateResponse(endDate, valid, errors, 'end_date', invalidMessage);
+       }
+    } else {
+        errors['date'] = invalidMessage;
+    }
 }
