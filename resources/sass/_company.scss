@@ -25,7 +25,7 @@
     border-radius: 5px !important;
   }
   .btn-arh {
-    background: #e06c6b;
+    background: $danger;
   }
 
   .btn-edit {
@@ -61,7 +61,52 @@
       border-radius: 5px;
     }
   }
+} // manage users --- end
 
+.company-tasks {
+  .card {
+    border-radius: 22px !important;
 
+    .list-group {
+      list-style-type: none;
+    }
+
+    .card-header {
+      padding: 2em;
+    }
+
+    .text-light {
+      font-size: 20px;
+    }
+
+    .icon-tally {
+      font-size: 20px;
+    }
+  }
+
+  .card-header:first-child {
+    border-radius: unset !important;
+    border-top-left-radius: 20px !important;
+    border-top-right-radius: 20px !important;
+  }
+
+  .card > .list-group:last-child .list-group-item:last-child {
+     border-radius: unset !important;
+     border-bottom-right-radius: 20px !important;
+     border-bottom-left-radius: 20px !important;
+  }
+
+  list-group-item {
+    border-radius: unset !important;
+    padding: 2em !important;
+  }
+
+  .list-group-flush:last-child .list-group-item {
+    -webkit-border-radius: unset !important;
+    -moz-border-radius: unset !important;
+    border-radius: unset !important;
+    border-right: unset !important;
+    border-left: unset !important;
+  }
 }
 

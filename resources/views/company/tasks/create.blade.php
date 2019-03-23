@@ -7,44 +7,53 @@
             <div class="row update-wrapper">
                 <div class="the-card col-12 col-md-7 col-lg-7">
                     <div class="au-card chart-percent-card">
-                        <form id="addNewTask" action="" method="POST">
+                        <form id="{{ strtolower($label) }}Task" action="" method="POST">
                             @csrf
-                            <input type="hidden" name="_method" value="PUT">
 
                             <div class="form-group">
                                 <label for="tname" class="control-label mb-1">Name</label>
                                 <input id="tname" data-id="0" name="name" type="text" class="form-control
-                                        cc-exp" value="" >
+                                        cc-exp"
+                                       value="{{ isset($task) ? $task->name : ""}}">
                             </div>
 
                             <div class="form-group">
                                 <label for="desc" class="control-label mb-1">Description</label>
-                                <textarea id="desc" name="description" class="form-control"></textarea>
+                                <textarea id="desc" name="description" class="form-control">{{ isset($task) ?
+                                $task->description : ""}}</textarea>
                             </div>
 
                             <div class="form-group">
                                 <label for="startDate" class="control-label mb-1">Start date</label>
                                 <input id="startDate" name="start_date" type="datetime-local" class="form-control"
-                                       value="{{ $defaultDate }}">
+                                       value="{{ isset($task) ? $startDateFormatted : $defaultDate }}">
                             </div>
 
                             <div class="form-group">
                                 <label for="endDate" class="control-label mb-1">End date</label>
                                 <input id="endDate" name="end_date" type="datetime-local" class="form-control"
-                                       value="{{ $defaultDate }}">
+                                       value="{{ isset($task) ? $endDateFormatted : $defaultDate }}">
                             </div>
 
                             <div class="form-group">
                                 <label for="count" class="control-label mb-1">Number of employees</label>
-                                <input id="count" name="count" type="number" min="1" class="form-control" value="1">
+                                <input id="count" name="count" type="number" min="1" class="form-control" value="{{
+                                isset($task) ? $task->count : 1 }}">
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label mb-1">Assign employees to the task</label>
                                 <select id="selectMultipleUsers" multiple style="width: 75%"
                                         name="employees[]">
+                                    @isset($task)
+                                        {{ $selectedEmployees = $task->users->pluck('id')  }}
+                                    @endisset
                                     @foreach($employees as $id => $employee)
-                                        <option value="{{ $id }}">{{ $employee }}</option>
+                                        @if(isset($selectedEmployees) && $selectedEmployees->contains($id))
+                                            <option value="{{ $id  }}" selected>{{ $employee  }}</option>
+                                        @else
+                                            <option value="{{ $id }}">{{ $employee }}</option>
+                                        @endif
                                     @endforeach
                                 </select>
                             </div>
@@ -53,17 +62,24 @@
                             <div class="form-group">
                                 <label for="priority" class="control-label mb-1">Priority</label>
                                 <select name="priority" id="priority" class="form-control ml-0">
+                                    @isset($task)
+                                        {{ $selectedPriority = $task->taskPriority->name  }}
+                                    @endisset
                                     @foreach($priorities as $priority)
-                                        <option>{{ $priority }}</option>
+                                        @if(isset($selectedPriority))
+                                            <option value="{{ $priority }}">{{ $selectedPriority }}</option>
+                                        @else
+                                            <option value="{{ $priority }}">{{ $priority }}</option>
+                                        @endif
                                     @endforeach
                                 </select>
                             </div>
 
                             <div>
-                                <button id="btn-add-task" type="submit" class="btn btn-edit btn-md btn-block
-                                d-flex justify-content-center">
+                                <button id="btn-{{ strtolower($label) }}-task" type="submit" class="btn btn-edit btn-md
+                                btn-block d-flex justify-content-center">
                                     <meta name="api_token" content="{{ $token }}" />
-                                    <i class="fas fa-folder-plus m-r-10 mt-1"></i> Add</span>
+                                    <i class="fas fa-folder-plus m-r-10 mt-1"></i> {{ $label }}</span>
                                 </button>
                             </div>
                         </form>

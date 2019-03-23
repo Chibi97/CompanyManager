@@ -59,10 +59,6 @@ class Handler extends ExceptionHandler
                 ->withInput();
         }
 
-        if($exception instanceof UnauthorizedException && $request->is('api/*')) {
-            return response(["message" => "Unauthorized for this action"], 403);
-        }
-
         return parent::render($request, $exception);
     }
 }

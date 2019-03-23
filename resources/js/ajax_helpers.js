@@ -1,6 +1,6 @@
 import $ from 'jquery';
 
-function ajax(headers, url, verb, cbSuccess, data, async = true) {
+function ajax(headers, url, verb, cbSuccess, data) {
     if(headers) {
         $.ajaxSetup(headers);
     }
@@ -17,8 +17,8 @@ function ajax(headers, url, verb, cbSuccess, data, async = true) {
     });
 }
 
-export function ajaxGet(url, cbSuccess, headers, async) {
-    ajax(headers, url, "GET", cbSuccess, {}, async);
+export function ajaxGet(url, cbSuccess, headers) {
+    ajax(headers, url, "GET", cbSuccess, {});
 }
 
 export function ajaxPost(url, data, cbSuccess, headers) {

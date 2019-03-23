@@ -14,6 +14,10 @@
 @import 'home';
 @import 'animations';
 
+.lst-none {
+  list-style-type: none;
+}
+
 .select2-container {
   width:408px !important;
   margin: .5em 0;
@@ -67,6 +71,27 @@
 
 .info-color {
   color: $primary;
+}
+
+.info-bg {
+  background: $primary;
+  color:white;
+}
+
+.info-bg:hover {
+  background: #384cd7;
+  color:white;
+}
+
+
+.danger-bg {
+  background: $danger;
+  color:white;
+}
+
+.danger-bg:hover {
+  background: crimson;
+  color:white;
 }
 
 .page-container {

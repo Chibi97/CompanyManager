@@ -19,7 +19,7 @@ export function validateUpdateUsers(valid, errors) {
 }
 
 export function validateCreateTask(valid, errors) {
-    var form  = $('#addNewTask');
+    var form  = $('#addTask');
     var name  = form.find('#tname').val();
     var desc  = form.find('#desc').val();
     var count = form.find('#count').val();
@@ -28,13 +28,24 @@ export function validateCreateTask(valid, errors) {
     var employees = form.find('#selectMultipleUsers').val();
     var priority  = form.find('#priority').val();
 
-    validateSimpleField(name, valid, errors, "name", 3,50);
-    validateSimpleField(desc, valid, errors, "description", 10,190);
-    validateSelectBoxWithWords(priority, valid, errors, "priority");
-    validateNumber(count, valid, errors);
-    validateMultiSelectBox(employees, valid, errors, "employees");
-    validateDate(startDate, endDate, valid, errors);
-    return Object.keys(errors).length == 0;
+    const done = () => {
+        return Object.keys(errors).length == 0;
+    };
+
+    return new Promise((resolve) => {
+        validateSimpleField(name, valid, errors, "name", 3,50);
+        validateSimpleField(desc, valid, errors, "description", 10,190);
+        validateSelectBoxWithWords(priority, valid, errors, "priority", () => {
+            validateNumber(count, valid, errors);
+            validateMultiSelectBox(employees, valid, errors, "employees");
+            validateDate(startDate, endDate, valid, errors);
+            resolve(done());
+        });
+    });
+}
+
+export function validateUpdateTask(valid, errors) {
+
 }
 
 export function fillDropDown(headers, ddl) {

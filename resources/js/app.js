@@ -10,7 +10,7 @@ try {
 }
 
 import flashInit from './flash';
-import {validateUpdateUsers, fillDropDown, setFormFieldForUser, addLoadingSpinner, afterHttpAction, validateCreateTask} from './form_handlers';
+import {validateUpdateUsers, fillDropDown, setFormFieldForUser, addLoadingSpinner, afterHttpAction, validateCreateTask, validateUpdateTask} from './form_handlers';
 import {ajaxGet, ajaxPut, ajaxDelete, ajaxPost} from "./ajax_helpers";
 import {validateSelectBoxWithWords} from "./validation";
 flashInit();
@@ -36,22 +36,29 @@ $(document).ready(function () {
     var selectBoxUsers = $('#selectMultipleUsers');
     selectBoxUsers.select2();
 
-    var addTaskForm = $('#addNewTask');
+    var addTaskForm = $('#addTask');
     addTaskForm.submit(function (e) {
         e.preventDefault();
         var valid = {};
         var errors = {};
-        if(!validateCreateTask(valid,errors)) {
-            $("#message-target").flash(errors, {type: "warning", fade: 5000});
-        } else {
-            var oldState = btnAddTask.html();
-            var url = baseUrl + `/api/tasks`;
-            addLoadingSpinner($("#btn-archive-user"));
-            ajaxPost(url, valid, (resp) => {
-                afterHttpAction(oldState, resp, $("#message-target"), btnAddTask);
-            }, headers);
-        }
+
+        validateCreateTask(valid, errors)
+            .then((formIsValid) => {
+                if(!formIsValid) {
+                    $("#message-target").flash(errors, {type: "warning", fade: 5000});
+                } else {
+                    var oldState = btnAddTask.html();
+                    var url = baseUrl + `/api/tasks`;
+                    addLoadingSpinner($("#btn-archive-user"));
+                    ajaxPost(url, valid, (resp) => {
+                        afterHttpAction(oldState, resp, $("#message-target"), btnAddTask);
+                    }, headers);
+                }
+            });
     })
+
+    // ------------ UPDATE A TASK ------------
+    var updateTaskForm = $('#updateTask');
 
 
     // ------------ SHOW USER INFO ------------

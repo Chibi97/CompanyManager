@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Routing\Route;
 use Illuminate\Validation\UnauthorizedException;
 
@@ -14,7 +15,7 @@ class BeforeAction
         $controller = $route->getController();
 
         if(!$controller->before($request)) {
-            throw new UnauthorizedException("Not authorized for this action");
+            throw new AuthorizationException("Not authorized for this action");
         }
 
         return $next($request);

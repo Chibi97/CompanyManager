@@ -32,18 +32,20 @@ export function validatePassword(pass, valid, errors) {
 
 }
 
-export function validateSelectBoxWithWords(field, valid, errors, input) {
+export function validateSelectBoxWithWords(field, valid, errors, input, callback) {
     ajaxGet(baseUrl + '/api/task-priorities', (resp) => {
         var names = [];
         resp.forEach(function ($elem) {
             names.push($elem.name);
+            console.log(field);
         })
         if(names.includes(field)) {
             valid[input] = field;
         } else {
             errors[input] = `You must choose an existing item in the ${input} select box.`;
         }
-    }, headers, false);
+        callback();
+    }, headers);
 }
 
 

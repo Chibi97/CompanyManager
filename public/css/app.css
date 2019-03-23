@@ -52,7 +52,7 @@
 }
 
 .manage-users .btn-arh {
-  background: #e06c6b;
+  background: #e05e5b;
 }
 
 .manage-users .btn-edit {
@@ -76,6 +76,49 @@
   background: #4272d7;
   color: white;
   border-radius: 5px;
+}
+
+.company-tasks .card {
+  border-radius: 22px !important;
+}
+
+.company-tasks .card .list-group {
+  list-style-type: none;
+}
+
+.company-tasks .card .card-header {
+  padding: 2em;
+}
+
+.company-tasks .card .text-light {
+  font-size: 20px;
+}
+
+.company-tasks .card .icon-tally {
+  font-size: 20px;
+}
+
+.company-tasks .card-header:first-child {
+  border-radius: unset !important;
+  border-top-left-radius: 20px !important;
+  border-top-right-radius: 20px !important;
+}
+
+.company-tasks .card > .list-group:last-child .list-group-item:last-child {
+  border-radius: unset !important;
+  border-bottom-right-radius: 20px !important;
+  border-bottom-left-radius: 20px !important;
+}
+
+.company-tasks list-group-item {
+  border-radius: unset !important;
+  padding: 2em !important;
+}
+
+.company-tasks .list-group-flush:last-child .list-group-item {
+  border-radius: unset !important;
+  border-right: unset !important;
+  border-left: unset !important;
 }
 
 .header__navbar ul li button a {
@@ -196,6 +239,10 @@
   }
 }
 
+.lst-none {
+  list-style-type: none;
+}
+
 .select2-container {
   width: 408px !important;
   margin: 0.5em 0;
@@ -244,6 +291,26 @@
 
 .info-color {
   color: #4272d7;
+}
+
+.info-bg {
+  background: #4272d7;
+  color: white;
+}
+
+.info-bg:hover {
+  background: #384cd7;
+  color: white;
+}
+
+.danger-bg {
+  background: #e05e5b;
+  color: white;
+}
+
+.danger-bg:hover {
+  background: crimson;
+  color: white;
 }
 
 .page-container {

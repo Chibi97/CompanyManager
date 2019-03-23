@@ -37,8 +37,8 @@
                         </a>
                     </li>
 
-                    <li class="{{ Request::route()->named('') ? 'active' : '' }} has-sub">
-                        <a href="{{ route('users.index') }}">
+                    <li class="{{ Request::route()->named('tasks.index') ? 'active' : '' }} has-sub">
+                        <a href="{{ route('tasks.index') }}">
                             <i class="fas fa-tasks"></i>Tasks
                         </a>
                     </li>
