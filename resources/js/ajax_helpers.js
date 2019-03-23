@@ -13,9 +13,8 @@ function ajax(headers, url, verb, cbSuccess, data, async = true) {
         data: data,
         error: function (xhr, statusText, msg) {
             console.log(xhr.status, msg);
-        },
-        async: async
-    })
+        }
+    });
 }
 
 export function ajaxGet(url, cbSuccess, headers, async) {

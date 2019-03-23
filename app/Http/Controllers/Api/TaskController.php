@@ -25,7 +25,7 @@ class TaskController extends Controller
     {
         $company = CompanyManager::getInstance()->retrieve('company');
         if($employees = $request->input('employees')) {
-            return $company->canCompanyAddTask($employees);
+            return $company->canCompanyManageTask($employees);
         }
 
         if($task = $request->route('task')) {
@@ -63,9 +63,9 @@ class TaskController extends Controller
     {
         try {
             $this->helper->update($task, $request);
-            return response(["message" => "Updated!"], 200);
+            return response(["message" => "Successfully updated task!"], 200);
         } catch(\Exception $e) {
-            return response(["error" => "Bad request! Please provide valid information (especially for status and priority)."],
+            return response(["error" => "Please provide valid information (especially for status and priority)."],
                 400);
         }
     }

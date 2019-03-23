@@ -58,10 +58,10 @@ class Task extends Model
         $result = $taskUsers->map(function ($user) use ($company) {
             if($user->company->id == $company->id) {
                 return true;
-            }
+            } else return false;
         });
 
-       return !$result->contains(null);
+       return $result->contains(true);
     }
 
     public static function getStartYearsForTasks(Company $company)

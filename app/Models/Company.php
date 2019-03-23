@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Helpers\CompanyManager;
 use Illuminate\Database\Eloquent\Model;
 
 class Company extends Model
@@ -28,19 +29,9 @@ class Company extends Model
         return $tasks->flatten()->unique('id')->flatten();
     }
 
-    public function canCompanyAddTask(array $employees)
+    public function canCompanyManageTask($employees)
     {
-        $userIds = $this->users->pluck('id')->toArray();
-
-        list($canPass, $cannotPass) = collect($employees)->partition(
-            function($emp) use($userIds) {
-            foreach($userIds as $id) {
-                if($emp == $id)
-                    return $emp;
-            }
-        });
-
-        return $cannotPass->isEmpty();
+        return $this->users()->whereIn('id', $employees)->count() === count($employees);
     }
 
     protected function generateHash()

@@ -9,6 +9,7 @@ use App\Http\Requests\UpdateUser;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 class UserController extends Controller
 {
@@ -18,7 +19,7 @@ class UserController extends Controller
     {
         $this->helper = $helper;
         $this->middleware("CheckApiToken")->except('store');
-        $this->middleware("Before")->only('show', 'update', 'destroy');
+        $this->middleware("Before")->except('index', 'store');
     }
 
     public function before(Request $request)

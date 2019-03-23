@@ -2,11 +2,15 @@
 
 namespace App\Http\Requests;
 
+use App\Models\TaskPriority;
 use Illuminate\Foundation\Http\FormRequest;
 
 
 abstract class StoreTasksRequest extends FormRequest
 {
+    protected const NAME_REGEX = '/^.{3,50}[^;<>]$/';
+    protected const DESC_REGEX = '/^.{10,100}[^;<>]$/';
+
     final public function authorize()
     {
         return true;
@@ -15,10 +19,10 @@ abstract class StoreTasksRequest extends FormRequest
     protected function baseRules()
     {
         return [
-            'name' => ["min:3", "max:50"],
-            'description' => ["min:10", "max:190"],
-            'start_date' => ["bail" ,"date_format:Y-m-d H:i:s", "before_or_equal:end_date"],
-            'end_date' => ["bail" ,"date_format:Y-m-d H:i:s", "after_or_equal:start_date"],
+            'name' => ["min:3", "max:50", "regex:" . self::NAME_REGEX],
+            'description' => ["min:10", "max:190", "regex:" . self::DESC_REGEX],
+            'start_date' => ["date_format:Y-m-d H:i:s"],
+            'end_date' => ["date_format:Y-m-d H:i:s"],
             'count' => ["numeric", "min:1", "max:20"],
             'priority' => ["regex:/^[a-zA-Z\s]+$/", "min:2", "max:30"],
             'employees' => ["array","min:1"],
@@ -35,15 +39,26 @@ abstract class StoreTasksRequest extends FormRequest
                 $base[$field][] = $rule;
             }
         }
+
         return $base;
     }
 
     final public function messages()
     {
+        return self::baseMessages() + $this->messagesOverrides();
+    }
+
+    public function baseMessages()
+    {
+        $priorities = TaskPriority::all()->pluck('name')->implode(', ');
+
         return [
-            "priority.regex" => "Priority should be one of these: Low, Medium, High, Really high"
+            "name.regex" => "Name should not include these special chars: ;<>",
+            "description.regex" => "Description should not include these special chars: ;<>",
+            "priority.regex" => "Priority should be one of these: $priorities"
         ];
     }
 
     abstract protected function rulesOverrides();
+    abstract protected function messagesOverrides();
 }

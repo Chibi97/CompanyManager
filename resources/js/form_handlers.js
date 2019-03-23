@@ -29,7 +29,7 @@ export function validateCreateTask(valid, errors) {
     var priority  = form.find('#priority').val();
 
     validateSimpleField(name, valid, errors, "name", 3,50);
-    validateSimpleField(desc, valid, errors, "description", 10,100);
+    validateSimpleField(desc, valid, errors, "description", 10,190);
     validateSelectBoxWithWords(priority, valid, errors, "priority");
     validateNumber(count, valid, errors);
     validateMultiSelectBox(employees, valid, errors, "employees");

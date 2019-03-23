@@ -63,7 +63,6 @@ class Handler extends ExceptionHandler
             return response(["message" => "Unauthorized for this action"], 403);
         }
 
-
         return parent::render($request, $exception);
     }
 }
