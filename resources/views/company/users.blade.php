@@ -9,26 +9,13 @@
                     <span class="user-status">Status</span>
                     <div class="au-card chart-percent-card">
                         <div id="message-target" class="au-card-inner">
-                            @if ($errors->any() )
-                                <div class="alert alert-warning">
-                                    @foreach ($errors->all() as $error)
-                                        <p>{{ $error }}</p>
-                                    @endforeach
-                                </div>
-                            @endif
-
-                            @if(session()->has('success'))
-                                <div class="alert alert-success">
-                                     <p>{{ session()->get('success') }}</p>
-                                </div>
-                            @endif
-                            <form id="updateUserForm" action="" method="POST" name="updateUserForm">
+                            <form id="updateUserForm" data-page='users' action="" method="POST" name="updateUserForm">
                                 @csrf
                                 <input type="hidden" name="_method" value="PUT">
 
                                 <div class="form-group">
                                     <label for="fname" class="control-label mb-1">First name</label>
-                                    <input id="fname" data-id="0" name="first_name" type="text" class="form-control
+                                    <input id="fname" name="first_name" type="text" class="form-control
                                             cc-exp" value="" >
                                 </div>
 
@@ -47,7 +34,7 @@
                                 <div class="form-group">
                                     <label for="pass" class="control-label mb-1">Password</label>
                                     <input id="pass" name="password" type="password" class="form-control"
-                                           value="">
+                                           value="" data-id="0">
                                 </div>
 
                                 <div class="form-group">
@@ -68,8 +55,9 @@
                             </form>
 
                             <form method="POST" action="" id="archive-user">
-                                <button id="btn-archive-user" type="submit"
-                                        class="btn btn-md btn-block danger-bg d-flex justify-content-center">
+                                <button type="button" class="btn btn-md btn-block danger-bg
+                                d-flex justify-content-center" id="btnOpenModalUser" data-toggle="modal"
+                                        data-target="#confirmDeleteModal" data-id="0">
                                     <i class="fas fa-user-times m-r-10"></i> Archive</span>
                                 </button>
                             </form>
@@ -85,6 +73,10 @@
                             <option value="{{ $id }}"> {{ $user }} </option>
                         @endforeach
                     </select>
+
+                    <div class="alert alert-warning m-l-15 w-100">
+                        <p><strong>Warning:</strong> Deleting a user will delete all of his/hers tasks.</p>
+                    </div>
                 </div>
             </div>
         </div>

@@ -9,7 +9,7 @@ use Illuminate\Foundation\Http\FormRequest;
 abstract class StoreTasksRequest extends FormRequest
 {
     protected const NAME_REGEX = '/^.{3,50}[^;<>]$/';
-    protected const DESC_REGEX = '/^.{10,100}[^;<>]$/';
+    protected const DESC_REGEX = '/^.{10,190}[^;<>]$/';
 
     final public function authorize()
     {

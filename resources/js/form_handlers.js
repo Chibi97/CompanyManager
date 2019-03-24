@@ -62,7 +62,7 @@ export function fillDropDown(headers, ddl) {
 
 export function setFormFieldForUser(user) {
     $('#updateUserForm').attr('action', `${baseUrl}/company/users/${user.id}`);
-    $('#fname').data('id', user.id);
+    $('#btnOpenModalUser').data('id', user.id);
     $("#fname").val(user.first_name);
     $("#lname").val(user.last_name);
     $("#email").val(user.email);

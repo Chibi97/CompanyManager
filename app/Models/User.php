@@ -183,7 +183,8 @@ class User extends Authenticatable
     public function deleteUser()
     {
         DB::transaction(function() {
-            return $this->delete();
+            $this->delete();
+            $this->tasks()->detach();
         });
     }
 

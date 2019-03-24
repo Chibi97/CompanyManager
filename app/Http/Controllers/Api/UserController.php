@@ -42,7 +42,7 @@ class UserController extends Controller
 
     public function index()
     {
-        return $users = $this->helper->index();
+        return $this->helper->index();
     }
 
     public function update(User $user, UpdateUser $request)
@@ -73,7 +73,4 @@ class UserController extends Controller
         $user = User::getUserAndRole($request->input('email'), $request->input('password'));
         return response($user,200);
     }
-
-
-
 }

@@ -62,15 +62,9 @@
                             <div class="form-group">
                                 <label for="priority" class="control-label mb-1">Priority</label>
                                 <select name="priority" id="priority" class="form-control ml-0">
-                                    @isset($task)
-                                        @if(isset($task->taskPriority->name))
-                                            <option selected>{{ $task->taskPriority->name }}</option>
-                                        @endif
-                                    @endisset
-
                                     @foreach($priorities as $priority)
                                         @if(isset($task) && $priority != $task->taskPriority->name)
-                                            <option>{{ $priority }}</option>
+                                            <option selected>{{ $priority }}</option>
                                         @else
                                             <option>{{ $priority }}</option>
                                         @endif

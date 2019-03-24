@@ -3,7 +3,7 @@
 @section('content')
     <div class="section__content section__content--p30 company-tasks">
         <div class="container-fluid">
-            <div class="row">
+            <div class="row tasks-container" data-page="tasks">
                 @foreach($tasks as $task)
                     <div class="col-md-4">
                         <aside class="profile-nav alt">
@@ -25,7 +25,7 @@
                                         info-bg">Update</a>
 
                                         <button type="button" class="btn danger-bg btnOpenModalArchiveTask" data-toggle="modal"
-                                                data-target="#archiveTaskModal"
+                                                data-target="#confirmDeleteModal"
                                                 data-id="{{ $task->id }}">
                                             Archive
                                         </button>

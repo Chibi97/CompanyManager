@@ -29,12 +29,12 @@ class TaskTableSeeder extends Seeder
                                        "updated_at" => Carbon::now()
                                       ]);
 
-            $task->users()->attach($faker->randomElement($users),
-                [
-                    "is_accepted" => rand(0,1),
-                    "created_at" => Carbon::now(),
-                    "updated_at" => Carbon::now()
-                ]);
+//            $task->users()->attach($faker->randomElement($users),
+//                [
+//                    "is_accepted" => rand(0,1),
+//                    "created_at" => Carbon::now(),
+//                    "updated_at" => Carbon::now()
+//                ]);
         });
     }
 }
