@@ -47,7 +47,10 @@ class TaskController extends Controller
                  ->flatten()
                  ->unique('id');
 
-        return view('company.tasks.index', compact('tasks'));
+        $user = session()->get('user');
+        $token = $user->company->api_token;
+
+        return view('company.tasks.index', compact('tasks', 'token'));
 
     }
 
@@ -63,13 +66,6 @@ class TaskController extends Controller
         return view('company.tasks.create', compact( 'priorities','defaultDate', 'employees', 'token', 'label'));
     }
 
-
-    public function show(Task $task)
-    {
-        //
-    }
-
-
     public function edit(Task $task, TaskHelper $helper)
     {
         $employees = $this->user->getUserNames();
@@ -84,5 +80,6 @@ class TaskController extends Controller
 
         return view('company.tasks.edit', compact('task','defaultDate', 'employees', 'priorities', 'token', 'startDateFormatted','endDateFormatted', 'label'));
     }
+
 
 }

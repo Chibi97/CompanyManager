@@ -313,11 +313,6 @@
   color: white;
 }
 
-.page-container {
-  height: 100vh;
-  overflow: auto;
-}
-
 .prettifyModal {
   position: fixed;
   z-index: 3;

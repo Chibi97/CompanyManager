@@ -4251,6 +4251,7 @@ body {
     font-size: 16px;
     line-height: 1.625;
     color: #666;
+    background: #e5e5e5;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -4418,7 +4419,7 @@ section {
 
 /*Page Objects*/
 .page-wrapper {
-    overflow: hidden;
+    //overflow: hidden;
 }
 
 .page-container {
@@ -5577,6 +5578,7 @@ section {
 }
 
 .header-mobile {
+    background: #fff;
     position: absolute;
     top: 0;
     left: 0;
@@ -7543,7 +7545,7 @@ section {
 }
 
 .chart-percent-card {
-    margin-bottom: 60px;
+    margin-bottom: 30px;
     padding-top: 47px;
 }
 

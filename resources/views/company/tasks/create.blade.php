@@ -12,8 +12,8 @@
 
                             <div class="form-group">
                                 <label for="tname" class="control-label mb-1">Name</label>
-                                <input id="tname" data-id="0" name="name" type="text" class="form-control
-                                        cc-exp"
+                                <input id="tname" name="name" type="text" class="form-control
+                                        cc-exp" data-id="{{ isset($task)? $task->id : ""}}"
                                        value="{{ isset($task) ? $task->name : ""}}">
                             </div>
 
@@ -63,23 +63,31 @@
                                 <label for="priority" class="control-label mb-1">Priority</label>
                                 <select name="priority" id="priority" class="form-control ml-0">
                                     @isset($task)
-                                        {{ $selectedPriority = $task->taskPriority->name  }}
+                                        @if(isset($task->taskPriority->name))
+                                            <option selected>{{ $task->taskPriority->name }}</option>
+                                        @endif
                                     @endisset
+
                                     @foreach($priorities as $priority)
-                                        @if(isset($selectedPriority))
-                                            <option value="{{ $priority }}">{{ $selectedPriority }}</option>
+                                        @if(isset($task) && $priority != $task->taskPriority->name)
+                                            <option>{{ $priority }}</option>
                                         @else
-                                            <option value="{{ $priority }}">{{ $priority }}</option>
+                                            <option>{{ $priority }}</option>
                                         @endif
                                     @endforeach
                                 </select>
                             </div>
 
                             <div>
-                                <button id="btn-{{ strtolower($label) }}-task" type="submit" class="btn btn-edit btn-md
+                                <button id="btn-{{ strtolower($label) }}-task" type="submit" class="btn info-bg btn-md
                                 btn-block d-flex justify-content-center">
                                     <meta name="api_token" content="{{ $token }}" />
-                                    <i class="fas fa-folder-plus m-r-10 mt-1"></i> {{ $label }}</span>
+                                    @if($label == 'Add')
+                                        <i class="fas fa-folder-plus m-r-10 mt-1"></i>
+                                    @elseif($label == 'Update')
+                                        <i class="far fa-edit m-r-10 mt-1"></i>
+                                    @endif
+                                    {{ $label }}
                                 </button>
                             </div>
                         </form>

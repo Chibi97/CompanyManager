@@ -18,11 +18,10 @@ export function validateUpdateUsers(valid, errors) {
     return Object.keys(errors).length == 0;
 }
 
-export function validateCreateTask(valid, errors) {
-    var form  = $('#addTask');
-    var name  = form.find('#tname').val();
-    var desc  = form.find('#desc').val();
-    var count = form.find('#count').val();
+export function validateTask(valid, errors, form) {
+    var name      = form.find('#tname').val();
+    var desc      = form.find('#desc').val();
+    var count     = form.find('#count').val();
     var startDate = form.find('#startDate').val();
     var endDate   = form.find('#endDate').val();
     var employees = form.find('#selectMultipleUsers').val();
@@ -44,10 +43,6 @@ export function validateCreateTask(valid, errors) {
     });
 }
 
-export function validateUpdateTask(valid, errors) {
-
-}
-
 export function fillDropDown(headers, ddl) {
     var options = "";
     ajaxGet(`${baseUrl}/api/users`, (resp) => {
@@ -56,8 +51,9 @@ export function fillDropDown(headers, ddl) {
         resp.forEach((item) => {
             if(item.id == selected) {
                 options += `<option selected value=${item.id}>${item.first_name} ${item.last_name}</option>`;
+            } else {
+                options += `<option value=${item.id}>${item.first_name} ${item.last_name}</option>`;
             }
-            options += `<option value=${item.id}>${item.first_name} ${item.last_name}</option>`;
         });
 
         ddl.html(options);

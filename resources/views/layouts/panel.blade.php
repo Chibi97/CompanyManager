@@ -23,6 +23,7 @@
 
     </div>
 
+    @include('modals');
     <script src="{{ asset('js/bundle.js') }}"></script>
     <script src="{{asset('js/app.js')}}"></script>
 </body>

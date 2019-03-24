@@ -37,7 +37,6 @@ export function validateSelectBoxWithWords(field, valid, errors, input, callback
         var names = [];
         resp.forEach(function ($elem) {
             names.push($elem.name);
-            console.log(field);
         })
         if(names.includes(field)) {
             valid[input] = field;

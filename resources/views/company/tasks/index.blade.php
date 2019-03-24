@@ -11,7 +11,8 @@
                                 <div class="card-header user-header alt bg-dark">
                                     <div class="media">
                                         <div class="media-body">
-                                            <h2 class="text-light display-6">{{ $task->name }}</h2>
+                                            <h2 class="text-light display-6">
+                                                {{ $task->name }}</h2>
                                         </div>
                                     </div>
                                 </div>
@@ -19,9 +20,15 @@
 
                                 <ul class="list-group list-group-flush">
                                     <li class="d-flex justify-content-around p-3">
+                                        <meta name="api_token" content="{{ $token }}" />
                                         <a href="{{ route('tasks.edit', ['task' => $task->id]) }}" class="btn
                                         info-bg">Update</a>
-                                        <a href="" class="btn danger-bg">Delete</a>
+
+                                        <button type="button" class="btn danger-bg btnOpenModalArchiveTask" data-toggle="modal"
+                                                data-target="#archiveTaskModal"
+                                                data-id="{{ $task->id }}">
+                                            Archive
+                                        </button>
                                     </li>
                                     <li class="list-group-item">
                                         <p>

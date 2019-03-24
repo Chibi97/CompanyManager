@@ -59,7 +59,7 @@
                                     </select>
                                 </div>
                                 <div>
-                                    <button id="btn-update-user" type="submit" class="btn btn-edit btn-md btn-block
+                                    <button id="btn-update-user" type="submit" class="btn info-bg btn-md btn-block
                                     d-flex justify-content-center">
                                         <i class="far fa-edit m-r-10"></i> Update</span>
                                     </button>
@@ -69,7 +69,7 @@
 
                             <form method="POST" action="" id="archive-user">
                                 <button id="btn-archive-user" type="submit"
-                                        class="btn btn-arh btn-md btn-block d-flex justify-content-center">
+                                        class="btn btn-md btn-block danger-bg d-flex justify-content-center">
                                     <i class="fas fa-user-times m-r-10"></i> Archive</span>
                                 </button>
                             </form>

@@ -18,8 +18,8 @@ class UserController extends Controller
     function __construct(UserHelper $helper)
     {
         $this->helper = $helper;
-        $this->middleware("CheckApiToken")->except('store');
-        $this->middleware("Before")->except('index', 'store');
+        $this->middleware("CheckApiToken")->except('store', 'login');
+        $this->middleware("Before")->except('index', 'store', 'login');
     }
 
     public function before(Request $request)
@@ -68,6 +68,12 @@ class UserController extends Controller
         $this->helper->destroy($user);
         return response(["message" => "User successfully deleted"], 200);
     }
+
+    public function login(Request $request){
+        $user = User::getUserAndRole($request->input('email'), $request->input('password'));
+        return response($user,200);
+    }
+
 
 
 }
