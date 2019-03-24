@@ -12,7 +12,12 @@ export default function() {
         var url = baseUrl + `/api/users/${id}`;
 
         if($(this).val() != 0) {
-            ajaxGet(url, (data) => { setFormFieldForUser(data); }, headers);
+            ajaxGet(url, (data) => {
+                setFormFieldForUser(data);
+            }, () => {
+                $("#message-target").flash("Server error. Please try later or contact web masters.",
+                      {type: "danger", fade: 5000});
+                }, headers);
         } else {
             var fields = [$("#fname"), $("#lname"), $("#email"), $('select[name="role"]') ];
             for(field of fields) {
@@ -22,7 +27,7 @@ export default function() {
         }
     })
 
-// ------------ ARCHIVE A USER ------------
+    //------------ ARCHIVE A USER ------------
     if($('#updateUserForm').data('page') == 'users') {
         var userId;
         var btnOpenModalUser = $('#btnOpenModalUser');
@@ -45,9 +50,12 @@ export default function() {
                         $('#confirmDeleteModal').modal('toggle');
                         $('.modal-backdrop').attr('class', '');
                     }, 1000)
-                }, headers);
+                }, () => {
+                    $("#response-msg").flash("Server error. Please try later or contact web masters.",
+                        {type: "danger", fade: 5000});
+                },headers);
             } else {
-                $("#message-target").flash("Please select an employee", {type: "danger", fade: 5000});
+                $("#response-msg").flash("Please select an employee", {type: "danger", fade: 5000});
             }
         })
     }
@@ -60,7 +68,7 @@ export default function() {
         e.preventDefault();
         var errors = {};
         var valid  = {};
-        var id = $("#fname").data('id');
+        var id = $("#btn-update-user").data('id');
         var idSel = $("#role").val();
         $('#updateUserForm').attr('action', `${baseUrl}/company/users/${id}`);
 
@@ -72,7 +80,7 @@ export default function() {
         }
 
         if(!validateUpdateUsers(valid, errors)) {
-            $("#message-target").flash(errors, {type: "warning", fade: 5000});
+            $("#message-target").flash(errors, {type: "danger", fade: 5000});
         } else {
             let message;
             let oldState = $("#btn-update-user").html();
@@ -91,12 +99,14 @@ export default function() {
                 message = msg;
                 fn();
                 fillDropDown(headers, userSelect);
-            }, headers);
+            }, () => {
+                $("#message-target").flash("Server error. Please try later or contact web masters.", {type: "danger", fade: 5000});
+            } ,headers);
 
             ajaxPut(`${baseUrl}/api/users/${id}/${str}`, {}, function() {
                 counter++;
                 fn();
-            }, headers);
+            }, (xhr) => { console.log(xhr.statusText) }, headers);
         }
     })
 }

@@ -23,6 +23,9 @@ export default function() {
                     addLoadingSpinner(btnAddTask);
                     ajaxPost(url, valid, (resp) => {
                         afterHttpAction(oldState, resp, $("#message-target"), btnAddTask);
+                    }, () => {
+                        $("#message-target").flash("Server error. Please try later or contact web masters.",
+                            {type: "danger", fade: 5000});
                     }, headers);
                 }
             });
@@ -47,6 +50,9 @@ export default function() {
                     addLoadingSpinner(btnUpdateTask);
                     ajaxPut(url, valid, (resp) => {
                         afterHttpAction(oldState, resp, $("#message-target"), btnUpdateTask);
+                    }, () => {
+                        $("#message-target").flash("Server error. Please try later or contact web masters.",
+                            {type: "danger", fade: 5000});
                     }, headers);
                 }
             });
@@ -73,7 +79,10 @@ export default function() {
                     $('#confirmDeleteModal').modal('toggle');
                     $('.modal-backdrop').attr('class', '');
                 }, 1000)
-            }, headers);
+            },() => {
+                $("#response-msg").flash("Server error. Please try later or contact web masters.",
+                    {type: "danger", fade: 5000});
+            } ,headers);
         })
     }
 

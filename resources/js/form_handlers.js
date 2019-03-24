@@ -57,12 +57,16 @@ export function fillDropDown(headers, ddl) {
         });
 
         ddl.html(options);
+    }, () => {
+        $("#message-target").flash("Server error. Please try later or contact web masters.",
+            {type: "danger", fade: 5000});
     }, headers);
 }
 
 export function setFormFieldForUser(user) {
     $('#updateUserForm').attr('action', `${baseUrl}/company/users/${user.id}`);
     $('#btnOpenModalUser').data('id', user.id);
+    $('#btn-update-user').data('id', user.id);
     $("#fname").val(user.first_name);
     $("#lname").val(user.last_name);
     $("#email").val(user.email);

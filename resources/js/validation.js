@@ -1,4 +1,5 @@
 import {ajaxGet} from "./ajax_helpers";
+import $ from "jquery";
 var moment = require('moment');
 moment().format();
 
@@ -44,6 +45,9 @@ export function validateSelectBoxWithWords(field, valid, errors, input, callback
             errors[input] = `You must choose an existing item in the ${input} select box.`;
         }
         callback();
+    }, () => {
+        $("#message-target").flash("Server error. Please try later or contact web masters.",
+            {type: "danger", fade: 5000});
     }, headers);
 }
 

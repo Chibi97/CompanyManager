@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Company;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;

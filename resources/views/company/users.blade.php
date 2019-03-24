@@ -47,7 +47,7 @@
                                 </div>
                                 <div>
                                     <button id="btn-update-user" type="submit" class="btn info-bg btn-md btn-block
-                                    d-flex justify-content-center">
+                                    d-flex justify-content-center" data-id="0">
                                         <i class="far fa-edit m-r-10"></i> Update</span>
                                     </button>
 
@@ -75,7 +75,7 @@
                     </select>
 
                     <div class="alert alert-warning m-l-15 w-100">
-                        <p><strong>Warning:</strong> Deleting a user will delete all of his/hers tasks.</p>
+                        <p><strong>Warning:</strong> Archiving a user will delete all of his/hers tasks.</p>
                     </div>
                 </div>
             </div>
