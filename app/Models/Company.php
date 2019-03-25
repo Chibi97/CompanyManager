@@ -11,14 +11,6 @@ class Company extends Model
         "name"
     ];
 
-    public static function boot()
-    {
-        parent::boot();
-        static::creating(function($model) {
-            $model->generateHash();
-        });
-    }
-
     public function companyTasks()
     {
         $coUsers = $this->users;
@@ -32,12 +24,6 @@ class Company extends Model
     public function canCompanyManageTask($employees)
     {
         return $this->users()->whereIn('id', $employees)->count() === count($employees);
-    }
-
-    protected function generateHash()
-    {
-        $random_bytes = md5(uniqid(mt_rand(), true));
-        $this->api_token = $random_bytes;
     }
 
     public function users()

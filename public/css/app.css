@@ -400,3 +400,20 @@
   margin: 15px 0 130px;
 }
 
+#loading {
+  position: relative;
+}
+
+.form-loading {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 1rem;
+  border-radius: 7px;
+  width: calc(100% - 2rem);
+  height: calc(100% - 2rem);
+  background: rgba(78, 78, 78, 0.56);
+  justify-content: center;
+  align-items: center;
+}
+

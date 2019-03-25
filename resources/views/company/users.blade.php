@@ -5,7 +5,16 @@
         <div class="container-fluid">
             <div class="row update-wrapper">
 
-                <div class="the-card col-12 col-md-6 col-lg-6">
+                <div id="loading" class="the-card col-12 col-md-6 col-lg-6">
+                    <div class="form-loading">
+                        <div class="semipolar-spinner" :style="spinnerStyle">
+                            <div class="ring"></div>
+                            <div class="ring"></div>
+                            <div class="ring"></div>
+                            <div class="ring"></div>
+                            <div class="ring"></div>
+                        </div>
+                    </div>
                     <span class="user-status">Status</span>
                     <div class="au-card chart-percent-card">
                         <div id="message-target" class="au-card-inner">
@@ -66,16 +75,16 @@
                 </div>
 
                 <div class="col-12 col-md-4 col-lg-4 user-select-wrapper">
-                    <meta name="api_token" content="{{ $token }}" />
                     <select data-selected="0" class="select-user prettySelect" id="onChangeUser" name="users">
                         <option value="0">Select an employee</option>
-                        @foreach($fullNames as $id => $user)
-                            <option value="{{ $id }}"> {{ $user }} </option>
+                        @foreach($users as $user)
+                            <option value="{{ $user->id }}"> {{ $user->first_name . ' ' . $user->last_name }} </option>
                         @endforeach
                     </select>
 
                     <div class="alert alert-warning m-l-15 w-100">
-                        <p><strong>Warning:</strong> Archiving a user will delete all of his/hers tasks.</p>
+                        <p><strong>Warning:</strong> Archiving a user will delete all of his/hers tasks. Make sure
+                            to detach users and attach other ones to these tasks.</p>
                     </div>
                 </div>
             </div>

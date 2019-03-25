@@ -35,9 +35,9 @@ class UserController extends Controller
 
     public function store(StoreUsers $request)
     {
-        $result = $this->helper->store($request);
+        $user = $this->helper->store($request);
         return response(["message" => "Successfully stored!",
-            "token" => $result->company->api_token], 201);
+            "token" => $user->api_token], 201);
     }
 
     public function index()

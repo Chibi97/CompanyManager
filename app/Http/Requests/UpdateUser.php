@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Models\User;
+
 class UpdateUser extends StoreUsersRequest
 {
 
@@ -17,6 +19,15 @@ class UpdateUser extends StoreUsersRequest
         if(!$this->is('api/*')) {
             $rules['role'] = ["sometimes", "regex:/^[1|2]$/"];
         }
+
+        if($this->input('email')) {
+            $givenEmail = User::where('email', $this->input('email'))->pluck('email');
+            $user = $this->route('user');
+            if(!$givenEmail->contains($user->email)) {
+                $rules['email'] = ['sometimes','unique:users'];
+            }
+        }
+
         return $rules;
     }
 }

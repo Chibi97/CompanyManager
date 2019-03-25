@@ -26,7 +26,7 @@ export default function() {
                     }, () => {
                         $("#message-target").flash("Server error. Please try later or contact web masters.",
                             {type: "danger", fade: 5000});
-                    }, headers);
+                    });
                 }
             });
     })
@@ -53,7 +53,7 @@ export default function() {
                     }, () => {
                         $("#message-target").flash("Server error. Please try later or contact web masters.",
                             {type: "danger", fade: 5000});
-                    }, headers);
+                    });
                 }
             });
     })
@@ -82,7 +82,7 @@ export default function() {
             },() => {
                 $("#response-msg").flash("Server error. Please try later or contact web masters.",
                     {type: "danger", fade: 5000});
-            } ,headers);
+            });
         })
     }
 

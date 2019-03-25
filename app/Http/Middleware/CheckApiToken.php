@@ -20,9 +20,12 @@ class CheckApiToken
     public function handle($request, Closure $next)
     {
         $requestToken = $request->header('Authorization');
-        $company = Company::where('api_token', $requestToken)->first();
+        $user = User::where('api_token', $requestToken)->first();
+        //$company = Company::where('api_token', $requestToken)->first();
 
-        if($company) {
+        if($user) {
+            $company = $user->company;
+            CompanyManager::getInstance()->remember('user', $user);
             CompanyManager::getInstance()->remember('company', $company);
             return $next($request);
         }

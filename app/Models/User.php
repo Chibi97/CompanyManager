@@ -8,14 +8,11 @@ use App\Models\Exception\RedirectException;
 use App\Models\Exception\UserNotFoundException;
 use Dotenv\Exception\ValidationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Database\QueryException;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Validation\UnauthorizedException;
-use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 
 class User extends Authenticatable
@@ -28,6 +25,20 @@ class User extends Authenticatable
     public function setModel(UserDTO $user)
     {
         $this->model = $user;
+    }
+
+    public static function boot()
+    {
+        parent::boot();
+        static::creating(function($model) {
+            $model->generateHash();
+        });
+    }
+
+    protected function generateHash()
+    {
+        $random_bytes = md5(uniqid(mt_rand(), true));
+        $this->api_token = $random_bytes;
     }
 
     /**

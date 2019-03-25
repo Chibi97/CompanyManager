@@ -43,7 +43,7 @@ export function validateTask(valid, errors, form) {
     });
 }
 
-export function fillDropDown(headers, ddl) {
+export function fillDropDown(ddl) {
     var options = "";
     ajaxGet(`${baseUrl}/api/users`, (resp) => {
         var selected = ddl.val();
@@ -60,7 +60,7 @@ export function fillDropDown(headers, ddl) {
     }, () => {
         $("#message-target").flash("Server error. Please try later or contact web masters.",
             {type: "danger", fade: 5000});
-    }, headers);
+    });
 }
 
 export function setFormFieldForUser(user) {
@@ -83,6 +83,13 @@ export function addLoadingSpinner(button) {
                     <div class="ring"></div>
                 </div>`);
     button.attr('disabled', true);
+}
+
+export function cleanFields(arr) {
+    for(var field of arr) {
+        field.val("");
+    }
+    $('.user-status').html("Status");
 }
 
 export function afterHttpAction(oldState, message, messageDiv, button) {

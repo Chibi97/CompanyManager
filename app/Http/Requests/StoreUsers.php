@@ -6,11 +6,14 @@ class StoreUsers extends StoreUsersRequest
 {
     protected function rulesOverrides()
     {
-        $regex = StoreUsersRequest::SPECIAL_CHARACTERS_PASS;
+        $pass = StoreUsersRequest::SPECIAL_CHARACTERS_PASS;
+
         return [
-            'email' => ['required', 'unique:users'],
+            'first_name' => ['required'],
+            'last_name'  => ['required'],
+            'email' => ['required'],
             'company' => ['required', 'min:3', 'max:50'],
-            'password' => ['required', "regex:$regex"]
+            'password' => ['required', "regex:$pass"]
         ];
     }
 }

@@ -48,7 +48,7 @@ export function validateSelectBoxWithWords(field, valid, errors, input, callback
     }, () => {
         $("#message-target").flash("Server error. Please try later or contact web masters.",
             {type: "danger", fade: 5000});
-    }, headers);
+    });
 }
 
 

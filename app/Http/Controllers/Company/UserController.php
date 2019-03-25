@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Company;
 
+use App\Http\Helpers\CompanyManager;
 use App\Http\Helpers\UserHelper;
 use App\Http\Requests\UpdateUser;
 use App\Models\Exception\RedirectException;
 use App\Models\User;
 use App\Models\Role;
+use function foo\func;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -27,17 +29,16 @@ class UserController extends Controller
     {
         $this->user = session()->get('user');
         $this->user->refresh();
-        return $this->user->isPartOfCompany($this->user->company);
+        return true;
     }
 
     public function index()
     {
         $this->helper->index();
-        $fullNames = session()->get('user')->getUserNames();
         $roles = Role::get()->pluck('name', 'id');
-        $token =  $this->user->company->api_token;
-
-        return view('company.users', compact('fullNames', 'token', 'roles'));
+        $companyId = $this->user->company->id;
+        $users = User::where('company_id', $companyId)->get();
+        return view('company.users', compact('users', 'roles'));
     }
 
     public function update(UpdateUser $request, User $user)

@@ -1,7 +1,7 @@
 import $ from "jquery";
 import {ajaxDelete, ajaxGet, ajaxPut} from "./ajax_helpers";
 import {
-    addLoadingSpinner, afterHttpAction, fillDropDown, setFormFieldForUser, validateUpdateUsers
+    addLoadingSpinner, afterHttpAction, fillDropDown, setFormFieldForUser, validateUpdateUsers, cleanFields
 } from "./form_handlers";
 
 export default function() {
@@ -11,67 +11,71 @@ export default function() {
         var id = $(this).val();
         var url = baseUrl + `/api/users/${id}`;
 
+        $(".form-loading").css('display', 'flex');
         if($(this).val() != 0) {
             ajaxGet(url, (data) => {
+                $(".form-loading").css('display', 'none');
                 setFormFieldForUser(data);
             }, () => {
+                $(".form-loading").css('display', 'none');
                 $("#message-target").flash("Server error. Please try later or contact web masters.",
                       {type: "danger", fade: 5000});
-                }, headers);
+                });
         } else {
-            var fields = [$("#fname"), $("#lname"), $("#email"), $('select[name="role"]') ];
-            for(field of fields) {
-                field.val("");
-            }
-            $('.user-status').html("Status");
+            cleanFields([$("#fname"), $("#lname"), $("#email"), $('select[name="role"]') ]);
         }
     })
 
     //------------ ARCHIVE A USER ------------
     if($('#updateUserForm').data('page') == 'users') {
+        var btnArchiveUser = $('#btnArchiveItem');
         var userId;
         var btnOpenModalUser = $('#btnOpenModalUser');
-        btnOpenModalUser.click(function () {
+
+        btnOpenModalUser.click(function (e) {
             userId = $(this).data('id');
+            if(userId == 0 ) {
+                $("#message-target").flash("Please select an employee", {type: "danger", fade: 5000});
+                e.stopPropagation();
+            }
         });
 
-        var btnArchiveUser = $('#btnArchiveItem');
-        btnArchiveUser.click(function(e) {
-            e.preventDefault();
+        btnArchiveUser.click(function() {
             var oldState = $(this).html();
             var url = `${baseUrl}/api/users/${userId}`;
 
             if(userId != 0) {
                 addLoadingSpinner($(this));
                 ajaxDelete(url, function(msg) {
-                    fillDropDown(headers, userSelect);
+                    fillDropDown(userSelect);
                     afterHttpAction(oldState, msg,  $("#response-msg"), $(this));
                     setTimeout(function () {
                         $('#confirmDeleteModal').modal('toggle');
                         $('.modal-backdrop').attr('class', '');
-                    }, 1000)
+                    }, 1000);
+                    cleanFields([$("#fname"), $("#lname"), $("#email"), $('select[name="role"]') ]);
+
                 }, () => {
                     $("#response-msg").flash("Server error. Please try later or contact web masters.",
                         {type: "danger", fade: 5000});
-                },headers);
-            } else {
-                $("#response-msg").flash("Please select an employee", {type: "danger", fade: 5000});
+                });
             }
         })
+
     }
 
 
 // ------------ UPDATE USER ------------
     var counter = 0;
-    var updateUser = $("form[name='updateUserForm']");
+    var btnUpdateUser = $('#btn-update-user');
+    var updateUser = $("#updateUserForm");
     updateUser.submit(function(e) {
         e.preventDefault();
         var errors = {};
         var valid  = {};
-        var id = $("#btn-update-user").data('id');
-        var idSel = $("#role").val();
-        $('#updateUserForm').attr('action', `${baseUrl}/company/users/${id}`);
+        var id = btnUpdateUser.data('id');
 
+        var idSel = $("#role").val();
         var str;
         if(idSel == 1) {
             str = "promote"
@@ -83,30 +87,37 @@ export default function() {
             $("#message-target").flash(errors, {type: "danger", fade: 5000});
         } else {
             let message;
-            let oldState = $("#btn-update-user").html();
+            let oldState = btnUpdateUser.html();
 
             const fn = () => {
                 if(counter == 2) {
-                    afterHttpAction(oldState, message, $("#message-target"), $("#btn-update-user"));
+                    afterHttpAction(oldState, message, $("#message-target"), btnUpdateUser);
                     counter = 0;
                 }
             }
 
-            addLoadingSpinner($("#btn-update-user"));
+            addLoadingSpinner(btnUpdateUser);
 
             ajaxPut(`${baseUrl}/api/users/${id}`, valid, function(msg) {
                 counter++;
                 message = msg;
                 fn();
-                fillDropDown(headers, userSelect);
-            }, () => {
-                $("#message-target").flash("Server error. Please try later or contact web masters.", {type: "danger", fade: 5000});
-            } ,headers);
+                fillDropDown(userSelect);
+            }, (xhr) => {
+                var resp = JSON.parse(xhr.responseText);
+                var msg = "";
+                if(resp.errors.email) {
+                    msg = resp.errors.email[0];
+                } else msg = "Please provide valid information or contact web master.";
+                $("#message-target").flash(msg, {type: "danger", fade: 5000});
+                btnUpdateUser.html(oldState);
+                btnUpdateUser.attr('disabled', false);
+            });
 
             ajaxPut(`${baseUrl}/api/users/${id}/${str}`, {}, function() {
                 counter++;
                 fn();
-            }, (xhr) => { console.log(xhr.statusText) }, headers);
+            }, (xhr) => { console.log(xhr.responseText) });
         }
     })
 }

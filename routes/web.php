@@ -13,6 +13,7 @@
 
 Route::get('/', 'FrontController@home')->name('job.offers');
 Route::get('/logout', 'Authentication\LoginController@destroy')->name('logout');
+Route::get('/whoami', 'Authentication\LoginController@whoami');
 
 Route::group(['middleware'=> 'RedirectIfLogin'],function() {
     Route::post('/login', 'Authentication\LoginController@store')->name('login');

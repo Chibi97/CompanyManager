@@ -4,6 +4,9 @@
 <meta name="description" content="au theme template">
 <meta name="author" content="Hau Nguyen">
 <meta name="keywords" content="au theme template">
+@if(session()->has('user'))
+    <meta name="apitoken" content="{{ session()->get('user')->api_token }}">
+@endif
 
 <!-- Title Page-->
 <title>Company Manager</title>

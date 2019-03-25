@@ -14,6 +14,7 @@ use Illuminate\Foundation\Http\FormRequest;
 abstract class StoreUsersRequest extends FormRequest
 {
     protected const SPECIAL_CHARACTERS_PASS = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_#^\(\)\+\=\-\`\[\]\{\}\;\:\'\"\\\|\/\,\.])[A-Za-z\d@$!%*?&_#^^\(\)\+\=\-`\[\]\{\}\;\:\'\"\\\|\/\,\.]{8,}$/';
+    protected const NAME = '/^[A-Z][a-z]{2,48}(\s([A-Z][a-z]{1,48}))*$/';
 
     final public function authorize()
     {
@@ -23,9 +24,9 @@ abstract class StoreUsersRequest extends FormRequest
     protected function baseRules()
     {
         return [
-            'first_name' => ["alpha", "min:2", "max:50"],
-            'last_name'  => ["alpha", "min:2", "max:50"],
-            'email'      => ["email"],
+            'first_name' => ['alpha', 'min:2', 'max:50', 'regex:' . self::NAME],
+            'last_name'  => ['alpha', 'min:2', 'max:50', 'regex:' . self::NAME],
+            'email'      => ['email'],
             'password'   => [],
         ];
     }
@@ -47,7 +48,9 @@ abstract class StoreUsersRequest extends FormRequest
         return [
             'password.regex' => 'A password must contain min 8 characters, at least one upper case' .
                 'at least one down case, and at least one special character',
-            'role.regex' => 'You must choose either Employee or a Boss'
+            'first_name' => 'First name must begin with capital letters',
+            'last_name' => 'Last name must begin with capital letters'
+
         ];
     }
 

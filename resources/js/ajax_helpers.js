@@ -1,10 +1,13 @@
-import $ from 'jquery';
+export function setupAjax() {
+    const token = $("meta[name='apitoken']").attr('content');
+    $.ajaxSetup({
+        headers: {
+            "Authorization": token
+        }
+    })
+}
 
-function ajax(headers, url, verb, data, cbSuccess, cbFail) {
-    if(headers) {
-        $.ajaxSetup(headers);
-    }
-
+function ajax(url, verb, data, cbSuccess, cbFail) {
     $.ajax({
         url: url,
         dataType: "json",
@@ -15,18 +18,18 @@ function ajax(headers, url, verb, data, cbSuccess, cbFail) {
     });
 }
 
-export function ajaxGet(url, cbSuccess, cbFail, headers) {
-    ajax(headers, url, "GET", {}, cbSuccess, cbFail);
+export function ajaxGet(url, cbSuccess, cbFail) {
+    ajax(url, "GET", {}, cbSuccess, cbFail);
 }
 
-export function ajaxPost(url, data, cbSuccess, cbFail, headers) {
-    ajax(headers, url, "POST", data, cbSuccess, cbFail);
+export function ajaxPost(url, data, cbSuccess, cbFail) {
+    ajax(url, "POST", data, cbSuccess, cbFail);
 }
 
-export function ajaxPut(url, data, cbSuccess, cbFail, headers) {
-    ajax(headers, url, "PUT", data, cbSuccess, cbFail);
+export function ajaxPut(url, data, cbSuccess, cbFail) {
+    ajax(url, "PUT", data, cbSuccess, cbFail);
 }
 
-export function ajaxDelete(url, cbSuccess, cbFail, headers) {
-    ajax(headers, url, "DELETE", {}, cbSuccess, cbFail);
+export function ajaxDelete(url, cbSuccess, cbFail) {
+    ajax(url, "DELETE", {}, cbSuccess, cbFail);
 }
