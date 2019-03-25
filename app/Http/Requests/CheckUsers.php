@@ -6,6 +6,8 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class CheckUsers extends FormRequest
 {
+    protected const SPECIAL_CHARACTERS_PASS =  '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_#^\(\)\+\=\-\`\[\]\{\}\;\:\'\"\\\|\/\,\.])[A-Za-z\d@$!%*?&_#^^\(\)\+\=\-`\[\]\{\}\;\:\'\"\\\|\/\,\.]{8,}$/';
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -23,11 +25,10 @@ class CheckUsers extends FormRequest
      */
     public function rules()
     {
-        $specialCharactersPass =  '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_#^\(\)\+\=\-\`\[\]\{\}\;\:\'\"\\\|\/\,\.])[A-Za-z\d@$!%*?&_#^^\(\)\+\=\-`\[\]\{\}\;\:\'\"\\\|\/\,\.]{8,}$/';
 
         return [
-            'email'      => 'required|email',
-            'password'   => ["required","regex:$specialCharactersPass"]
+            'email'      => ['required', 'email'],
+            'password'   => ['required","regex:' . SPECIAL_CHARACTERS_PASS]
         ];
     }
 

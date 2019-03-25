@@ -4,7 +4,7 @@ var moment = require('moment');
 moment().format();
 
 export function validateName(name, valid, errors, inputName) {
-    var reName = /^[A-Z][a-z]{2,48}(\s([A-Z][a-z]{1,48}))*$/;
+    var reName = /^[A-Z][a-z]{1,48}(\s([A-Z][a-z]{1,48}))*$/;
     if(reName.test(name)) {
         valid[inputName] = name;
     } else {

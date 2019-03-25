@@ -14,7 +14,7 @@ use Illuminate\Foundation\Http\FormRequest;
 abstract class StoreUsersRequest extends FormRequest
 {
     protected const SPECIAL_CHARACTERS_PASS = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_#^\(\)\+\=\-\`\[\]\{\}\;\:\'\"\\\|\/\,\.])[A-Za-z\d@$!%*?&_#^^\(\)\+\=\-`\[\]\{\}\;\:\'\"\\\|\/\,\.]{8,}$/';
-    protected const NAME = '/^[A-Z][a-z]{2,48}(\s([A-Z][a-z]{1,48}))*$/';
+    protected const NAME = '/^[A-Z][a-z]{1,48}(\s([A-Z][a-z]{1,48}))*$/';
 
     final public function authorize()
     {
@@ -24,8 +24,8 @@ abstract class StoreUsersRequest extends FormRequest
     protected function baseRules()
     {
         return [
-            'first_name' => ['alpha', 'min:2', 'max:50', 'regex:' . self::NAME],
-            'last_name'  => ['alpha', 'min:2', 'max:50', 'regex:' . self::NAME],
+            'first_name' => ['min:2', 'max:50', 'regex:' . self::NAME],
+            'last_name'  => ['min:2', 'max:50', 'regex:' . self::NAME],
             'email'      => ['email'],
             'password'   => [],
         ];

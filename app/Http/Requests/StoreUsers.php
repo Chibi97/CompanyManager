@@ -11,7 +11,7 @@ class StoreUsers extends StoreUsersRequest
         return [
             'first_name' => ['required'],
             'last_name'  => ['required'],
-            'email' => ['required'],
+            'email' => ['required', 'unique:users'],
             'company' => ['required', 'min:3', 'max:50'],
             'password' => ['required', "regex:$pass"]
         ];

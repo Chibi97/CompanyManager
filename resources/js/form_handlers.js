@@ -44,7 +44,7 @@ export function validateTask(valid, errors, form) {
 }
 
 export function fillDropDown(ddl) {
-    var options = "";
+    var options = "<option value='0'>Select an employee</option>";
     ajaxGet(`${baseUrl}/api/users`, (resp) => {
         var selected = ddl.val();
 

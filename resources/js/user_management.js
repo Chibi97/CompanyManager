@@ -11,8 +11,8 @@ export default function() {
         var id = $(this).val();
         var url = baseUrl + `/api/users/${id}`;
 
-        $(".form-loading").css('display', 'flex');
         if($(this).val() != 0) {
+        $(".form-loading").css('display', 'flex');
             ajaxGet(url, (data) => {
                 $(".form-loading").css('display', 'none');
                 setFormFieldForUser(data);
@@ -34,7 +34,7 @@ export default function() {
 
         btnOpenModalUser.click(function (e) {
             userId = $(this).data('id');
-            if(userId == 0 ) {
+            if(userSelect.val() == 0 ) {
                 $("#message-target").flash("Please select an employee", {type: "danger", fade: 5000});
                 e.stopPropagation();
             }
@@ -53,7 +53,10 @@ export default function() {
                         $('#confirmDeleteModal').modal('toggle');
                         $('.modal-backdrop').attr('class', '');
                     }, 1000);
+                    userSelect.val(0);
                     cleanFields([$("#fname"), $("#lname"), $("#email"), $('select[name="role"]') ]);
+                    btnArchiveUser.html(oldState);
+                    btnArchiveUser.attr('disabled', false);
 
                 }, () => {
                     $("#response-msg").flash("Server error. Please try later or contact web masters.",
@@ -70,6 +73,7 @@ export default function() {
     var btnUpdateUser = $('#btn-update-user');
     var updateUser = $("#updateUserForm");
     updateUser.submit(function(e) {
+
         e.preventDefault();
         var errors = {};
         var valid  = {};
@@ -84,7 +88,11 @@ export default function() {
         }
 
         if(!validateUpdateUsers(valid, errors)) {
-            $("#message-target").flash(errors, {type: "danger", fade: 5000});
+            if(userSelect.val() == 0 ) {
+                $("#message-target").flash("Please select an employee", {type: "danger", fade: 5000});
+            } else {
+                $("#message-target").flash(errors, {type: "danger", fade: 5000});
+            }
         } else {
             let message;
             let oldState = btnUpdateUser.html();
@@ -103,12 +111,15 @@ export default function() {
                 message = msg;
                 fn();
                 fillDropDown(userSelect);
+
             }, (xhr) => {
                 var resp = JSON.parse(xhr.responseText);
                 var msg = "";
                 if(resp.errors.email) {
                     msg = resp.errors.email[0];
                 } else msg = "Please provide valid information or contact web master.";
+
+
                 $("#message-target").flash(msg, {type: "danger", fade: 5000});
                 btnUpdateUser.html(oldState);
                 btnUpdateUser.attr('disabled', false);
