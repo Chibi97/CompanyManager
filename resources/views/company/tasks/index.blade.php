@@ -33,7 +33,7 @@
             </div>
             <div class="row tasks-container" data-page="tasks">
                 @foreach($tasks as $task)
-                    <div class="col-md-6 col-lg-4">
+                    <div class="col-md-6 col-xl-4 col-rewrite">
                         <aside class="profile-nav alt">
                             <section class="card">
                                 <div class="card-header user-header alt bg-dark">
@@ -49,12 +49,16 @@
                                 <ul class="list-group list-group-flush">
                                     <li class="d-flex justify-content-around p-3">
                                         <a href="{{ route('tasks.edit', ['task' => $task->id]) }}" class="btn
-                                        info-bg">Update</a>
+                                        info-bg">
+                                            <i class="far fa-edit m-r-10 text-white"></i>
+                                            Update
+                                        </a>
 
                                         <button type="button" class="btn danger-bg btnOpenModalArchiveTask"
                                                 data-toggle="modal"
                                                 data-target="#confirmDeleteModal"
                                                 data-id="{{ $task->id }}">
+                                            <i class="fas fa-user-times m-r-10 text-white"></i>
                                             Archive
                                         </button>
                                     </li>
@@ -67,6 +71,7 @@
                                             <p class="info-color border-r-light">Start date</p>
                                             <p class="fw-500">{{ $task->start_date }}</p>
                                         </div>
+
                                     </li>
                                     <li class="list-group-item d-flex">
                                         <div>
@@ -82,33 +87,34 @@
                                             <i class="pr-4 icon-tally"></i>
                                         </div>
                                         <div>
-                                            <p class="info-color">This task, beside assigned ones, should take</p>
+                                            <p class="info-color">This task, beside assigned ones, should
+                                            take</p>
                                             @if( $task->count == 1)
                                                 <p class="fw-500">{{ $task->count . ' employee'}}</p>
 
                                             @else
                                                 <p class="fw-500">{{ $task->count . ' employees' }}</p>
-
                                             @endif
                                         </div>
                                     </li>
                                     <li class="list-group-item d-flex">
                                         <div>
-                                            <i class="fas fa-highlighter pr-4"></i>
+                                            <i class="fas fa-hourglass-end pr-4"></i>
                                         </div>
-                                        <div>
-                                            <p class="info-color">Priority</p>
+                                        <div class="d-flex">
+                                            <p class="info-color mr-3 border-r-light">Priority</p>
                                             <p class="fw-500">{{ $task->taskPriority->name }}</p>
                                         </div>
 
                                     <li class="list-group-item d-flex">
                                         <div>
-                                            <i class="far fa-check-square pr-4"></i>
+                                            <i class="fas fa-hourglass-end pr-4"></i>
                                         </div>
-                                        <div>
-                                            <p class="info-color" >Status</p>
+                                        <div class="d-flex">
+                                            <p class="info-color mr-3 border-r-light">Status</p>
                                             <p class="fw-500">{{ $task->taskStatus->name }}</p>
                                         </div>
+
                                     </li>
 
                                     <li class="list-group-item d-flex">
@@ -117,7 +123,7 @@
                                                 @foreach($task->users as $user)
                                                     <li class="d-flex">
                                                         <i class="fas fa-user pr-4"></i>
-                                                        <p class="danger-color fw-500">{{ $user->first_name . ' ' .
+                                                        <p class="fw-500">{{ $user->first_name . ' ' .
                                                         $user->last_name}}</p>
                                                     </li>
                                                 @endforeach
