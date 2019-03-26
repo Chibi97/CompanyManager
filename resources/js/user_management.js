@@ -16,6 +16,12 @@ export default function() {
             ajaxGet(url, (data) => {
                 $(".form-loading").css('display', 'none');
                 setFormFieldForUser(data);
+                var val = false;
+                if(data.self) {
+                    val = true;
+                }
+                $('#role').prop('disabled', val);
+                $('#btnOpenModalUser').prop('disabled', val);
 
             }, () => {
                 $(".form-loading").css('display', 'none');

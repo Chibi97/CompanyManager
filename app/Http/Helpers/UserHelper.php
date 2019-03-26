@@ -31,7 +31,14 @@ class UserHelper
 
     public function show(User $user)
     {
-        return $user->load('role', 'userStatus');
+        $additions = [];
+        if($user->id === CompanyManager::getInstance()->retrieve('user')->id) {
+            $additions['self'] = true;
+        } else {
+            $additions['self'] = false;
+        }
+
+        return $user->load('role', 'userStatus')->toArray() + $additions;
     }
 
     public function index()
