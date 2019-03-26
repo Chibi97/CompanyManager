@@ -34,7 +34,9 @@ class UserController extends Controller
         $roles = Role::get()->pluck('name', 'id');
         $companyId = $this->user->company->id;
         $users = User::where('company_id', $companyId)->get();
-        return view('company.users', compact('users', 'roles'));
+        $sessionUser = $this->user->id;
+
+        return view('company.users', compact('users', 'roles', 'sessionUser'));
     }
 
     public function update(UpdateUser $request, User $user)

@@ -90,4 +90,19 @@
             </div>
         </div>
     </div>
+
+    <script>
+        let sessionUser = {!! json_encode($sessionUser) !!}
+        document.querySelector('#onChangeUser').addEventListener('change', function() {
+            var idSelect = this.value;
+            if(idSelect == sessionUser) {
+                console.log(sessionUser);
+                document.querySelector('#role').disabled = true;
+                document.querySelector('#btnOpenModalUser').disabled = true;
+            } else {
+                document.querySelector('#role').disabled = false;
+                document.querySelector('#btnOpenModalUser').disabled = false;
+            }
+        })
+    </script>
 @endsection

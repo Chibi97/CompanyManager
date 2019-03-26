@@ -16,6 +16,7 @@ export default function() {
             ajaxGet(url, (data) => {
                 $(".form-loading").css('display', 'none');
                 setFormFieldForUser(data);
+
             }, () => {
                 $(".form-loading").css('display', 'none');
                 $("#message-target").flash("Server error. Please try later or contact web masters.",
@@ -72,9 +73,14 @@ export default function() {
 
 
 // ------------ UPDATE USER ------------
-    var counter = 0;
+    var roleChanged = false;
     var btnUpdateUser = $('#btn-update-user');
     var updateUser = $("#updateUserForm");
+
+    $('#role').change(function() {
+        roleChanged = true;
+    })
+
     updateUser.submit(function(e) {
 
         e.preventDefault();
@@ -101,16 +107,12 @@ export default function() {
             let oldState = btnUpdateUser.html();
 
             const fn = () => {
-                if(counter == 2) {
-                    afterHttpAction(oldState, message, $("#message-target"), btnUpdateUser);
-                    counter = 0;
-                }
+                afterHttpAction(oldState, message, $("#message-target"), btnUpdateUser);
             }
 
             addLoadingSpinner(btnUpdateUser);
 
             ajaxPut(`${baseUrl}/api/users/${id}`, valid, function(msg) {
-                counter++;
                 message = msg;
                 fn();
                 fillDropDown(userSelect);
@@ -120,18 +122,23 @@ export default function() {
                 var msg = "";
                 if(resp.errors.email) {
                     msg = resp.errors.email[0];
-                } else msg = "Please provide valid information or contact web master.";
-
-
+                } else {
+                    msg = "Please provide valid information or contact web master.";
+                }
                 $("#message-target").flash(msg, {type: "danger", fade: 5000});
                 btnUpdateUser.html(oldState);
                 btnUpdateUser.attr('disabled', false);
             });
 
-            ajaxPut(`${baseUrl}/api/users/${id}/${str}`, {}, function() {
-                counter++;
-                fn();
-            }, (xhr) => { console.log(xhr.responseText) });
+            if(roleChanged) {
+                ajaxPut(`${baseUrl}/api/users/${id}/${str}`, {}, function() {
+                    fn();
+                }, (xhr) => {
+                    $("#message-target").flash(JSON.parse(xhr.responseText).message, {type: "danger", fade: 5000});
+                    btnUpdateUser.html(oldState);
+                    btnUpdateUser.attr('disabled', false);
+                });
+            }
         }
     })
 }

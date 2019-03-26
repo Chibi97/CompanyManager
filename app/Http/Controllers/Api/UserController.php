@@ -20,6 +20,8 @@ class UserController extends Controller
         $this->middleware("CheckApiToken")->except('store', 'login');
         $this->middleware("Before")->except('index', 'store', 'login');
         $this->middleware("Before:restrictIfHimself")->only('promote', 'demote', 'destroy');
+        $this->middleware("Before:restrictEmployee")->only('show');
+
     }
 
     public function restrictIfHimself(Request $request)
@@ -29,14 +31,21 @@ class UserController extends Controller
         return $user->api_token != $token;
     }
 
+    public function restrictEmployee(Request $request) {
+        $token = $request->header('Authorization');
+        $userFromToken = User::where('api_token', $token)->first();
+        if($userFromToken->isEmployee()) {
+            if(!$this->restrictIfHimself($request)) {
+                return true;
+            }
+        } else if($userFromToken->isBoss()) return true;
+
+    }
+
     public function before(Request $request)
     {
         $user = $request->route('user');
-        $token = $request->header('Authorization');
-        $userFromToken = User::where('api_token', $token)->first();
-
         return $user->isPartOfCompany(CompanyManager::getInstance()->retrieve('company'));
-        //&& $userFromToken->isBoss();
     }
 
     public function show(User $user)
