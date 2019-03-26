@@ -80,6 +80,19 @@
 
 .company-tasks .card {
   border-radius: 22px !important;
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+}
+
+.company-tasks .card .fas,
+.company-tasks .card .far,
+.company-tasks .card .icon-tally:before {
+  color: #4272d7 !important;
+}
+
+.company-tasks .card .border-r-light {
+  border-right: 1px solid #e5e5e5;
+  padding-right: 1em;
+  margin-right: 1em;
 }
 
 .company-tasks .card .list-group {
@@ -88,6 +101,9 @@
 
 .company-tasks .card .card-header {
   padding: 2em;
+  background-image: url(/images/black_pattern.png?76465be29d569c472727be6a411ad880);
+  background-size: cover;
+  background-repeat: repeat;
 }
 
 .company-tasks .card .text-light {
@@ -239,6 +255,10 @@
   }
 }
 
+.fw-500 {
+  font-weight: 500 !important;
+}
+
 .lst-none {
   list-style-type: none;
 }
@@ -306,6 +326,10 @@
 .danger-bg {
   background: #e05e5b;
   color: white;
+}
+
+.danger-color {
+  color: #e05e5b;
 }
 
 .danger-bg:hover {

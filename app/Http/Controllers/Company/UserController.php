@@ -2,14 +2,10 @@
 
 namespace App\Http\Controllers\Company;
 
-use App\Http\Helpers\CompanyManager;
 use App\Http\Helpers\UserHelper;
 use App\Http\Requests\UpdateUser;
-use App\Models\Exception\RedirectException;
 use App\Models\User;
 use App\Models\Role;
-use function foo\func;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class UserController extends Controller

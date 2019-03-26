@@ -4,7 +4,6 @@ namespace App\Models;
 
 use App\Models\DTOs\TaskDTO;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\Pivot;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Carbon;
@@ -128,6 +127,32 @@ class Task extends Model
         return $tasks;
     }
 
+    public static function filterTasksByStartDate(Company $company, $opts = [])
+    {
+        $years = self::getStartYearsForTasks($company);
+
+        $tasks = $company
+            ->users
+            ->each(function ($elem) {
+                $elem->tasks;
+            })
+            ->load(['tasks' => function($query) use ($opts, $years) {
+                $year = $opts['year'] ?? $years[0];
+                $query->whereRaw("YEAR(start_date) = ?", array($year));
+
+                if(isset($opts['month'])) {
+                    if($opts['month'] != 0) {
+                        $query->whereRaw("MONTH(start_date) = ?", array($opts['month']));
+                    }
+                }
+            }, 'tasks.taskStatus', 'tasks.taskPriority', 'tasks.users'])
+            ->pluck('tasks')
+            ->flatten()
+            ->unique('id');
+
+        return $tasks;
+    }
+
     public static function storeTask($name, $description, $start, $end, $numOfEmployees, $priority, $employees)
     {
         DB::beginTransaction();
@@ -214,7 +239,7 @@ class Task extends Model
     public function deleteTask()
     {
         DB::transaction(function() {
-            $this->users()->detach();
+            // $this->users()->detach();  TODO: VRATITI OVO U PRODUKCIJI
             $this->delete();
         });
     }

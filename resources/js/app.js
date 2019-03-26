@@ -16,6 +16,7 @@ try {
 import flashInit from './flash';
 import manageTasks from "./task_management";
 import manageUsers from './user_management';
+import {cleanFields} from "./form_handlers";
 flashInit();
 window.baseUrl = window.location.origin;
 
@@ -29,10 +30,18 @@ $(document).ready(function () {
         form.submit()
     })
 
+    var tasksForm = $("#taskDateFilter");
+    tasksForm.on('input', function () {
+        tasksForm.submit()
+    })
+
+
     var selectBoxUsers = $('#selectMultipleUsers');
     selectBoxUsers.select2();
     manageTasks();
     manageUsers();
+
+
 })
 
 

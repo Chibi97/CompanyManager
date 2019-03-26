@@ -34,51 +34,48 @@ class TaskController extends Controller
         if($task = $request->route('task')) {
             return $task->isTaskFromCompany($company);
         }
+
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $tasks = session()->get('user')
-                 ->company->users
-                 ->each(function ($elem) {
-                     $elem->tasks;
-                 })->load('tasks.taskPriority', 'tasks.taskStatus','tasks.users')
-                 ->pluck('tasks')
-                 ->flatten()
-                 ->unique('id');
+        $user = session()->get('user')->refresh();
+        $company = $user->company;
+        $tasks = Task::filterTasksByStartDate($company, $request->query());
 
-        $user = session()->get('user');
-        $token = $user->company->api_token;
+        $years = Task::getStartYearsForTasks($company);
+        $year  = $request->query('year') ?? $years[0];
 
-        return view('company.tasks.index', compact('tasks', 'token'));
+        $months = parent::getAllMonths();
+        $month = $request->query('month') ?? 0;
 
+        return view('company.tasks.index', compact('tasks', 'years', 'year', 'months', 'month'));
     }
 
 
     public function create()
     {
-        $user = session()->get('user');
+        $user = session()->get('user')->refresh();
         $employees = $user->getUserNames();
-        $token = $user->company->api_token;
         $defaultDate = $this->defaultDate;
         $priorities = $this->priorities;
         $label = "Add";
-        return view('company.tasks.create', compact( 'priorities','defaultDate', 'employees', 'token', 'label'));
+        return view('company.tasks.create', compact( 'priorities','defaultDate', 'employees','label'));
     }
 
     public function edit(Task $task, TaskHelper $helper)
     {
+        $task = $helper->show($task);
         $employees = $this->user->getUserNames();
-        $token = $this->user->company->api_token;
         $defaultDate = $this->defaultDate;
         $priorities = $this->priorities;
-        $task = $helper->show($task);
         $label = "Update";
 
         $startDateFormatted = Carbon::make($task->start_date)->format('Y-m-d\TH:i');
         $endDateFormatted = Carbon::make($task->end_date)->format('Y-m-d\TH:i');
 
-        return view('company.tasks.edit', compact('task','defaultDate', 'employees', 'priorities', 'token', 'startDateFormatted','endDateFormatted', 'label'));
+        return view('company.tasks.edit', compact('task','defaultDate', 'employees',
+            'priorities', 'startDateFormatted','endDateFormatted', 'label'));
     }
 
 

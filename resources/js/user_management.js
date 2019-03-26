@@ -23,6 +23,8 @@ export default function() {
                 });
         } else {
             cleanFields([$("#fname"), $("#lname"), $("#email"), $('select[name="role"]') ]);
+            $('.user-status').html("Status");
+
         }
     })
 
@@ -55,6 +57,7 @@ export default function() {
                     }, 1000);
                     userSelect.val(0);
                     cleanFields([$("#fname"), $("#lname"), $("#email"), $('select[name="role"]') ]);
+                    $('.user-status').html("Status");
                     btnArchiveUser.html(oldState);
                     btnArchiveUser.attr('disabled', false);
 

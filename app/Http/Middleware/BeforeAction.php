@@ -9,12 +9,12 @@ use Illuminate\Validation\UnauthorizedException;
 
 class BeforeAction
 {
-    public function handle($request, Closure $next)
+    public function handle($request, Closure $next, $method = "before")
     {
         $route = app()->make(Route::class);
         $controller = $route->getController();
 
-        if(!$controller->before($request)) {
+        if(!$controller->{$method}($request)) {
             throw new AuthorizationException("Not authorized for this action");
         }
 

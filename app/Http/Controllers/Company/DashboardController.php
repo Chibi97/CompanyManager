@@ -12,13 +12,7 @@ class DashboardController extends Controller
 {
     public function stats(Request $request)
     {
-        $months = [];
-        $months[] = "All";
-        foreach(range(1,12) as $month_num) {
-            $months[] = Carbon::create(2019, $month_num, 1, 0, 0, 0)
-                        ->format("F");
-        }
-
+        $months = parent::getAllMonths();
         $month = $request->query('month') ?? 0;
 
         $user = session()->get('user');

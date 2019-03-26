@@ -64,9 +64,9 @@
                                 <select name="priority" id="priority" class="form-control ml-0">
                                     @foreach($priorities as $priority)
                                         @if(isset($task) && $priority != $task->taskPriority->name)
-                                            <option selected>{{ $priority }}</option>
-                                        @else
                                             <option>{{ $priority }}</option>
+                                        @else
+                                            <option selected>{{ $priority }}</option>
                                         @endif
                                     @endforeach
                                 </select>
@@ -75,7 +75,6 @@
                             <div>
                                 <button id="btn-{{ strtolower($label) }}-task" type="submit" class="btn info-bg btn-md
                                 btn-block d-flex justify-content-center">
-                                    <meta name="api_token" content="{{ $token }}" />
                                     @if($label == 'Add')
                                         <i class="fas fa-folder-plus m-r-10 mt-1"></i>
                                     @elseif($label == 'Update')

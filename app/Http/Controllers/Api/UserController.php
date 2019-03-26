@@ -9,7 +9,6 @@ use App\Http\Requests\UpdateUser;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 class UserController extends Controller
 {
@@ -20,12 +19,24 @@ class UserController extends Controller
         $this->helper = $helper;
         $this->middleware("CheckApiToken")->except('store', 'login');
         $this->middleware("Before")->except('index', 'store', 'login');
+        $this->middleware("Before:restrictIfHimself")->only('promote', 'demote', 'destroy');
+    }
+
+    public function restrictIfHimself(Request $request)
+    {
+        $user = $request->route('user');
+        $token = $request->header('Authorization');
+        return $user->api_token != $token;
     }
 
     public function before(Request $request)
     {
         $user = $request->route('user');
+        $token = $request->header('Authorization');
+        $userFromToken = User::where('api_token', $token)->first();
+
         return $user->isPartOfCompany(CompanyManager::getInstance()->retrieve('company'));
+        //&& $userFromToken->isBoss();
     }
 
     public function show(User $user)
@@ -69,7 +80,7 @@ class UserController extends Controller
         return response(["message" => "User successfully deleted"], 200);
     }
 
-    public function login(Request $request){
+    public function login(Request $request) {
         $user = User::getUserAndRole($request->input('email'), $request->input('password'));
         return response($user,200);
     }

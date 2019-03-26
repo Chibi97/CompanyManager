@@ -1,6 +1,8 @@
 import {validateEmail, validateName, validatePassword, validateSelectBox, validateSimpleField, validateNumber, validateMultiSelectBox, validateDate, validateSelectBoxWithWords} from "./validation";
 import {ajaxGet} from "./ajax_helpers";
 import $ from "jquery";
+var moment = require('moment');
+moment().format();
 
 export function validateUpdateUsers(valid, errors) {
     var form = $("form[name='updateUserForm']");
@@ -87,9 +89,16 @@ export function addLoadingSpinner(button) {
 
 export function cleanFields(arr) {
     for(var field of arr) {
-        field.val("");
+        // if(typeof field === 'object') {
+        //     for (var key in field) {
+        //         if (key === 'selectUnset') {
+        //             console.log(field[key].prop('0'))
+        //         }
+        //     }
+        // } else {
+            field.val("");
+        // }
     }
-    $('.user-status').html("Status");
 }
 
 export function afterHttpAction(oldState, message, messageDiv, button) {

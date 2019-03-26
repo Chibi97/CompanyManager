@@ -1,5 +1,5 @@
 import $ from "jquery";
-import {addLoadingSpinner, afterHttpAction, validateTask} from "./form_handlers";
+import {addLoadingSpinner, afterHttpAction, validateTask, cleanFields} from "./form_handlers";
 import {ajaxPost, ajaxPut, ajaxDelete} from "./ajax_helpers";
 
 
@@ -23,6 +23,16 @@ export default function() {
                     addLoadingSpinner(btnAddTask);
                     ajaxPost(url, valid, (resp) => {
                         afterHttpAction(oldState, resp, $("#message-target"), btnAddTask);
+                        cleanFields([
+                            $('#tname'),
+                            $('#desc'),
+                            $('#count'),
+                            { selectUnset: $('#employees') },
+                            { selectFirst: $('#employees') },
+                        ]);
+
+
+
                     }, () => {
                         $("#message-target").flash("Server error. Please try later or contact web masters.",
                             {type: "danger", fade: 5000});
