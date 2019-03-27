@@ -7,6 +7,7 @@ use App\Http\Helpers\TaskHelper;
 use App\Http\Requests\StoreTask;
 use App\Http\Requests\UpdateTask;
 use App\Models\Task;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Symfony\Component\HttpKernel\Exception\UnprocessableEntityHttpException;
@@ -18,18 +19,45 @@ class TaskController extends Controller
     {
         $this->helper = $helper;
         $this->middleware("CheckApiToken");
-        $this->middleware("Before")->except('index');
+        $this->middleware("Before")->except('index', 'store');
+        $this->middleware("Before:restrictEmployee")->only('show');
+        $this->middleware("Before:bossesCan")->except('show');
+        $this->middleware("Before:controlEmployeeAssignment")->only('update', 'store');
     }
 
-    public function before(Request $request)
+    public function controlEmployeeAssignment(Request $request)
     {
         $company = CompanyManager::getInstance()->retrieve('company');
         if($employees = $request->input('employees')) {
             return $company->canCompanyManageTask($employees);
         }
+        return true;
+    }
 
+    public function bossesCan()
+    {
+        $user = CompanyManager::getInstance()->retrieve('user');
+        if($user->isBoss()) {
+            return true;
+        }
+    }
+
+    public function restrictEmployee(Request $request)
+    {
+        $task = $request->route('task');
+        $user = CompanyManager::getInstance()->retrieve('user');
+        $taskForUser = $user->tasks;
+        if($user->isEmployee()) {
+            if($taskForUser->contains($task->id)) {
+                return true;
+            }
+        } else if($user->isBoss()) return true;
+    }
+
+    public function before(Request $request)
+    {
         if($task = $request->route('task')) {
-            return $task->isTaskFromCompany($company);
+            return $task->isTaskFromCompany(CompanyManager::getInstance()->retrieve('company'));
         }
     }
 
@@ -38,6 +66,10 @@ class TaskController extends Controller
         return $this->helper->index();
     }
 
+    public function show(Task $task)
+    {
+        return $this->helper->show($task);
+    }
 
     public function store(StoreTask $request)
     {
@@ -51,12 +83,6 @@ class TaskController extends Controller
         }
 
         return response(["message" => $message], $status);
-    }
-
-
-    public function show(Task $task)
-    {
-        return $this->helper->show($task);
     }
 
     public function update(Task $task, UpdateTask $request)

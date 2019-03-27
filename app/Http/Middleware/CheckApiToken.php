@@ -21,7 +21,6 @@ class CheckApiToken
     {
         $requestToken = $request->header('Authorization');
         $user = User::where('api_token', $requestToken)->first();
-        //$company = Company::where('api_token', $requestToken)->first();
 
         if($user) {
             $company = $user->company;

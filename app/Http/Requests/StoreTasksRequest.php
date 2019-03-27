@@ -18,13 +18,20 @@ abstract class StoreTasksRequest extends FormRequest
 
     protected function baseRules()
     {
+        $priorities = TaskPriority::all()->pluck('name');
+        foreach($priorities as $p) {
+            $priorities[] = strtolower($p);
+        }
+        $priorities = $priorities->implode('|');
+        $regex = "/^$priorities$/";
+
         return [
             'name' => ["min:3", "max:50", "regex:" . self::NAME_REGEX],
             'description' => ["min:10", "max:190", "regex:" . self::DESC_REGEX],
             'start_date' => ["date_format:Y-m-d H:i:s"],
             'end_date' => ["date_format:Y-m-d H:i:s"],
             'count' => ["numeric", "min:1", "max:20"],
-            'priority' => ["regex:/^[a-zA-Z\s]+$/", "min:2", "max:30"],
+            'priority' => ["regex:$regex", "min:2", "max:30"],
             'employees' => ["array","min:1"],
             'employees.*' => ["numeric","distinct", "min:1"]
         ];

@@ -88,16 +88,8 @@ export function addLoadingSpinner(button) {
 }
 
 export function cleanFields(arr) {
-    for(var field of arr) {
-        // if(typeof field === 'object') {
-        //     for (var key in field) {
-        //         if (key === 'selectUnset') {
-        //             console.log(field[key].prop('0'))
-        //         }
-        //     }
-        // } else {
-            field.val("");
-        // }
+    for(var field in arr) {
+            arr[field].val("");
     }
 }
 

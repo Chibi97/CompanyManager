@@ -26,12 +26,7 @@ export default function() {
                         cleanFields([
                             $('#tname'),
                             $('#desc'),
-                            $('#count'),
-                            { selectUnset: $('#employees') },
-                            { selectFirst: $('#employees') },
-                        ]);
-
-
+                            $('#count')]);
 
                     }, () => {
                         $("#message-target").flash("Server error. Please try later or contact web masters.",

@@ -4,6 +4,7 @@ use App\Models\Task;
 use App\Models\User;
 use function foo\func;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Carbon;
 
 class TaskTableSeeder extends Seeder
@@ -29,12 +30,12 @@ class TaskTableSeeder extends Seeder
                                        "updated_at" => Carbon::now()
                                       ]);
 
-//            $task->users()->attach($faker->randomElement($users),
-//                [
-//                    "is_accepted" => rand(0,1),
-//                    "created_at" => Carbon::now(),
-//                    "updated_at" => Carbon::now()
-//                ]);
+            $task->users()->attach($faker->randomElement($users),
+                [
+                    "is_accepted" => Arr::random([0,1,2]),
+                    "created_at" => Carbon::now(),
+                    "updated_at" => Carbon::now()
+                ]);
         });
     }
 }

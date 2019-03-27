@@ -20,31 +20,31 @@ class UserController extends Controller
         $this->helper = $helper;
         $this->middleware("CheckApiToken")->except('store', 'login');
         $this->middleware("Before")->except('index', 'store', 'login');
-        $this->middleware("Before:bossesCan")->only('index');
         $this->middleware("Before:restrictEmployee")->only('show');
+        $this->middleware("Before:bossesCan")->only('index');
         $this->middleware("Before:restrictIfHimself")->only('promote', 'demote', 'destroy');
     }
 
     public function restrictIfHimself(Request $request)
     {
-        $user = $request->route('user');
-        $token = $request->header('Authorization');
-        return $user->api_token != $token;
+        $userFromRoute = $request->route('user');
+        $user = CompanyManager::getInstance()->retrieve('user');
+        return $userFromRoute->id != $user->id;
     }
 
-    public function bossesCan(Request $request) {
-        $token = $request->header('Authorization');
-        $userFromToken = User::where('api_token', $token)->first();
-        if($userFromToken->isBoss()) {
+    public function bossesCan()
+    {
+        $user = CompanyManager::getInstance()->retrieve('user');
+        if($user->isBoss()) {
             return true;
         }
     }
 
-    public function restrictEmployee(Request $request) {
-        $token = $request->header('Authorization');
-        $userFromToken =User::where('api_token', $token)->first();
+    public function restrictEmployee(Request $request)
+    {
+        $userFromToken = CompanyManager::getInstance()->retrieve('user');
         if($userFromToken->isEmployee()) {
-            if(!$this->restrictIfHimself($request)) {
+            if($userFromToken->id == $request->route('user')->id) {
                 return true;
             }
         } else if($userFromToken->isBoss()) return true;

@@ -23,7 +23,8 @@ class Company extends Model
 
     public function canCompanyManageTask($employees)
     {
-        return $this->users()->whereIn('id', $employees)->count() === count($employees);
+
+         return $this->users()->whereIn('id', $employees)->count() === count($employees);
     }
 
     public function users()

@@ -26,15 +26,11 @@ class TaskController extends Controller
     {
         $this->user = session()->get('user');
         $this->user->refresh();
-        $company = $this->user->company;
 
-        if($employees = $request->input('employees')) {
-            return $company->canCompanyManageTask($employees);
-        }
+        $company = $this->user->company;
         if($task = $request->route('task')) {
             return $task->isTaskFromCompany($company);
         }
-
     }
 
     public function index(Request $request)
