@@ -30,7 +30,7 @@ abstract class StoreTasksRequest extends FormRequest
             'description' => ["min:10", "max:190", "regex:" . self::DESC_REGEX],
             'start_date' => ["date_format:Y-m-d H:i:s"],
             'end_date' => ["date_format:Y-m-d H:i:s"],
-            'count' => ["numeric", "min:1", "max:20"],
+            'count' => ["numeric", "min:0", "max:30"],
             'priority' => ["regex:$regex", "min:2", "max:30"],
             'employees' => ["array","min:1"],
             'employees.*' => ["numeric","distinct", "min:1"]

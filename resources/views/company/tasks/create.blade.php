@@ -37,7 +37,7 @@
 
                             <div class="form-group">
                                 <label for="count" class="control-label mb-1">Number of employees</label>
-                                <input id="count" name="count" type="number" min="1" class="form-control" value="{{
+                                <input id="count" name="count" type="number" min="0" class="form-control" value="{{
                                 isset($task) ? $task->count : 1 }}">
                             </div>
 
