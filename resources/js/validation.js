@@ -70,15 +70,12 @@ export function validateSimpleField(field, valid, errors, input, min, max) {
 }
 
 export function validateNumber(num, valid, errors) {
-    if(num = parseInt(num)) {
-        if(num >= 0) {
-            valid.count = num;
-        } else {
-            errors.count = "Number of employees should be 1 or more";
-        }
+    if(parseInt(num) >= 0) {
+        valid.count = num;
     } else {
         errors.count = "Number of employees should be 1 or more";
     }
+
 }
 
 export function validateMultiSelectBox(array, valid, errors, input) {

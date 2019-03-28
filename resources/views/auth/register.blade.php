@@ -2,13 +2,9 @@
 
 @section('form')
     <div class="login-form">
-        @if ($errors->any() )
-            <div class="alert alert-warning">
-                @foreach ($errors->all() as $error)
-                    <p>{{ $error }}</p>
-                @endforeach
-            </div>
-        @endif
+        @errors(['errors' => $errors])
+        @enderrors
+
         <form action="{{ route('register') }}" method="post">
             @csrf
             <div class="form-group">

@@ -8,53 +8,19 @@
                 <div class="col-md-12">
                     <div class="overview-wrap">
                         <form id="date-filters" action="{{route('company.dashboard')}}" method="GET" class="d-flex">
-                            <div class="f-group">
-                                <label>Month: </label>
-                                <select data-selected="{{ $month }}" class="prettySelect select-change" name="month"
-                                        id="SelectLm" class="form-control-sm form-control">
-                                    @foreach($months as $i => $month)
-                                        <option value="{{ $i }}"> {{ $month }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-
-                            <div class="f-group ml-4">
-                                <label>Year: </label>
-                                <select data-selected="{{ $year }}" class="prettySelect select-change" name="year"
-                                        id="SelectLm"
-                                        class="form-control-sm form-control">
-                                    @foreach($years as $year)
-                                        <option> {{ $year }}</option>
-                                    @endforeach
-
-                                    @if(!$years)
-                                        <option>{{ $year }}</option>
-                                    @endif
-                                </select>
-                            </div>
+                            @yearMonthFilter(['months' => $months,
+                                              'years' => $years,
+                                              'month' => $month,
+                                              'year' => $year])
+                            @endyearMonthFilter
                         </form>
                     </div>
                 </div>
 
             </div>
             <div class="row m-t-25 stats-container">
-                @foreach($stats as $label => $assoc)
-                    <div class="stat-item col-sm-6 col-lg-3">
-                        <div class="overview-item {{ $assoc['css']  }}">
-                            <div class="overview__inner">
-                                <div class="overview-box clearfix">
-                                    <div class="icon">
-                                        <i class="{{ $assoc['icon']  }}"></i>
-                                    </div>
-                                    <div class="text">
-                                        <h2>{{  $assoc['count']  }}</h2>
-                                        <span>tasks are <strong class="text-lowercase">{{ $label }}</strong></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
+                @taskStatusStats(['stats' => $stats])
+                @endtaskStatusStats
             </div>
             @include('company.due_date_tasks')
         </div>

@@ -6,10 +6,12 @@
     font-weight: normal;
     color: $primary;
     border-radius: 3px;
+    margin-bottom: 1.5em;
   }
 }
 .user-stats {
   list-style-type: none !important;
+  margin-bottom: 1.5em;
 
   span {
     color: $azure;

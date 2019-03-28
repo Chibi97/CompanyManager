@@ -5,10 +5,12 @@
   font-weight: normal;
   color: #4272d7;
   border-radius: 3px;
+  margin-bottom: 1.5em;
 }
 
 .user-stats {
   list-style-type: none !important;
+  margin-bottom: 1.5em;
 }
 
 .user-stats span {

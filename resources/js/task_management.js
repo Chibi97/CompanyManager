@@ -56,6 +56,7 @@ export default function() {
                     ajaxPut(url, valid, (resp) => {
                         afterHttpAction(oldState, resp, $("#message-target"), btnUpdateTask);
                     }, () => {
+
                         $("#message-target").flash("Server error. Please try later or contact web masters.",
                             {type: "danger", fade: 5000});
                     });

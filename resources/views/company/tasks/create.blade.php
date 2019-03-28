@@ -38,7 +38,7 @@
                             <div class="form-group">
                                 <label for="count" class="control-label mb-1">Number of employees</label>
                                 <input id="count" name="count" type="number" min="0" class="form-control" value="{{
-                                isset($task) ? $task->count : 1 }}">
+                                isset($task) ? $task->count : 0 }}">
                             </div>
 
                             <div class="form-group">
@@ -88,19 +88,8 @@
                 </div>
               <div class="col-12 col-md-4 col-lg-4">
                   <div id="message-target" class="au-card-inner">
-                        @if ($errors->any() )
-                            <div class="alert alert-warning">
-                                @foreach ($errors->all() as $error)
-                                    <p>{{ $error }}</p>
-                                @endforeach
-                            </div>
-                        @endif
-
-                        @if(session()->has('success'))
-                            <div class="alert alert-success">
-                                <p>{{ session()->get('success') }}</p>
-                            </div>
-                        @endif
+                        @errors(['errors' => $errors])
+                        @enderrors
                     </div>
                 </div>
             </div>

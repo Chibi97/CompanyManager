@@ -66,8 +66,10 @@ class TaskHelper
     {
         $data = $request->all();
         foreach ($data as $key => $val) {
-            if(!$val) {
-                unset($data[$key]);
+            if($request->input('count') != 0) {
+                if (!$val) {
+                    unset($data[$key]);
+                }
             }
         }
         return $task->updateTask($data);

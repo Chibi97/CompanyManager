@@ -2,48 +2,29 @@
 
 namespace App\Http\Controllers\Company;
 
+use App\Http\Helpers\Dashboard;
 use App\Models\Task;
-use App\Models\TaskStatus;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Carbon;
 
 class DashboardController extends Controller
 {
+    protected $helper;
+
+    public function __construct(Dashboard $helper)
+    {
+        $this->helper = $helper;
+    }
+
     public function stats(Request $request)
     {
         $months = parent::getAllMonths();
         $month = $request->query('month') ?? 0;
 
-        $user = session()->get('user');
-        $user->refresh();
+        $user = session()->get('user')->refresh();
 
         $tasks = Task::allTasksForCompany($user->company, $request->query());
-        $statuses = TaskStatus::all()->take(4); // TODO: maybe to scope this to company
-
-        $stats = [];
-        $icons = [
-            'far fa-check-square',
-            'far fa-clock',
-            'fas fa-pause',
-            'fas fa-hourglass-end'
-        ];
-
-        foreach ($statuses as $index => $status) {
-            $stats[$status->name] = [
-                'count' => 0,
-                'css' => 'overview-item--c' . ($index+1),
-                'icon' => $icons[$index]
-            ];
-        }
-
-        foreach ($statuses as $status) {
-            foreach ($tasks as $task) {
-                if($task->isStatus($status->name)) {
-                    $stats[$status->name]['count']++;
-                }
-            }
-        }
+        $stats = $this->helper->stats($tasks);
 
         $years = Task::getStartYearsForTasks($user->company);
         $year  = $request->query('year') ?? $years[0];

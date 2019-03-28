@@ -23,7 +23,7 @@ class Task extends Model
     }
 
     protected $fillable = [
-        'name', 'description', 'start_date', 'end_date', 'count'
+        'name', 'description','count', 'start_date', 'end_date'
     ];
 
 
@@ -148,6 +148,43 @@ class Task extends Model
             }, 'tasks.taskStatus', 'tasks.taskPriority', 'tasks.users'])
             ->pluck('tasks')
             ->flatten()
+            ->unique('id');
+
+        return $tasks;
+    }
+
+    public static function getEmployeeTasksYears($user)
+    {
+        $years = $user->tasks->pluck('start_date')
+            ->map(function($y) {
+                return Carbon::createFromFormat('Y-m-d H:i:s', $y)->year;
+            })
+            ->unique()
+            ->toArray();
+
+        rsort($years);
+        if(empty($years)) {
+            $years[0] = Carbon::now()->year;
+        }
+        return $years;
+    }
+
+    public static function employeeTasks($user, $opts = [])
+    {
+
+        $years = self::getEmployeeTasksYears($user);
+        $tasks = $user
+            ->load(['tasks' => function($query) use ($opts, $years) {
+                $year = $opts['year'] ?? $years[0];
+                $query->whereRaw("YEAR(start_date) = ?", array($year));
+
+                if(isset($opts['month'])) {
+                    if($opts['month'] != 0) {
+                        $query->whereRaw("MONTH(start_date) = ?", array($opts['month']));
+                    }
+                }
+            }, 'tasks.taskStatus'])
+            ->tasks
             ->unique('id');
 
         return $tasks;
