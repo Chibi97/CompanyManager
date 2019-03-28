@@ -21,6 +21,7 @@ class LoginController extends Controller
     public function store(CheckUsers $request) {
 
         $user = User::getUserAndRole($request->input('email'), $request->input('password'));
+
         session()->put("user", $user);
 
         if($user->isBoss()) {

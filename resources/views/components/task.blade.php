@@ -1,4 +1,4 @@
-<div class="col-md-6 col-xl-4 col-rewrite">
+<div class="{{ $class ?? "col-md-6 col-xl-4 col-rewrite" }}">
     <aside class="profile-nav alt">
         <section class="card">
             <div class="card-header user-header alt bg-dark">
@@ -12,23 +12,9 @@
 
 
             <ul class="list-group list-group-flush">
-                @if(session()->get('user')->isBoss())
-                    <li class="d-flex justify-content-around p-3">
-                    <a href="{{ route('tasks.edit', ['task' => $task->id]) }}" class="btn
-                                        info-bg">
-                        <i class="far fa-edit m-r-10 text-white"></i>
-                        Update
-                    </a>
-
-                    <button type="button" class="btn danger-bg btnOpenModalArchiveTask"
-                            data-toggle="modal"
-                            data-target="#confirmDeleteModal"
-                            data-id="{{ $task->id }}">
-                        <i class="fas fa-user-times m-r-10 text-white"></i>
-                        Archive
-                    </button>
+                <li class="d-flex justify-content-around p-3">
+                    {{ $slot }}
                 </li>
-                @endif
                 <li class="list-group-item d-flex">
                     <div>
                         <i class="fas fa-hourglass-start pr-4"></i>

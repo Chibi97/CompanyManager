@@ -68,12 +68,12 @@
     width: 40% !important;
   }
 
-  .col-rewrite {
-    @media(min-width: 1700px) {
-      flex: 0 0 25%;
-      max-width: 25%;
-    }
-  }
+  //.col-rewrite {
+  //  @media(min-width: 1700px) {
+  //    flex: 0 0 25%;
+  //    max-width: 25%;
+  //  }
+  //}
 
   .card {
     border-radius: 22px !important;

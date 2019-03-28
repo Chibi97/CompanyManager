@@ -76,9 +76,30 @@ class TaskHelper
 
     }
 
+    public function acceptTask($user, $task)
+    {
+        $task->changeAcceptance($user);
+    }
+
+    public function denyTask($user, $task)
+    {
+        $task->changeAcceptance($user, 'Deny');
+    }
+
     public function destroy(Task $task)
     {
         $task->deleteTask();
+    }
+
+    public function getPendingTasks()
+    {
+        if(session()->has('user')) {
+            $user = session()->get('user');
+        } else {
+            $user = CompanyManager::getInstance()->retrieve('user');
+        }
+
+        return $user->getTasksFilteredByAcceptance();
     }
 
 

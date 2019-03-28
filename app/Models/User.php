@@ -199,4 +199,9 @@ class User extends Authenticatable
         });
     }
 
+    public function getTasksFilteredByAcceptance($accept = 0)
+    {
+        return $this->tasks()->wherePivot('is_accepted', $accept)->get();
+    }
+
 }

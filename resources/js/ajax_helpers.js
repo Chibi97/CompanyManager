@@ -1,6 +1,5 @@
 export function setupAjax() {
     const token = $("meta[name='apitoken']").attr('content');
-    console.log(token);
     $.ajaxSetup({
         headers: {
             "Authorization": token

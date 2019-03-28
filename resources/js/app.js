@@ -2,6 +2,7 @@ import $ from "jquery";
 import 'select2';
 import 'bootstrap';
 import {setupAjax} from "./ajax_helpers";
+import {slickInit} from "./slick";
 
 var moment = require('moment');
 moment().format();
@@ -16,6 +17,7 @@ try {
 import flashInit from './flash';
 import manageTasks from "./task_management";
 import manageUsers from './user_management';
+import employees from "./employees";
 
 flashInit();
 window.baseUrl = window.location.origin;
@@ -44,6 +46,8 @@ $(document).ready(function () {
     selectBoxUsers.select2();
     manageTasks();
     manageUsers();
+    slickInit();
+    employees();
 
 })
 

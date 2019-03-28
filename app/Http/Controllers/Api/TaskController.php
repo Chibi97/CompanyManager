@@ -21,7 +21,8 @@ class TaskController extends Controller
         $this->middleware("CheckApiToken");
         $this->middleware("Before")->except('index', 'store');
         $this->middleware("Before:restrictEmployee")->only('show');
-        $this->middleware("Before:bossesCan")->except('show');
+        $this->middleware("Before:bossesCan")->except('show', 'acceptTask', 'denyTask', 'pendingTasks');
+        $this->middleware("Before:canEditOwnTask")->only('acceptTask', 'denyTask');
         $this->middleware("Before:controlEmployeeAssignment")->only('update', 'store');
     }
 
@@ -38,6 +39,14 @@ class TaskController extends Controller
     {
         $user = CompanyManager::getInstance()->retrieve('user');
         if($user->isBoss()) {
+            return true;
+        }
+    }
+
+    public function canEditOwnTask(Request $request) {
+        $user = CompanyManager::getInstance()->retrieve('user');
+        $task = $request->route('task');
+        if($user->tasks->contains($task)) {
             return true;
         }
     }
@@ -96,9 +105,23 @@ class TaskController extends Controller
         }
     }
 
+    public function acceptTask(Task $task) {
+        $user = CompanyManager::getInstance()->retrieve('user');
+        $this->helper->acceptTask($user, $task);
+        return response(["message" => "Successfully accepted task"]);
+    }
+
+    public function denyTask(Task $task) {
+        $user = CompanyManager::getInstance()->retrieve('user');
+        $this->helper->denyTask($user, $task);
+        return response(["message" => "Successfully denied task"]);
+    }
+
     public function destroy(Task $task)
     {
         $this->helper->destroy($task);
         return response(["message" => "Task successfully deleted"], 200);
     }
+
+
 }

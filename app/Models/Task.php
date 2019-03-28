@@ -121,8 +121,7 @@ class Task extends Model
             ->flatten()->unique()
             ->filter(function ($value) {
                 return $value != null;
-            });
-
+            })->unique('id');
 
         return $tasks;
     }
@@ -273,6 +272,22 @@ class Task extends Model
         });
     }
 
+    public function changeAcceptance($user, $param = 'Accept')
+    {
+        if($param == 'Accept') {
+            $accept = 1;
+
+        } else if($param == 'Deny') {
+            $accept = 0;
+        }
+
+        DB::transaction(function() use ($accept, $user) {
+            $userTask = $user->tasks->where('id', $this->id)->first()->pivot;
+            $userTask->is_accepted = $accept;
+            $userTask->save();
+        });
+    }
+
     public function deleteTask()
     {
         DB::transaction(function() {
@@ -280,5 +295,6 @@ class Task extends Model
             $this->delete();
         });
     }
+
 
 }
