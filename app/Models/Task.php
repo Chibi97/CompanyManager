@@ -1,26 +1,27 @@
 <?php
-
 namespace App\Models;
+
 
 use App\Models\DTOs\TaskDTO;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+
 
 class Task extends Model
 {
     use SoftDeletes;
-
     private $model;
+
 
     public function setModel(TaskDTO $task)
     {
         $this->model = $task;
     }
+
 
     protected $fillable = [
         'name', 'description','count', 'start_date', 'end_date'
@@ -32,24 +33,29 @@ class Task extends Model
         return $this->belongsToMany(User::class, 'task_comments');
     }
 
+
     public function users()
     {
         return $this->belongsToMany(User::class);
     }
+
 
     public function taskStatus()
     {
         return $this->belongsTo(TaskStatus::class);
     }
 
+
     public function taskPriority() {
         return $this->belongsTo(TaskPriority::class);
     }
+
 
     public function isStatus($check)
     {
         return $this->taskStatus->name == $check;
     }
+
 
     public function isTaskFromCompany(Company $company)
     {
@@ -59,9 +65,9 @@ class Task extends Model
                 return true;
             } else return false;
         });
-
-       return $result->contains(true);
+        return $result->contains(true);
     }
+
 
     public static function getStartYearsForTasks(Company $company)
     {
@@ -73,7 +79,6 @@ class Task extends Model
             })
             ->unique()
             ->toArray();
-
         rsort($years);
         if(empty($years)) {
             $years[0] = Carbon::now()->year;
@@ -81,16 +86,15 @@ class Task extends Model
         return $years;
     }
 
+
     public static function allTasksForCompany(Company $company, $opts = [])
     {
         $years = self::getStartYearsForTasks($company);
-
         $tasks = $company
             ->users
             ->load(['tasks' => function($query) use ($opts, $years) {
                 $year = $opts['year'] ?? $years[0];
                 $query->whereRaw("YEAR(start_date) = ?", array($year));
-
                 if(isset($opts['month'])) {
                     if($opts['month'] != 0) {
                         $query->whereRaw("MONTH(start_date) = ?", array($opts['month']));
@@ -99,9 +103,9 @@ class Task extends Model
             }, 'tasks.taskStatus'])
             ->map(function($employee) { return $employee->tasks; } )
             ->flatten();
-
         return $tasks;
     }
+
 
     public static function dueDateTasks(Company $company)
     {
@@ -122,14 +126,13 @@ class Task extends Model
             ->filter(function ($value) {
                 return $value != null;
             })->unique('id');
-
         return $tasks;
     }
+
 
     public static function filterTasksByStartDate(Company $company, $opts = [])
     {
         $years = self::getStartYearsForTasks($company);
-
         $tasks = $company
             ->users
             ->each(function ($elem) {
@@ -138,7 +141,6 @@ class Task extends Model
             ->load(['tasks' => function($query) use ($opts, $years) {
                 $year = $opts['year'] ?? $years[0];
                 $query->whereRaw("YEAR(start_date) = ?", array($year));
-
                 if(isset($opts['month'])) {
                     if($opts['month'] != 0) {
                         $query->whereRaw("MONTH(start_date) = ?", array($opts['month']));
@@ -148,9 +150,9 @@ class Task extends Model
             ->pluck('tasks')
             ->flatten()
             ->unique('id');
-
         return $tasks;
     }
+
 
     public static function getEmployeeTasksYears($user)
     {
@@ -160,7 +162,6 @@ class Task extends Model
             })
             ->unique()
             ->toArray();
-
         rsort($years);
         if(empty($years)) {
             $years[0] = Carbon::now()->year;
@@ -168,15 +169,14 @@ class Task extends Model
         return $years;
     }
 
-    public static function employeeTasks($user, $opts = [])
-    {
 
+    public static function employeeStats($user, $opts = [])
+    {
         $years = self::getEmployeeTasksYears($user);
         $tasks = $user
             ->load(['tasks' => function($query) use ($opts, $years) {
                 $year = $opts['year'] ?? $years[0];
                 $query->whereRaw("YEAR(start_date) = ?", array($year));
-
                 if(isset($opts['month'])) {
                     if($opts['month'] != 0) {
                         $query->whereRaw("MONTH(start_date) = ?", array($opts['month']));
@@ -185,9 +185,9 @@ class Task extends Model
             }, 'tasks.taskStatus'])
             ->tasks
             ->unique('id');
-
         return $tasks;
     }
+
 
     public static function storeTask($name, $description, $start, $end, $numOfEmployees, $priority, $employees)
     {
@@ -200,33 +200,28 @@ class Task extends Model
                 'end_date' => $end,
                 'count' => $numOfEmployees
             ]);
-
             $status = TaskStatus::where('name', 'On hold')->first();
             $priority = TaskPriority::where('name', $priority)->first();
             $task->taskStatus()->associate($status);
             $task->taskPriority()->associate($priority);
-
             $task->save();
-
             $task->users()->attach($employees,
                 [
                     "is_accepted" => 0,
                     "created_at" => Carbon::now(),
                     "updated_at" => Carbon::now()
                 ]);
-
         } catch(QueryException $e) {
             DB::rollBack();
             throw new BadRequestHttpException();
         }
-
         DB::commit();
     }
+
 
     public function updateTask($data)
     {
         DB::transaction(function() use ($data) {
-
             if(isset($data['status'])) {
                 try {
                     $status = TaskStatus::where('name', $data['status'])->first();
@@ -235,7 +230,6 @@ class Task extends Model
                     throw new BadRequestHttpException();
                 }
             }
-
             if(isset($data['priority'])) {
                 try {
                     $priority = TaskPriority::where('name', $data['priority'])->first();
@@ -244,10 +238,8 @@ class Task extends Model
                     throw new BadRequestHttpException();
                 }
             }
-
             $this->fill($data);
             $this->save();
-
             if(isset($data['employees'])) {
                 $assignedUsers = $this->users->pluck('id');
                 $syncArr = [];
@@ -267,26 +259,26 @@ class Task extends Model
                         ];
                     }
                 }
-                 $this->users()->sync($syncArr);
+                $this->users()->sync($syncArr);
             }
         });
     }
+
 
     public function changeAcceptance($user, $param = 'Accept')
     {
         if($param == 'Accept') {
             $accept = 1;
-
         } else if($param == 'Deny') {
             $accept = 0;
         }
-
         DB::transaction(function() use ($accept, $user) {
             $userTask = $user->tasks->where('id', $this->id)->first()->pivot;
             $userTask->is_accepted = $accept;
             $userTask->save();
         });
     }
+
 
     public function deleteTask()
     {
@@ -295,6 +287,4 @@ class Task extends Model
             $this->delete();
         });
     }
-
-
 }

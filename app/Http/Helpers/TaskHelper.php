@@ -91,16 +91,5 @@ class TaskHelper
         $task->deleteTask();
     }
 
-    public function getPendingTasks()
-    {
-        if(session()->has('user')) {
-            $user = session()->get('user');
-        } else {
-            $user = CompanyManager::getInstance()->retrieve('user');
-        }
-
-        return $user->getTasksFilteredByAcceptance();
-    }
-
 
 }

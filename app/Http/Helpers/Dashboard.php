@@ -6,9 +6,13 @@ use App\Models\TaskStatus;
 
 class Dashboard
 {
-    public function stats($tasks)
+    public function stats($tasks, $param = null)
     {
-        $statuses = TaskStatus::all()->take(4);
+        $takeNum = 4;
+        if($param == 'deny') {
+            $takeNum = 5;
+        }
+        $statuses = TaskStatus::all()->take($takeNum);
 
         $stats = [];
         $icons = [
@@ -17,6 +21,9 @@ class Dashboard
             'fas fa-pause',
             'fas fa-hourglass-end'
         ];
+        if($param == 'deny') {
+            $icons[] = 'fas fa-user-times';
+        }
 
         foreach ($statuses as $index => $status) {
             $stats[$status->name] = [
@@ -33,7 +40,6 @@ class Dashboard
                 }
             }
         }
-
         return $stats;
     }
 }

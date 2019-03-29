@@ -7,6 +7,7 @@ use App\Models\DTOs\UserDTO;
 use App\Models\Exception\RedirectException;
 use App\Models\Exception\UserNotFoundException;
 use Dotenv\Exception\ValidationException;
+use function foo\func;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -199,9 +200,40 @@ class User extends Authenticatable
         });
     }
 
+
     public function getTasksFilteredByAcceptance($accept = 0)
     {
-        return $this->tasks()->wherePivot('is_accepted', $accept)->get();
+         $tasks =  $this->load('tasks','tasks.taskStatus',
+         'tasks.taskPriority', 'tasks.users')->tasks->map(function ($task) use ($accept) {
+              if($task->pivot->is_accepted == $accept) {
+                  return $task;
+              }
+         })->filter(function ($task) {
+             return $task != null;
+         })->flatten();
+
+         return $tasks;
+    }
+
+    public function getAvailableTasks()
+    {
+        $tasks = $this->company
+            ->users
+            ->each(function ($user) {
+                $user->tasks;
+            })
+            ->load(['tasks' => function($query) {
+                $query->where('count', '>', 0);
+            }, 'tasks.taskStatus', 'tasks.taskPriority', 'tasks.users'])
+            ->pluck('tasks')
+            ->flatten()
+            ->unique('id');
+        return $tasks;
+    }
+
+    public function assignToTask()
+    {
+
     }
 
 }

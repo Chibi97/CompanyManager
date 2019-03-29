@@ -31,23 +31,14 @@ class DashboardController extends Controller
         $months = parent::getAllMonths();
         $month = $request->query('month') ?? 0;
         $year = $request->query('year') ?? $years[0];
-        $deniedTasks = $this->user->getTasksFilteredByAcceptance(2);
 
-        $tasks = Task::employeeTasks($this->user, $request->query());
-        $stats = $this->helper->stats($tasks);
-        $stats['denied'] = [
-            'icon' => 'fas fa-user-times',
-            'css' => 'overview-item--c5',
-            'count' => $deniedTasks->count(),
-        ];
+        $tasks = Task::employeeStats($this->user, $request->query());
+        $stats = $this->helper->stats($tasks, 'deny');
+
         $pending = $this->user->getTasksFilteredByAcceptance();
         $userStatus = $this->user->userStatus->name;
 
         return view('employee.stats',
             compact('stats', 'years', 'months', 'year', 'month', 'pending', 'userStatus'));
     }
-
-
-
-
 }

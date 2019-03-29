@@ -47,6 +47,7 @@ $(document).ready(function () {
     manageTasks();
     manageUsers();
     slickInit();
+
     employees();
 
 })

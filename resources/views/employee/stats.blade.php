@@ -29,22 +29,29 @@
             @endtaskStatusStats
         </div>
 
-        <h3 class="h4 mb-4 ml-1">Pending tasks</h3>
+        @if($pending->isEmpty())
+            <h3 class="h4 mb-4 ml-1">There are no pending tasks</h3>
+        @else
+            <h3 class="h4 mb-4 ml-1">Pending tasks</h3>
+        @endif
 
-        <div class="row task-slider tasks-container">
+        <?php
+            $ids = $pending->pluck('id');
+        ?>
+        <div data-tasks="{{ json_encode($ids) }}" class="row task-slider tasks-container">
+
             @foreach($pending as $task)
                 @task(['task' => $task, 'class' => 'px-3'])
-                <a href="#" id="acceptTask" class="btn info-bg" data-id="{{ $task->id }}">
+                <a href="#" class="acceptTask btn info-bg" data-id="{{ $task->id }}">
                     <i class="fas fa-user-check text-white"></i>
                     Accept
                 </a>
 
-                <button type="button" class="btn danger-bg"
-                        id="denyTasks"
+                <a href="#" class="denyTask btn danger-bg"
                         data-id="{{ $task->id }}">
                     <i class="fas fa-user-times m-r-10 text-white"></i>
                     Deny
-                </button>
+                </a>
                 @endtask
             @endforeach
         </div>

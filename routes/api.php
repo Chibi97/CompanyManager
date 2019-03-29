@@ -18,22 +18,26 @@ use Illuminate\Http\Request;
 //});
 
 
-Route::resource('/users', 'Api\UserController');
-Route::put('/users/{user}/promote', 'Api\UserController@promote');
-Route::put('/users/{user}/demote', 'Api\UserController@demote');
+Route::resource('/users', 'Api\UserController')->except(['create','edit']);
 Route::post('/auth','Api\UserController@login');
+Route::group(['prefix' => '/users'], function() {
+    Route::put('/{user}/promote', 'Api\UserController@promote');
+    Route::put('/{user}/demote', 'Api\UserController@demote');
+});
 
 Route::resource('/tasks', 'Api\TaskController')->except(['create','edit']);
-Route::put('/tasks/{task}/accept', 'Api\TaskController@acceptTask');
-Route::put('/tasks/{task}/deny', 'Api\TaskController@denyTask');
+Route::group(['prefix' => 'tasks'], function() {
+    Route::put('/{task}/deny', 'Api\TaskController@denyTask');
+    Route::put('/{task}/accept', 'Api\TaskController@acceptTask');
+});
+
+Route::group(['prefix' => 'user/tasks'], function() {
+    Route::get('/', 'Api\UserTaskController@getTasks');
+    Route::get('/pending', 'Api\UserTaskController@pendingTasks');
+    Route::get('/available', 'Api\UserTaskController@availableTasks');
+});
 
 Route::get('/task-priorities', 'Api\TaskPriorityController@index');
-
-Route::group(['prefix' => '/user/tasks'], function() {
-    Route::get('/', 'Api\UserTaskController@pendingTasks');
-    Route::get('/pending', 'Api\UserTaskController@index');
-    Route::get('/available', 'Api\UserTaskController@index');
-});
 
 Route::fallback( function() {
     return response()->json(['message' => 'Resource not found'], 404);
