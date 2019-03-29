@@ -1,6 +1,17 @@
 <div class="{{ $class ?? "col-md-6 col-xl-4 col-rewrite" }}">
     <aside class="profile-nav alt">
+        <div class="form-loading" data-id="{{$task->id}}"}}>
+            <div class="semipolar-spinner" :style="spinnerStyle">
+                <div class="ring"></div>
+                <div class="ring"></div>
+                <div class="ring"></div>
+                <div class="ring"></div>
+                <div class="ring"></div>
+            </div>
+        </div>
+
         <section class="card">
+
             <div class="card-header user-header alt bg-dark">
                 <div class="media">
                     <div class="media-body">
@@ -99,5 +110,6 @@
             </ul>
 
         </section>
+
     </aside>
 </div>

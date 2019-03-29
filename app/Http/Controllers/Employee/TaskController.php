@@ -22,8 +22,4 @@ class TaskController extends Controller
         return view('employee.my_tasks', compact('tasks', 'statuses'));
     }
 
-    public function tasks() {
-        return view('employee.tasks');
-    }
-
 }

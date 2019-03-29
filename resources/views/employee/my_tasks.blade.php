@@ -5,11 +5,7 @@
             <div class="row tasks-container" data-page="tasks">
                 @foreach($tasks as $task)
                     @task(['task' => $task ])
-                    <?php $disabled = ''; ?>
-                        @if($task->taskStatus->name == 'Denied')
-                             <?php $disabled = 'disabled'; ?>
-                        @endif
-                        <select {{ $disabled }}
+                        <select
                             id="SelectLm" class="form-control-sm form-control prettySelect task-status-change"
                                 data-task="{{$task->id}}">
                                 @foreach($statuses as $status)

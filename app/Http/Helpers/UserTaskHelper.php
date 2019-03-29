@@ -31,7 +31,7 @@ class UserTaskHelper
     public function getUserTasks()
     {
         $user = self::getUser();
-        return $user->tasks->load('users','taskPriority','taskStatus');
+        return $user->getTasksFilteredByAcceptance(1);
     }
 
     public function getAvailableTasks()

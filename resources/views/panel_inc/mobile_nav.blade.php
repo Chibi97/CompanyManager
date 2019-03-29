@@ -26,10 +26,10 @@
                         <a href="{{ route('employee.my-tasks') }}">
                             <i class="fas fa-thumbtack"></i>My Tasks</a>
                     </li>
-                    <li>
-                        <a href="{{ route('employee.tasks') }}">
-                            <i class="fas fa-tasks"></i>Available Tasks</a>
-                    </li>
+                    {{--<li>--}}
+                        {{--<a href="{{ route('employee.tasks') }}">--}}
+                            {{--<i class="fas fa-tasks"></i>Available Tasks</a>--}}
+                    {{--</li>--}}
                 @elseif (session()->get('user')->isBoss())
                     <li class="{{ Request::route()->named('company.dashboard') ? 'active' : '' }} has-sub">
                         <a href="{{ route('company.dashboard') }}">

@@ -211,7 +211,6 @@ class User extends Authenticatable
          })->filter(function ($task) {
              return $task != null;
          })->flatten();
-
          return $tasks;
     }
 

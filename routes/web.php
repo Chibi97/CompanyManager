@@ -8,6 +8,8 @@
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
+//Route::get('/tasks', 'Employee\TaskController@tasks')->name('employee.tasks');
+
 |
 */
 
@@ -25,7 +27,6 @@ Route::group(['middleware'=> 'RedirectIfLogin'],function() {
 // E M P L O Y E E
 Route::group(['middleware' => 'MyAuth:employee', 'prefix' => 'employee'], function () {
     Route::get('/', 'Employee\DashboardController@stats')->name('employee.dashboard');
-    Route::get('/tasks', 'Employee\TaskController@tasks')->name('employee.tasks');
     Route::get('/my-tasks', 'Employee\TaskController@myTasks')->name('employee.my-tasks');
 });
 
@@ -48,6 +49,7 @@ Route::group(['middleware' => 'MyAuth:boss', 'prefix' => 'company'], function() 
  *   company/tasks/{id}      |  destroy() | tasks.destroy       |  DELETE
  *
  */
+
 
 
 

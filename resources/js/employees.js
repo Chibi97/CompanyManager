@@ -25,15 +25,21 @@ export default function() {
         });
     });
 
+
     $('.task-status-change').change(function () {
+        var formLoading = $(this).closest("aside").find($(".form-loading"));
+        formLoading.css('display', 'flex');
+        formLoading.css('z-index', '999');
         var status = $(this).val();
         var url = baseUrl + `/api/tasks/${ $(this).data('task') }/status`;
         ajaxPut(url, {
             status: status
         }, () => {
             console.log('success');
+            formLoading.css('display', 'none');
         }, (xhr)=> {
             console.log(xhr);
+            formLoading.css('display', 'none');
         })
     })
 }
