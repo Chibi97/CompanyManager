@@ -29,6 +29,7 @@ Route::resource('/tasks', 'Api\TaskController')->except(['create','edit']);
 Route::group(['prefix' => 'tasks'], function() {
     Route::put('/{task}/deny', 'Api\TaskController@denyTask');
     Route::put('/{task}/accept', 'Api\TaskController@acceptTask');
+    Route::put('/{task}/status', 'Api\TaskController@changeStatus');
 });
 
 Route::group(['prefix' => 'user/tasks'], function() {

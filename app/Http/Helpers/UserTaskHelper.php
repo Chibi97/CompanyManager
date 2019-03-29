@@ -11,32 +11,32 @@ namespace App\Http\Helpers;
 
 class UserTaskHelper
 {
-    private function getUser()
+
+    private static function getUser()
     {
         if(session()->has('user')) {
-            $user = session()->get('user');
+            $user = session()->get('user')->refresh();
         } else {
             $user = CompanyManager::getInstance()->retrieve('user');
         }
-
         return $user;
     }
 
     public function getPendingTasks()
     {
-        $user = $this->getUser();
+        $user = self::getUser();
         return $user->getTasksFilteredByAcceptance();
     }
 
     public function getUserTasks()
     {
-        $user = $this->getUser();
-        return $user->tasks;
+        $user = self::getUser();
+        return $user->tasks->load('users','taskPriority','taskStatus');
     }
 
     public function getAvailableTasks()
     {
-        $user = $this->getUser();
+        $user = self::getUser();
         return $user->getAvailableTasks();
     }
 

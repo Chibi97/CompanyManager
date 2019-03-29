@@ -21,8 +21,8 @@ class TaskController extends Controller
         $this->middleware("CheckApiToken");
         $this->middleware("Before")->except('index', 'store');
         $this->middleware("Before:restrictEmployee")->only('show');
-        $this->middleware("Before:bossesCan")->except('show', 'acceptTask', 'denyTask', 'pendingTasks');
-        $this->middleware("Before:canEditOwnTask")->only('acceptTask', 'denyTask');
+        $this->middleware("Before:bossesCan")->except('show', 'acceptTask', 'denyTask', 'pendingTasks','changeStatus');
+        $this->middleware("Before:canEditOwnTask")->only('acceptTask', 'denyTask', 'changeStatus');
         $this->middleware("Before:controlEmployeeAssignment")->only('update', 'store');
     }
 
@@ -115,6 +115,14 @@ class TaskController extends Controller
         $user = CompanyManager::getInstance()->retrieve('user');
         $this->helper->denyTask($user, $task);
         return response(["message" => "Successfully denied task"]);
+    }
+
+    public function changeStatus(Task $task, UpdateTask $request)
+    {
+        $status = $request->input('status');
+        $this->helper->updateTaskStatus($status, $task);
+        return response(['message' => 'Successfully updated status!'], 200);
+
     }
 
     public function destroy(Task $task)

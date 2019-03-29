@@ -86,6 +86,11 @@ class TaskHelper
         $task->changeAcceptance($user, 'Deny');
     }
 
+    public function updateTaskStatus($status, $task)
+    {
+        $task->changeStatus($status);
+    }
+
     public function destroy(Task $task)
     {
         $task->deleteTask();

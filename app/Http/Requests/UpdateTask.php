@@ -9,13 +9,18 @@ use App\Models\TaskStatus;
 
 class UpdateTask extends StoreTasksRequest
 {
-    private const ONLY_CHARS_N_SPACES_REGEX = '/^[a-zA-Z\s]+$/';
-
     protected function rulesOverrides()
     {
         $rules = [];
 
-        $rules['status'] = ["sometimes", "min:2", "max:30","regex:" . self::ONLY_CHARS_N_SPACES_REGEX];
+        $statuses = TaskStatus::take(4)->pluck('name');
+        foreach($statuses as $p) {
+            $statuses[] = strtolower($p);
+        }
+        $statuses = $statuses->implode('|');
+        $regex = "/^$statuses$/";
+
+        $rules['status'] = ["sometimes", "min:2", "max:30","regex:$regex"];
         $rules['name'] = ["sometimes"];
         $rules['description'] = ["sometimes"];
         $rules['description'] = ["sometimes"];

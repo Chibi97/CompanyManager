@@ -270,7 +270,7 @@ class Task extends Model
         if($param == 'Accept') {
             $accept = 1;
         } else if($param == 'Deny') {
-            $accept = 0;
+            $accept = 2;
         }
         DB::transaction(function() use ($accept, $user) {
             $userTask = $user->tasks->where('id', $this->id)->first()->pivot;
@@ -279,11 +279,19 @@ class Task extends Model
         });
     }
 
+    public function changeStatus($status)
+    {
+        $status = TaskStatus::where('name', $status)->pluck('id')[0];
+        $this->task_status_id = $status;
+//        $this->taskStatus()->associate($status);
+        return $this->save();
+    }
+
 
     public function deleteTask()
     {
         DB::transaction(function() {
-            // $this->users()->detach();  TODO: VRATITI OVO U PRODUKCIJI
+             $this->users()->detach();
             $this->delete();
         });
     }

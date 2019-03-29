@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Helpers\UserTaskHelper;
+use Illuminate\Http\Request;
 
 class UserTaskController extends Controller
 {
